@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVN FinHub | Physical Share to Demat & Financial Process Support</title>
+    <meta name="description" content="Expert support for physical share certificate to demat conversion, NRI banking processes, and IEPF claims. Strictly non-advisory services.">
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.supabase.co; base-uri 'self'; form-action 'self';">
+
+    <meta name="theme-color" content="#0a192f">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+
+    <link rel="canonical" href="https://mvnfinhub.pages.dev/">
+    <meta property="og:title" content="MVN FinHub | Financial Process Support">
+    <meta property="og:description" content="Independent support for demat conversion and banking processes.">
+    <meta property="og:image" content="/assets/images/og-image.jpg">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="css/styles.css?v=1.0">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="index.html"><img src="assets/images/logo.png" alt="MVN FinHub" style="height: 40px;"></a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <a href="contact.html" class="cta-btn">Get Support</a>
+                <div class="hamburger" id="hamburger"><i class="ph ph-list"></i></div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="legal.html">Legal</a></li>
+        </ul>
+    </div>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-subtitle">STRICTLY NON-ADVISORY | PROCESS SUPPORT</span>
+                    <h1>Simplify Your <span class="highlight">Financial Documentation</span>.</h1>
+                    <p class="hero-desc">We assist with Physical Share to Demat conversion, IEPF claims, and NRI Banking processes. Independent and secure.</p>
+                    <a href="#contact" class="cta-btn" style="background: var(--accent); color: var(--bg-primary);">Start Enquiry</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <div style="max-width: 600px; margin-top: 30px;">
+                    
+                    <div class="success-card" id="successCard">
+                        <i class="ph ph-check-circle success-icon"></i>
+                        <h3>Enquiry Received</h3>
+                        <p>We will review your documentation requirements and respond within 24 hours.</p>
+                        <span class="ref-id" id="refIdDisplay"></span>
+                        <div class="reset-link" id="resetForm">Send Another Message</div>
+                    </div>
+
+                    <form id="contactForm">
+                        <div class="honey-trap" aria-hidden="true">
+                            <input type="text" name="website_url" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number (10 Digits)</label>
+                            <input type="tel" name="phone" pattern="[0-9]{10}" title="10 digit mobile number" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Service Required</label>
+                            <select name="service" required>
+                                <option value="" disabled selected>Select a service...</option>
+                                <option value="Physical Shares">Physical Shares to Demat / IEPF</option>
+                                <option value="Banking Support">Banking Support (Resident / NRI)</option>
+                                <option value="Financial Planning">Financial Planning Support</option>
+                                <option value="Loans">Loan & Documentation Help</option>
+                                <option value="Data Privacy">Data Privacy / Deletion Request</option>
+                                <option value="Other">Other Enquiry</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Message (Min 20 chars)</label>
+                            <textarea name="message" rows="5" minlength="20" required></textarea>
+                        </div>
+
+                        <div class="form-group" style="display: flex; gap: 10px; align-items: start;">
+                            <input type="checkbox" required style="width: auto; margin-top: 5px;">
+                            <label style="font-size: 12px; line-height: 1.4;">I agree to the Privacy Policy and authorize MVN FinHub to contact me regarding my enquiry.</label>
+                        </div>
+
+                        <button type="submit" class="cta-btn" style="width: 100%; cursor: pointer;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <i class="ph ph-whatsapp-logo"></i>
+    </a>
+
+    <div class="cookie-banner" id="cookieBanner">
+        <p style="font-size: 12px;">We use essential cookies for functionality. No personal investment data is stored.</p>
+        <div class="cookie-btns">
+            <button class="btn-decline" id="cookieDecline">Decline</button>
+            <button class="btn-accept" id="cookieAccept">Accept</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/dist/umd/supabase.min.js"></script>
+    <script type="module" src="js/app.js?v=1.0"></script>
+
+</body>
+</html>
