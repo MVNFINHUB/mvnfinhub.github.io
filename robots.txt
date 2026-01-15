@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /404.html
+Disallow: /js/config.js
+
+Sitemap: https://mvnfinhub.pages.dev/sitemap.xml
