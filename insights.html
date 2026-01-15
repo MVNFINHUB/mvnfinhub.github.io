@@ -3,60 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Market Insights | MVN FinHub</title>
+    <title>Insights | MVN FinHub</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
     <header>
-        <div class="container">
-            <nav>
-                <div class="logo"><a href="index.html">MVN<span class="highlight">FINHUB</span></a></div>
-                <ul class="nav-links">
-                    <li><a href="index.html">Terminal</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="insights.html" class="active">Insights</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
-                <div class="hamburger" id="hamburger"><i class="ph ph-list"></i></div>
-            </nav>
+        <div class="container" style="display:flex; justify-content:space-between; align-items:center; height:100%;">
+            <div class="logo"><a href="index.html" style="text-decoration:none; color:#fff; font-weight:700; font-size:24px;">MVN<span style="color:var(--accent-cyan);">FINHUB</span></a></div>
+            <nav class="nav-links"><a href="index.html">Home</a></nav>
         </div>
     </header>
-
-    <main style="padding-top: 150px; padding-bottom: 80px;">
+    <main style="padding-top:120px;">
         <div class="container">
-            <p class="mono-tag">/// INTEL_FEED: LIVE</p>
-            <h1 style="margin-bottom: 50px;">Market <span class="highlight">Intelligence</span></h1>
-
-            <div class="bento-grid">
-                <article class="spotlight-card">
-                    <span class="mono-tag" style="color: var(--accent-indigo);">REGION: GLOBAL</span>
-                    <h3 style="margin: 15px 0;">Economic Pulse</h3>
-                    <p style="color: var(--text-secondary); font-size: 14px;">Analysis of Fed policy, global interest rates, and currency shifts impacting cross-border documentation.</p>
-                </article>
-
-                <article class="spotlight-card">
-                    <span class="mono-tag">REGION: INDIA</span>
-                    <h3 style="margin: 15px 0;">Regulatory Watch</h3>
-                    <p style="color: var(--text-secondary); font-size: 14px;">SEBI circular updates, IEPF regulatory shifts, and NSDL/CDSL procedural changes.</p>
-                </article>
-
-                <article class="spotlight-card span-2">
-                    <span class="mono-tag" style="color: #ef4444;">PROTOCOL: DAILY_BRIEF</span>
-                    <h3 style="margin: 15px 0;">Operational Headlines</h3>
-                    <p style="color: var(--text-secondary); font-size: 14px;">Critical documentation deadlines and financial system status updates for the working day.</p>
-                </article>
-            </div>
-
-            <div class="spotlight-card" style="margin-top: 40px; border-left: 2px solid var(--accent-cyan);">
-                <p style="font-size: 12px; color: var(--text-mono); font-family: var(--font-tech);">
-                    DATA_DISCLAIMER: The information provided is for educational purposes only. MVN FinHub provides process support and does not offer investment recommendations.
-                </p>
+            <h1>Market <span style="color:var(--accent-cyan);">Intelligence</span></h1>
+            <div class="bento-grid" style="margin-top:40px;">
+                <div class="spotlight-card"><h3>Global Economy</h3><p style="color:var(--text-secondary);">Fed rates and global currency analysis.</p></div>
+                <div class="spotlight-card"><h3>Indian Markets</h3><p style="color:var(--text-secondary);">SEBI updates and regulatory changes.</p></div>
             </div>
         </div>
     </main>
-
-    <script type="module" src="js/app.js"></script>
 </body>
 </html>
