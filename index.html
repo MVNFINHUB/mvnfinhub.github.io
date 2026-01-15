@@ -4,34 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MVN FinHub | Financial Process Support</title>
-    <meta name="description" content="Expert support for physical share to demat conversion and NRI banking processes. Strictly non-advisory.">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:;">
+    <meta name="description" content="Secure financial documentation support. Strictly non-advisory.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.supabase.co;">
     
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FinancialService",
-      "name": "MVN FinHub",
-      "image": "https://mvnfinhub.pages.dev/assets/images/logo.png",
-      "description": "Process support for Demat conversion and IEPF claims."
-    }
-    </script>
 </head>
 <body>
+
     <header>
         <div class="container">
             <nav>
                 <div class="logo"><a href="index.html">MVN<span class="highlight">FINHUB</span></a></div>
                 <ul class="nav-links">
-                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="index.html" class="active">Terminal</a></li>
                     <li><a href="services.html">Services</a></li>
-                    <li><a href="insights.html">Market Insights</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="insights.html">Insights</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
-                <a href="index.html#contact" class="cta-btn">Get Support</a>
+                <a href="#contact" class="cta-btn">INITIATE REQUEST</a>
                 <div class="hamburger" id="hamburger"><i class="ph ph-list"></i></div>
             </nav>
         </div>
@@ -41,55 +33,118 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="services.html">Services</a></li>
-            <li><a href="insights.html">Market Insights</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="insights.html">Insights</a></li>
         </ul>
     </div>
 
     <main>
-        <section class="hero" style="padding: 150px 0 100px;">
+        <section style="padding: 180px 0 100px;">
             <div class="container">
-                <span class="highlight">STRICTLY NON-ADVISORY | PROCESS EXCELLENCE</span>
-                <h1 style="font-size: clamp(40px, 5vw, 60px); margin: 20px 0;">Simplify Your <span class="highlight">Financial Documentation</span>.</h1>
+                <p class="mono-tag" style="margin-bottom: 20px;">/// SYSTEM STATUS: OPERATIONAL</p>
+                <h1 style="font-size: clamp(40px, 6vw, 72px); line-height: 1.1; margin-bottom: 30px;">
+                    Simplify Your <br>
+                    <span class="highlight">Financial Documentation.</span>
+                </h1>
                 <p style="color: var(--text-secondary); max-width: 600px; font-size: 18px; margin-bottom: 40px;">
-                    We navigate the complexities of Indian financial paperwork so you don't have to. Secure support for Shares, IEPF, and Banking.
+                    Bank-grade execution support for Physical Shares, IEPF Claims, and NRI Banking. Strictly Non-Advisory. Zero Trust Architecture.
                 </p>
-                <a href="services.html" class="cta-btn">View Services</a>
+                <div style="display: flex; gap: 20px;">
+                    <a href="#contact" class="cta-btn" style="background: rgba(34, 211, 238, 0.1); border-color: var(--accent-cyan);">START ENQUIRY</a>
+                    <a href="services.html" class="cta-btn">EXPLORE SERVICES</a>
+                </div>
             </div>
         </section>
 
-        <section id="contact" style="padding: 80px 0;">
+        <section id="contact" style="padding: 100px 0;">
             <div class="container">
-                <div class="tilt-card" style="max-width: 600px; margin: 0 auto;">
-                    <h2>Contact Us</h2>
-                    <form id="contactForm" style="margin-top: 30px;">
-                        <div class="form-group" style="margin-bottom: 20px;">
-                            <input type="text" placeholder="Full Name" required>
+                <div class="spotlight-card" style="max-width: 700px; margin: 0 auto;">
+                    <h2 style="margin-bottom: 10px;">Secure Enquiry Channel</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 14px;">
+                        Data is encrypted. Response time: <span class="mono-tag" style="color: var(--accent-cyan);">T - 24 HOURS</span>
+                    </p>
+                    
+                    <form id="contactForm">
+                        <div class="honey-trap"><input type="text" name="website_url" tabindex="-1"></div>
+
+                        <div class="form-group">
+                            <label class="mono-tag">IDENTITY</label>
+                            <input type="text" name="name" required placeholder="Full Legal Name">
                         </div>
-                        <div class="form-group" style="margin-bottom: 20px;">
-                            <input type="email" placeholder="Email Address" required>
+
+                        <div class="form-group">
+                            <label class="mono-tag">CONTACT VECTOR (EMAIL)</label>
+                            <input type="email" name="email" required placeholder="name@domain.com">
                         </div>
-                        <div class="form-group" style="margin-bottom: 20px;">
-                            <textarea rows="5" placeholder="How can we help?" required></textarea>
+
+                        <div class="form-group">
+                            <label class="mono-tag">CONTACT VECTOR (PHONE)</label>
+                            <input type="tel" name="phone" pattern="[0-9]{10}" required placeholder="10-Digit Mobile Number">
                         </div>
-                        <button type="submit" class="cta-btn" style="width: 100%;">Send Securely</button>
+
+                        <div class="form-group">
+                            <label class="mono-tag">PROTOCOL (SERVICE)</label>
+                            <select name="service" required>
+                                <option value="" disabled selected>Select Protocol...</option>
+                                <optgroup label="LEGACY ASSETS">
+                                    <option value="Physical Shares">Physical Shares to Demat</option>
+                                    <option value="IEPF Claims">IEPF Claim Recovery</option>
+                                    <option value="Transmission">Death Claim / Transmission</option>
+                                </optgroup>
+                                <optgroup label="NRI SERVICES">
+                                    <option value="NRI Banking">NRI Banking Operations</option>
+                                    <option value="NRI Docs">NRI PAN/Aadhaar</option>
+                                </optgroup>
+                                <optgroup label="RESIDENT SERVICES">
+                                    <option value="PAN/Aadhaar">PAN / Aadhaar Update</option>
+                                    <option value="Passport">Passport Services</option>
+                                </optgroup>
+                                <optgroup label="OTHER">
+                                    <option value="Banking">Banking Support</option>
+                                    <option value="Other">Other Enquiry</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="mono-tag">PAYLOAD (MESSAGE)</label>
+                            <textarea name="message" rows="5" minlength="20" required placeholder="Describe required assistance..."></textarea>
+                        </div>
+
+                        <div style="display: flex; gap: 10px; align-items: start; margin-top: 20px;">
+                            <input type="checkbox" required style="width: auto; margin-top: 5px;">
+                            <p style="font-size: 12px; color: var(--text-secondary);">I authorize MVN FinHub to process this data. I understand this service is Non-Advisory.</p>
+                        </div>
+
+                        <button type="submit" class="cta-btn" style="width: 100%; margin-top: 30px; border-color: var(--accent-cyan); color: var(--accent-cyan);">TRANSMIT DATA</button>
                     </form>
                 </div>
             </div>
         </section>
     </main>
 
+    <a href="https://wa.me/919876543210?text=Hi%20MVN%20FinHub,%20requesting%20documentation%20support." 
+       class="whatsapp-stealth" target="_blank" title="Encrypted Chat">
+        <i class="ph ph-whatsapp-logo"></i>
+    </a>
+
     <div class="toast-container" id="toastContainer"></div>
 
-    <footer>
+    <footer style="border-top: 1px solid var(--border-color); padding: 50px 0; margin-top: 50px;">
         <div class="container">
-            <p>&copy; 2026 MVN FinHub. All rights reserved.</p>
-            <div style="margin-top: 10px;">
-                <a href="legal.html" style="margin: 0 10px; font-size: 12px;">Privacy & Terms</a>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <p style="color: var(--text-secondary); font-size: 14px;">&copy; 2026 MVN FinHub. <span class="mono-tag">SYSTEM ONLINE</span></p>
+                <div>
+                    <a href="https://instagram.com/mvnfinhub" target="_blank" style="color: var(--text-secondary); font-size: 24px;"><i class="ph ph-instagram-logo"></i></a>
+                </div>
+            </div>
+            <div style="margin-top: 20px;">
+                <a href="legal.html" class="mono-tag" style="margin-right: 20px; text-decoration: none;">PRIVACY_PROTOCOL</a>
+                <a href="legal.html" class="mono-tag" style="text-decoration: none;">TERMS_OF_SERVICE</a>
             </div>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/dist/umd/supabase.min.js"></script>
     <script type="module" src="js/app.js"></script>
 </body>
 </html>
