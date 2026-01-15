@@ -3,17 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found</title>
+    <title>System Error | 404</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Outfit:wght@700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
-<body style="height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; flex-direction: column;">
+<body style="height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; flex-direction: column; overflow: hidden;">
     
-    <i class="ph ph-file-dashed floating-doc" style="font-size: 100px; color: var(--accent); margin-bottom: 20px;"></i>
-    <h1 style="font-size: 80px; line-height: 1;">404</h1>
-    <p style="color: var(--text-secondary); margin: 20px 0;">We process paperwork, but we can't find this page.</p>
-    <a href="index.html" class="cta-btn">Return to Home</a>
+    <div style="animation: float 4s ease-in-out infinite;">
+        <i class="ph ph-warning-octagon" style="font-size: 120px; color: #ef4444; filter: drop-shadow(0 0 15px rgba(239, 68, 68, 0.4));"></i>
+    </div>
 
+    <p class="mono-tag" style="margin-top: 30px; color: #ef4444;">ERROR_CODE: 404_NOT_FOUND</p>
+    <h1 style="font-size: clamp(40px, 8vw, 80px); margin: 10px 0;">Request <span class="highlight">Denied.</span></h1>
+    <p style="color: var(--text-secondary); max-width: 400px; margin-bottom: 40px;">The document or terminal you are looking for does not exist in the database.</p>
+    
+    <a href="index.html" class="cta-btn" style="border-color: var(--accent-cyan); color: var(--accent-cyan);">REBOOT TO TERMINAL</a>
+
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+    </style>
 </body>
 </html>
