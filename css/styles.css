@@ -1,154 +1,180 @@
-/* MVN FINHUB - REFINED VISUAL ENGINE (v2.0) */
+/* MVN FINHUB - STABLE GLASS TERMINAL (v3.0) */
 
 /* --- 1. CORE VARIABLES --- */
 :root {
-    --obsidian: #020617;       
-    --slate: #0f172a;          
-    --cyan: #22d3ee;           
-    --green: #22c55e;          
-    --gold: #facc15;           
-    --text-main: #f8fafc;      
-    --text-muted: #94a3b8;     
-    --font-main: 'Inter', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace; 
-    --border: rgba(34, 211, 238, 0.2); /* Cyan tint for borders */
+    --bg-deep: #020617;        /* Deepest Black */
+    --bg-card: #0f172a;        /* Card Background */
+    --cyan: #06b6d4;           /* Primary Glow */
+    --green: #22c55e;          /* Success */
+    --text-white: #ffffff;
+    --text-gray: #94a3b8;
+    --font-head: 'Inter', sans-serif;
+    --font-mono: 'Courier New', monospace; /* Authentic Terminal Font */
 }
 
-/* --- 2. GLOBAL RESET & CYBER GRID --- */
-* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+/* --- 2. RESET & BASICS --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-body { 
-    background-color: var(--obsidian); 
-    color: var(--text-main); 
-    font-family: var(--font-main); 
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-white);
+    font-family: var(--font-head);
     overflow-x: hidden;
-    /* HIGH-TECH GRID BACKGROUND */
+    /* Subtle Grid Background */
     background-image: 
-        linear-gradient(rgba(34, 211, 238, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px; /* Creates the grid squares */
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
     min-height: 100vh;
-    display: flex; flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
-/* --- 3. HEADER --- */
-header { 
-    position: fixed; top: 0; width: 100%; height: 70px; 
-    background: rgba(2, 6, 23, 0.9); 
-    backdrop-filter: blur(10px); 
-    z-index: 1000; 
-    border-bottom: 1px solid var(--border); 
-    display: flex; align-items: center;
-}
-.container { 
-    width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px;
-}
-.logo { font-size: 22px; font-weight: 800; letter-spacing: -1px; }
-.glow { color: var(--cyan); text-shadow: 0 0 10px rgba(34, 211, 238, 0.6); }
-.nav-btn { font-size: 24px; cursor: pointer; color: var(--cyan); }
-
-/* --- 4. THE 3D CUBE (FIXED CENTERING) --- */
-main {
-    flex: 1; /* Pushes footer down */
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; /* Centers content vertically */
+/* --- 3. HEADER (Fixed Top) --- */
+header {
+    height: 70px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: rgba(2, 6, 23, 0.95);
+    border-bottom: 1px solid rgba(6, 182, 212, 0.3); /* Cyan Border */
+    display: flex;
     align-items: center;
-    padding-top: 80px; /* Space for header */
+    justify-content: space-between;
+    padding: 0 20px;
 }
 
-.swiper { 
-    width: 320px;  /* Fixed Square Size */
-    height: 320px; 
-    margin: 40px auto; /* Center horizontal */
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -1px;
 }
 
-.swiper-slide { 
-    background: rgba(15, 23, 42, 0.9); /* Dark Slate */
-    border: 1px solid var(--cyan);
-    box-shadow: 0 0 30px rgba(34, 211, 238, 0.15); /* Blue Glow */
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; /* VERTICAL CENTER */
-    align-items: center;     /* HORIZONTAL CENTER */
+.logo span { color: var(--cyan); }
+
+.menu-btn {
+    font-size: 24px;
+    color: var(--cyan);
+    cursor: pointer;
+}
+
+/* --- 4. MAIN HERO SECTION (The Fix) --- */
+/* No more Swiper. Just a solid, centered card. */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center Vertically */
+    align-items: center;     /* Center Horizontally */
+    padding: 100px 20px 60px 20px; /* Space for header and footer */
     text-align: center;
-    padding: 20px;
 }
 
-/* Cube Content Styling */
-.swiper-slide i {
-    font-size: 60px;
-    margin-bottom: 25px;
-    display: block; /* Fixes alignment issues */
+.hero-card {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid var(--cyan);
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.15); /* Soft Glow */
+    backdrop-filter: blur(10px); /* Glass Effect */
 }
-.swiper-slide h1 {
-    font-size: 26px; 
-    text-transform: uppercase; 
-    letter-spacing: 1px;
-    line-height: 1.2;
+
+.hero-icon {
+    font-size: 60px;
+    color: var(--cyan);
+    margin-bottom: 25px;
+    text-shadow: 0 0 15px var(--cyan);
+}
+
+.hero-title {
+    font-size: 32px;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px;
     margin-bottom: 10px;
 }
-.swiper-slide p {
+
+.hero-subtitle {
+    font-family: var(--font-mono);
+    color: var(--text-gray);
     font-size: 14px;
-    color: var(--text-muted);
+    margin-bottom: 30px;
 }
 
-/* --- 5. BUTTONS --- */
-.action-btn { 
-    background: var(--cyan); 
-    color: #000; 
-    font-weight: 800; 
-    padding: 16px 40px; 
-    border-radius: 4px; /* Sharper corners for tech look */
-    text-transform: uppercase; 
+.action-btn {
+    display: inline-block;
+    background: var(--cyan);
+    color: #000;
+    font-weight: 800;
+    padding: 18px 40px;
+    border-radius: 4px;
+    text-decoration: none;
+    text-transform: uppercase;
     letter-spacing: 1px;
-    box-shadow: 0 0 20px rgba(34, 211, 238, 0.4); /* Glowing Button */
-    margin-top: 20px;
+    transition: 0.3s;
+    width: 100%; /* Full width on mobile */
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
 }
 
-/* --- 6. NAV CURTAIN --- */
-.nav-curtain { 
-    position: fixed; top: 0; right: -100%; 
-    width: 100%; height: 100vh; 
-    background: rgba(2,6,23,0.98); 
-    z-index: 999; 
-    transition: 0.4s; 
-    display: flex; flex-direction: column; 
-    justify-content: center; padding: 40px; 
-    border-left: 1px solid var(--border);
+.action-btn:hover {
+    background: #fff;
+    box-shadow: 0 0 30px rgba(255,255,255, 0.6);
 }
-.nav-curtain.active { right: 0; }
-.nav-link { 
-    font-family: var(--font-mono); font-size: 24px; font-weight: 700; 
-    margin-bottom: 30px; color: var(--text-muted); 
-}
-.nav-link:hover { color: var(--cyan); padding-left: 15px; border-left: 4px solid var(--cyan); }
 
-/* --- 7. FOOTER MARQUEE --- */
-.marquee-container { 
-    width: 100%; 
-    background: #000; 
-    border-top: 1px solid var(--border); 
-    padding: 12px 0; 
+/* --- 5. FOOTER MARQUEE --- */
+.marquee-footer {
+    background: #000;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 10px 0;
     overflow: hidden;
+    white-space: nowrap;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
-.marquee-text { 
-    white-space: nowrap; 
-    animation: scroll 25s linear infinite; 
-    font-size: 11px; 
-    color: var(--cyan); 
-    font-family: var(--font-mono); 
-    letter-spacing: 1px;
-}
-@keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-/* --- 8. STATUS PULSE --- */
-.status-dot { 
-    height: 12px; width: 12px; 
-    background: var(--green); 
-    border-radius: 50%; 
-    box-shadow: 0 0 15px var(--green); 
-    margin-bottom: 20px;
-    animation: pulse 2s infinite; 
+.marquee-text {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-gray);
+    animation: scroll 20s linear infinite;
 }
-@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+@keyframes scroll {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+}
+
+/* --- 6. NAVIGATION MENU (Hidden by default) --- */
+.nav-overlay {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: rgba(2,6,23,0.98);
+    overflow: hidden;
+    transition: 0.3s;
+    z-index: 90;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-overlay.open { height: calc(100vh - 70px); }
+
+.nav-link {
+    font-size: 24px;
+    color: var(--text-gray);
+    text-decoration: none;
+    margin: 20px 0;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.nav-link:hover { color: var(--cyan); }
