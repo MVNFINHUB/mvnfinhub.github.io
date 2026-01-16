@@ -3,317 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Process & Documentation Insights | MVN FinHub</title>
     <meta name="description" content="Non-advisory insights explaining financial documentation workflows, compliance processes, legacy assets, and banking systems.">
+    <title>Financial Process & Documentation Insights | MVN FinHub</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        /* CSS Variables */
-        :root {
-            --primary-color: #0B3C5D;
-            --text-color: #4A5568;
-            --accent-color: #2F855A;
-            --background-white: #FFFFFF;
-            --background-section: #F7FAFC;
-            --border-color: #E2E8F0;
-            --spacing-unit: 8px;
-            --max-width: 1200px;
-        }
-
-        /* Reset & Base Styles */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-color);
-            background-color: var(--background-white);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        /* Layout Utilities */
-        .container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 calc(var(--spacing-unit) * 2);
-        }
-
-        .section {
-            padding: calc(var(--spacing-unit) * 8) 0;
-        }
-
-        .bg-section {
-            background-color: var(--background-section);
-        }
-
-        /* Typography */
-        h1, h2, h3 {
-            color: var(--primary-color);
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: calc(var(--spacing-unit) * 2);
-        }
-
-        h3 {
-            font-size: 1.25rem;
-            margin-bottom: var(--spacing-unit);
-        }
-
-        p {
-            margin-bottom: calc(var(--spacing-unit) * 2);
-        }
-
-        /* Header */
-        header {
-            padding: calc(var(--spacing-unit) * 3) 0;
-            border-bottom: 1px solid var(--border-color);
-            background-color: var(--background-white);
-        }
-
-        .brand-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        /* Page Heading Section */
-        .page-heading {
-            padding: calc(var(--spacing-unit) * 8) 0 calc(var(--spacing-unit) * 4);
-            text-align: center;
-        }
-
-        .sub-heading {
-            font-size: 1.125rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Categories Navigation */
-        .categories-nav {
-            padding-bottom: calc(var(--spacing-unit) * 6);
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: calc(var(--spacing-unit) * 6);
-        }
-
-        .categories-list {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: calc(var(--spacing-unit) * 2);
-        }
-
-        .category-link {
-            display: inline-block;
-            padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
-            background-color: var(--background-section);
-            color: var(--primary-color);
-            border-radius: 4px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            border: 1px solid var(--border-color);
-        }
-
-        .category-link:hover {
-            background-color: #E2E8F0;
-            text-decoration: none;
-        }
-
-        /* Insights Grid */
-        .insights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: calc(var(--spacing-unit) * 4);
-        }
-
-        .insight-card {
-            background: var(--background-white);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            display: flex;
-            flex-direction: column;
-            padding: calc(var(--spacing-unit) * 3);
-        }
-
-        .card-category {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--accent-color);
-            font-weight: 600;
-            margin-bottom: var(--spacing-unit);
-        }
-
-        .insight-summary {
-            font-size: 0.95rem;
-            flex-grow: 1;
-            margin-bottom: calc(var(--spacing-unit) * 3);
-            color: var(--text-color);
-        }
-
-        .read-more {
-            color: var(--primary-color);
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .read-more:hover {
-            text-decoration: underline;
-        }
-
-        /* Non-Advisory Notice */
-        .notice-section {
-            background-color: var(--background-section);
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .notice-text {
-            font-size: 0.9rem;
-            font-weight: 500;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-color);
-            color: #FFFFFF;
-            padding: calc(var(--spacing-unit) * 6) 0;
-            font-size: 0.875rem;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: calc(var(--spacing-unit) * 2);
-        }
-
-        .footer-links a {
-            color: #FFFFFF;
-            opacity: 0.8;
-            margin: 0 var(--spacing-unit);
-        }
-
-        .footer-links a:hover {
-            opacity: 1;
-            text-decoration: underline;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .categories-list { flex-direction: column; align-items: center; }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <script src="main.js" defer></script>
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <a href="index.html" class="brand-name">MVN FinHub</a>
+    <header class="site-header" role="banner">
+        <a href="index.html" class="brand-logo" aria-label="MVN FinHub Home">
+            MVN FinHub
+        </a>
+        
+        <nav class="main-nav" role="navigation" aria-label="Main Navigation">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="insights.html" class="nav-link" style="color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5);">Insights</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-action">
+            <a href="contact.html" class="btn-primary">Start an Enquiry</a>
+            <button class="mobile-toggle" aria-label="Toggle navigation menu" style="display: none;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
         </div>
     </header>
 
-    <main>
-        <section class="container">
-            <div class="page-heading">
-                <h1>Financial Processes, Documentation & Compliance Insights</h1>
-                <p class="sub-heading">
-                    Independent, non-advisory insights explaining financial processes, documentation workflows, and real-world scenarios to improve understanding and preparedness.
-                </p>
-            </div>
+    <main id="main-content">
 
-            <nav class="categories-nav" aria-label="Insight Categories">
-                <ul class="categories-list">
-                    <li><a href="#" class="category-link">Documentation Processes</a></li>
-                    <li><a href="#" class="category-link">Legacy Assets & IEPF</a></li>
-                    <li><a href="#" class="category-link">Banking & KYC Systems</a></li>
-                    <li><a href="#" class="category-link">RI & NRI Compliance</a></li>
-                    <li><a href="#" class="category-link">Financial Structure Awareness</a></li>
-                </ul>
-            </nav>
-
-            <div class="insights-grid">
-                <article class="insight-card">
-                    <span class="card-category">Documentation Processes</span>
-                    <h3>How Physical Share Certificates Are Verified</h3>
-                    <p class="insight-summary">
-                        An overview of how institutions verify physical share certificates and why mismatches commonly cause delays.
-                    </p>
-                    <a href="#" class="read-more">Read Insight →</a>
-                </article>
-
-                <article class="insight-card">
-                    <span class="card-category">Legacy Assets & IEPF</span>
-                    <h3>Common Reasons for IEPF Claim Delays</h3>
-                    <p class="insight-summary">
-                        A general explanation of documentation gaps and procedural issues that may affect IEPF claim processing timelines.
-                    </p>
-                    <a href="#" class="read-more">Read Insight →</a>
-                </article>
-
-                <article class="insight-card">
-                    <span class="card-category">Banking & KYC Systems</span>
-                    <h3>Why Bank KYC Gets Rejected</h3>
-                    <p class="insight-summary">
-                        An explanation of common KYC-related issues and how documentation inconsistencies impact verification.
-                    </p>
-                    <a href="#" class="read-more">Read Insight →</a>
-                </article>
-
-                <article class="insight-card">
-                    <span class="card-category">RI & NRI Compliance</span>
-                    <h3>RI vs NRI Documentation Differences</h3>
-                    <p class="insight-summary">
-                        An overview of documentation and compliance differences between resident and non-resident Indian accounts.
-                    </p>
-                    <a href="#" class="read-more">Read Insight →</a>
-                </article>
-            </div>
-        </section>
-
-        <section class="section notice-section">
+        <section class="section hero-section" aria-labelledby="page-title">
             <div class="container">
-                <p class="notice-text">
-                    MVN FinHub Insights are provided strictly for educational and informational purposes.
-                    They do not constitute financial, investment, legal, or tax advice.
-                </p>
+                <div class="hero-content">
+                    <h1 id="page-title" class="hero-heading">Financial Processes, Documentation & Compliance Insights</h1>
+                    <p class="hero-subheadline">
+                        Independent, non-advisory insights explaining financial processes, documentation workflows, and real-world scenarios to improve understanding and preparedness.
+                    </p>
+                </div>
             </div>
         </section>
+
+        <section class="section" aria-label="Insight Categories" style="padding-top: 0;">
+            <div class="container">
+                <nav aria-label="Categories">
+                    <ul class="trust-list" style="justify-content: center; gap: 1rem;">
+                        <li><a href="#" class="trust-item" style="text-decoration: none; transition: all 0.3s ease;">Documentation Processes</a></li>
+                        <li><a href="#" class="trust-item" style="text-decoration: none; transition: all 0.3s ease;">Legacy Assets & IEPF</a></li>
+                        <li><a href="#" class="trust-item" style="text-decoration: none; transition: all 0.3s ease;">Banking & KYC Systems</a></li>
+                        <li><a href="#" class="trust-item" style="text-decoration: none; transition: all 0.3s ease;">RI & NRI Compliance</a></li>
+                        <li><a href="#" class="trust-item" style="text-decoration: none; transition: all 0.3s ease;">Financial Structure Awareness</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="insights-grid-heading">
+            <div class="container">
+                <h2 id="insights-grid-heading" class="hero-heading" style="font-size: 2rem; margin-bottom: 3rem; opacity: 0.9; display: none;">Latest Insights</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+
+                    <article class="process-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-accent); display: block; margin-bottom: 1rem;">Documentation Processes</span>
+                            <h3 class="card-title" style="font-size: 1.35rem;">How Physical Share Certificates Are Verified</h3>
+                            <p class="card-text" style="margin-bottom: 2rem;">
+                                An overview of how institutions verify physical share certificates and why mismatches commonly cause delays.
+                            </p>
+                        </div>
+                        <a href="#" class="nav-link" style="color: #fff; font-size: 0.9rem; font-weight: 600;">Read Insight →</a>
+                    </article>
+
+                    <article class="process-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-accent); display: block; margin-bottom: 1rem;">Legacy Assets & IEPF</span>
+                            <h3 class="card-title" style="font-size: 1.35rem;">Common Reasons for IEPF Claim Delays</h3>
+                            <p class="card-text" style="margin-bottom: 2rem;">
+                                A general explanation of documentation gaps and procedural issues that may affect IEPF claim processing timelines.
+                            </p>
+                        </div>
+                        <a href="#" class="nav-link" style="color: #fff; font-size: 0.9rem; font-weight: 600;">Read Insight →</a>
+                    </article>
+
+                    <article class="process-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-accent); display: block; margin-bottom: 1rem;">Banking & KYC Systems</span>
+                            <h3 class="card-title" style="font-size: 1.35rem;">Why Bank KYC Gets Rejected</h3>
+                            <p class="card-text" style="margin-bottom: 2rem;">
+                                An explanation of common KYC-related issues and how documentation inconsistencies impact verification.
+                            </p>
+                        </div>
+                        <a href="#" class="nav-link" style="color: #fff; font-size: 0.9rem; font-weight: 600;">Read Insight →</a>
+                    </article>
+
+                    <article class="process-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-accent); display: block; margin-bottom: 1rem;">RI & NRI Compliance</span>
+                            <h3 class="card-title" style="font-size: 1.35rem;">RI vs NRI Documentation Differences</h3>
+                            <p class="card-text" style="margin-bottom: 2rem;">
+                                An overview of documentation and compliance differences between resident and non-resident Indian accounts.
+                            </p>
+                        </div>
+                        <a href="#" class="nav-link" style="color: #fff; font-size: 0.9rem; font-weight: 600;">Read Insight →</a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="padding-bottom: 15vh;">
+            <div class="container">
+                <div class="process-card" style="text-align: center; border-color: rgba(255,255,255,0.1); background: rgba(2, 6, 23, 0.4);">
+                    <p style="color: #94a3b8; font-size: 0.95rem; margin: 0;">
+                        MVN FinHub Insights are provided strictly for educational and informational purposes.<br>
+                        They do not constitute financial, investment, legal, or tax advice.
+                    </p>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <footer>
-        <div class="container footer-content">
-            <div>© MVN FinHub</div>
-            <p>MVN FinHub provides strictly non-advisory financial process, documentation, and educational support.</p>
-            <div class="footer-links">
-                <a href="services.html">Services</a>
-                <a href="#">Contact</a>
-                <a href="#">Privacy & Legal</a>
-                <a href="#">Instagram</a>
-            </div>
+    <footer class="site-footer" role="contentinfo" style="position: relative; z-index: 10; border-top: 1px solid rgba(255,255,255,0.05); padding: 3rem 0; background: rgba(2, 6, 23, 0.8);">
+        <div class="container" style="text-align: center;">
+            <div style="font-weight: 700; color: #fff; margin-bottom: 1rem;">© MVN FinHub</div>
+            <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                MVN FinHub provides strictly non-advisory financial process, documentation, and educational support.
+            </p>
+            
+            <nav aria-label="Footer Navigation">
+                <ul style="display: flex; justify-content: center; gap: 1.5rem; list-style: none;">
+                    <li><a href="services.html" class="nav-link" style="color: #94a3b8; font-size: 0.85rem;">Services</a></li>
+                    <li><a href="contact.html" class="nav-link" style="color: #94a3b8; font-size: 0.85rem;">Contact</a></li>
+                    <li><a href="legal.html" class="nav-link" style="color: #94a3b8; font-size: 0.85rem;">Privacy & Legal</a></li>
+                    <li><a href="#" class="nav-link" style="color: #94a3b8; font-size: 0.85rem;">Instagram</a></li>
+                </ul>
+            </nav>
         </div>
     </footer>
 
