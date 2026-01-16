@@ -1,180 +1,142 @@
-/* MVN FINHUB - STABLE GLASS TERMINAL (v3.0) */
+/* MVN FINHUB - CINEMATIC WIDE TERMINAL (v4.0) */
 
 /* --- 1. CORE VARIABLES --- */
 :root {
     --bg-deep: #020617;        /* Deepest Black */
-    --bg-card: #0f172a;        /* Card Background */
-    --cyan: #06b6d4;           /* Primary Glow */
-    --green: #22c55e;          /* Success */
+    --cyan: #22d3ee;           /* Tech Blue */
+    --green: #22c55e;          /* Success Green */
     --text-white: #ffffff;
-    --text-gray: #94a3b8;
-    --font-head: 'Inter', sans-serif;
-    --font-mono: 'Courier New', monospace; /* Authentic Terminal Font */
+    --text-muted: #94a3b8;     /* Grey Text */
+    --font-main: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace; 
 }
 
-/* --- 2. RESET & BASICS --- */
+/* --- 2. GLOBAL RESET --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-    background-color: var(--bg-deep);
-    color: var(--text-white);
-    font-family: var(--font-head);
+body { 
+    background-color: var(--bg-deep); 
+    color: var(--text-white); 
+    font-family: var(--font-main); 
     overflow-x: hidden;
-    /* Subtle Grid Background */
+    /* Dark Tech Grid Background */
     background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
+        linear-gradient(rgba(34, 211, 238, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34, 211, 238, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    display: flex; flex-direction: column;
 }
 
-/* --- 3. HEADER (Fixed Top) --- */
-header {
-    height: 70px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    background: rgba(2, 6, 23, 0.95);
-    border-bottom: 1px solid rgba(6, 182, 212, 0.3); /* Cyan Border */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* --- 3. HEADER --- */
+header { 
+    position: fixed; top: 0; width: 100%; height: 70px; 
+    background: rgba(2, 6, 23, 0.95); 
+    border-bottom: 1px solid rgba(34, 211, 238, 0.2); 
+    z-index: 1000; 
+    display: flex; align-items: center; justify-content: space-between;
     padding: 0 20px;
 }
-
-.logo {
-    font-size: 24px;
-    font-weight: 800;
-    letter-spacing: -1px;
-}
-
+.logo { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
 .logo span { color: var(--cyan); }
+.nav-btn { font-size: 24px; cursor: pointer; color: var(--text-white); }
 
-.menu-btn {
-    font-size: 24px;
-    color: var(--cyan);
-    cursor: pointer;
-}
-
-/* --- 4. MAIN HERO SECTION (The Fix) --- */
-/* No more Swiper. Just a solid, centered card. */
+/* --- 4. THE WIDE CINEMATIC STAGE (Targeting Image 1 Look) --- */
 main {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center Vertically */
-    align-items: center;     /* Center Horizontally */
-    padding: 100px 20px 60px 20px; /* Space for header and footer */
-    text-align: center;
-}
-
-.hero-card {
-    background: rgba(15, 23, 42, 0.8);
-    border: 1px solid var(--cyan);
-    border-radius: 12px;
-    padding: 40px;
-    max-width: 500px;
-    width: 100%;
-    box-shadow: 0 0 30px rgba(6, 182, 212, 0.15); /* Soft Glow */
-    backdrop-filter: blur(10px); /* Glass Effect */
-}
-
-.hero-icon {
-    font-size: 60px;
-    color: var(--cyan);
-    margin-bottom: 25px;
-    text-shadow: 0 0 15px var(--cyan);
-}
-
-.hero-title {
-    font-size: 32px;
-    text-transform: uppercase;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-
-.hero-subtitle {
-    font-family: var(--font-mono);
-    color: var(--text-gray);
-    font-size: 14px;
-    margin-bottom: 30px;
-}
-
-.action-btn {
-    display: inline-block;
-    background: var(--cyan);
-    color: #000;
-    font-weight: 800;
-    padding: 18px 40px;
-    border-radius: 4px;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: 0.3s;
-    width: 100%; /* Full width on mobile */
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
-}
-
-.action-btn:hover {
-    background: #fff;
-    box-shadow: 0 0 30px rgba(255,255,255, 0.6);
-}
-
-/* --- 5. FOOTER MARQUEE --- */
-.marquee-footer {
-    background: #000;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding: 10px 0;
-    overflow: hidden;
-    white-space: nowrap;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-.marquee-text {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--text-gray);
-    animation: scroll 20s linear infinite;
-}
-
-@keyframes scroll {
-    from { transform: translateX(100%); }
-    to { transform: translateX(-100%); }
-}
-
-/* --- 6. NAVIGATION MENU (Hidden by default) --- */
-.nav-overlay {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background: rgba(2,6,23,0.98);
-    overflow: hidden;
-    transition: 0.3s;
-    z-index: 90;
-    display: flex;
-    flex-direction: column;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
     align-items: center;
-    justify-content: center;
+    padding-top: 80px;
+    width: 100%;
 }
 
-.nav-overlay.open { height: calc(100vh - 70px); }
-
-.nav-link {
-    font-size: 24px;
-    color: var(--text-gray);
-    text-decoration: none;
-    margin: 20px 0;
-    font-weight: 700;
-    transition: 0.2s;
+/* THE WIDE CONTAINER */
+.swiper {
+    width: 90%;             /* Spans 90% of screen (Wide) */
+    max-width: 1100px;      /* Stops it from getting too huge on big TVs */
+    height: 400px;          /* Fixed height for the card */
+    margin-bottom: 40px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: #0f172a;    /* The Dark Card Color from Image 1 */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* Deep Shadow */
 }
 
-.nav-link:hover { color: var(--cyan); }
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertical Center */
+    align-items: flex-start; /* LEFT ALIGNMENT (Crucial for Image 1 look) */
+    padding: 0 60px;        /* Spacing from the left edge */
+    background: #0f172a;
+}
+
+/* TYPOGRAPHY - Matching Image 1 */
+.slide-title {
+    font-size: 48px;        /* Big Bold Text */
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+.slide-subtitle {
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+/* MOBILE ADJUSTMENTS */
+@media (max-width: 768px) {
+    .swiper { width: 95%; height: 350px; }
+    .swiper-slide { padding: 0 30px; }
+    .slide-title { font-size: 32px; }
+}
+
+/* --- 5. THE BUTTON (Centered Below) --- */
+.btn-container { text-align: center; width: 100%; }
+
+.action-btn { 
+    background: var(--cyan); 
+    color: #000; 
+    font-weight: 800; 
+    padding: 16px 50px; 
+    border-radius: 4px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+    display: inline-block;
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.4); 
+}
+
+/* --- 6. NAV CURTAIN --- */
+.nav-curtain { 
+    position: fixed; top: 0; right: -100%; 
+    width: 100%; height: 100vh; 
+    background: rgba(2,6,23,0.98); 
+    z-index: 999; 
+    transition: 0.4s; 
+    display: flex; flex-direction: column; 
+    justify-content: center; padding: 40px; 
+    border-left: 1px solid rgba(255,255,255,0.1);
+}
+.nav-curtain.active { right: 0; }
+.nav-link { 
+    font-family: var(--font-mono); font-size: 28px; font-weight: 700; 
+    margin-bottom: 30px; color: var(--text-muted); 
+}
+.nav-link:hover { color: var(--cyan); padding-left: 10px; border-left: 4px solid var(--cyan); }
+
+/* --- 7. FOOTER MARQUEE --- */
+.marquee-container { 
+    width: 100%; background: #000; 
+    border-top: 1px solid rgba(255,255,255,0.1); 
+    padding: 10px 0; overflow: hidden; position: fixed; bottom: 0;
+}
+.marquee-text { 
+    white-space: nowrap; animation: scroll 25s linear infinite; 
+    font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); 
+}
+@keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
