@@ -3,65 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MVN FinHub | Secure Terminal</title>
+    <title>MVN FinHub | The Protocol</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body>
 
     <header>
         <div class="logo">MVN<span>FINHUB</span></div>
-        <div class="menu-btn" onclick="toggleMenu()">
-            <i class="fa-solid fa-bars"></i>
-        </div>
+        <div class="nav-btn"><i class="fa-solid fa-bars"></i></div>
     </header>
 
-    <div class="nav-overlay" id="navOverlay">
+    <div class="nav-curtain">
         <a href="services.html" class="nav-link">01. SERVICES</a>
         <a href="insights.html" class="nav-link">02. INSIGHTS</a>
         <a href="about.html" class="nav-link">03. PROTOCOL</a>
-        <a href="contact.html" class="nav-link" style="color:#22c55e;">04. CONNECT</a>
+        <a href="contact.html" class="nav-link" style="color:var(--green);">04. CONNECT</a>
     </div>
 
     <main>
-        <div class="hero-card">
-            <i class="fa-solid fa-shield-halved hero-icon"></i>
-            <h1 class="hero-title">The Protocol</h1>
-            <p class="hero-subtitle">/// SECURE DOCUMENTATION LAYER ///</p>
-            
-            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
-            
-            <p style="color: #94a3b8; font-size: 14px; margin-bottom: 30px; line-height: 1.6;">
-                Specialized in Legacy Asset Recovery, NRI Compliance, and Identity Corrections.
-            </p>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                
+                <div class="swiper-slide">
+                    <h1 class="slide-title">THE PROTOCOL</h1>
+                    <p class="slide-subtitle">Secure Documentation Layer</p>
+                </div>
 
+                <div class="swiper-slide">
+                    <h1 class="slide-title" style="color:var(--green);">LEGACY RECOVERY</h1>
+                    <p class="slide-subtitle">Physical Shares & IEPF Extraction</p>
+                </div>
+
+                <div class="swiper-slide">
+                    <h1 class="slide-title" style="color:#facc15;">NRI HUB</h1>
+                    <p class="slide-subtitle">FEMA Compliant Asset Management</p>
+                </div>
+
+                <div class="swiper-slide">
+                    <h1 class="slide-title" style="color:var(--cyan);">SYSTEM STATUS</h1>
+                    <p class="slide-subtitle">● ALL SYSTEMS OPERATIONAL</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="btn-container">
             <a href="contact.html" class="action-btn">INITIATE REQUEST</a>
         </div>
     </main>
 
-    <div class="marquee-footer">
-        <div class="marquee-text">
-            WARNING: MVN FINHUB IS A DOCUMENTATION CONCIERGE ONLY. WE DO NOT PROVIDE INVESTMENT ADVICE. /// SYSTEM STATUS: ENCRYPTED ///
-        </div>
+    <div class="marquee-container">
+        <div class="marquee-text">/// WARNING: MVN FINHUB IS A DOCUMENTATION CONCIERGE. WE DO NOT PROVIDE INVESTMENT ADVICE. /// SYSTEM_CHECK: ENCRYPTED ///</div>
     </div>
 
-    <script>
-        function toggleMenu() {
-            const nav = document.getElementById('navOverlay');
-            const icon = document.querySelector('.menu-btn i');
-            
-            // Toggle Height
-            nav.classList.toggle('open');
-            
-            // Toggle Icon
-            if(nav.classList.contains('open')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            } else {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
-        }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/app.js"></script>
+
 </body>
 </html>
