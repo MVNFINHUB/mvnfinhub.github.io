@@ -2,90 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-    <title>MVN FinHub | Secure Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>MVN FinHub | The Terminal</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
-
     <header>
         <div class="container" style="display:flex; justify-content:space-between; align-items:center; height:100%;">
-            <div class="logo"><a href="index.html" style="text-decoration:none; color:#fff; font-weight:700; font-size:24px;">MVN<span style="color:var(--accent-cyan);">FINHUB</span></a></div>
-            <nav class="nav-links">
-                <a href="index.html">Terminal</a>
-                <a href="services.html">Services</a>
-                <a href="insights.html">Insights</a>
-                <a href="#contact">Contact</a>
-            </nav>
+            <div class="logo mono" style="font-size:20px; font-weight:700;"><span class="brand-type"></span><span class="glow">_</span></div>
+            <div class="nav-btn"><i class="fa-solid fa-bars"></i></div>
         </div>
     </header>
 
-    <main style="padding-top:140px;">
-        <section class="container">
-            <h1 style="font-size: clamp(36px, 6vw, 72px); font-weight:700; line-height:1.1;">
-                Secure <span style="color:var(--accent-cyan);">Financial</span> <br> Documentation.
-            </h1>
-            <p style="color:var(--text-secondary); margin:30px 0; max-width:600px; font-size:18px;">
-                Independent process support for Physical Shares, IEPF Claims, and NRI Banking. Strictly Non-Advisory.
-            </p>
-            <a href="#contact" class="cta-btn">INITIATE REQUEST</a>
-        </section>
+    <div class="nav-curtain">
+        <a href="services.html" class="nav-link">01. SERVICES</a>
+        <a href="insights.html" class="nav-link">02. INSIGHTS</a>
+        <a href="about.html" class="nav-link">03. PROTOCOL (ABOUT)</a>
+        <a href="contact.html" class="nav-link" style="color:var(--green);">04. CONNECT</a>
+    </div>
 
-        <section id="contact" style="padding:100px 0;">
-            <div class="container">
-                <div class="spotlight-card" style="max-width:700px; margin:0 auto;">
-                    <h2 style="margin-bottom:20px;">Secure Enquiry Terminal</h2>
-                    <form id="contactForm">
-                        <input type="text" name="name" placeholder="Full Legal Name" required>
-                        <input type="email" name="email" placeholder="Email Address" required>
-                        <input type="tel" name="phone" placeholder="10-Digit Mobile" required>
-                        
-                        <select name="service" required>
-                            <option value="" disabled selected>PROTOCOL (SELECT SERVICE)</option>
-                            <optgroup label="LEGACY & SHARES">
-                                <option value="Physical Shares">Physical Shares to Demat</option>
-                                <option value="IEPF Claims">IEPF Claim Recovery</option>
-                            </optgroup>
-                            <optgroup label="NRI & IDENTITY">
-                                <option value="NRI Banking">NRI Banking Support</option>
-                                <option value="Identity Docs">PAN / Aadhaar Update</option>
-                            </optgroup>
-                            <optgroup label="OTHER">
-                                <option value="Banking">Banking / Loans</option>
-                                <option value="Privacy">Data Privacy Request</option>
-                            </optgroup>
-                        </select>
-
-                        <textarea name="message" rows="5" placeholder="Operational details..." required></textarea>
-                        
-                        <div style="margin-top:20px; display:flex; gap:10px; align-items:start;">
-                            <input type="checkbox" required style="width:20px; margin-top:5px;">
-                            <p style="font-size:12px; color:var(--text-secondary);">I authorize data processing for documentation support.</p>
-                        </div>
-
-                        <button type="submit" class="cta-btn" style="width:100%; margin-top:20px;">TRANSMIT SECURELY</button>
-                    </form>
+    <main class="container">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <i class="fa-solid fa-shield-halved" style="font-size:48px; color:var(--cyan); margin-bottom:20px;"></i>
+                    <h1>THE PROTOCOL</h1>
+                    <p class="mono" style="color:var(--text-muted);">Secure Documentation Layer</p>
+                </div>
+                <div class="swiper-slide">
+                    <i class="fa-solid fa-file-contract" style="font-size:48px; color:var(--green); margin-bottom:20px;"></i>
+                    <h1>LEGACY RECOVERY</h1>
+                    <p class="mono" style="color:var(--text-muted);">Shares to Demat & IEPF</p>
+                </div>
+                <div class="swiper-slide">
+                    <i class="fa-solid fa-globe" style="font-size:48px; color:#facc15; margin-bottom:20px;"></i>
+                    <h1>NRI HUB</h1>
+                    <p class="mono" style="color:var(--text-muted);">FEMA Compliant Ops</p>
+                </div>
+                <div class="swiper-slide">
+                    <div class="status-dot" style="width:20px; height:20px; margin-bottom:20px;"></div>
+                    <h1>SYSTEM STATUS</h1>
+                    <p class="mono" style="color:var(--green);">● OPERATIONAL</p>
                 </div>
             </div>
-        </section>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <div style="text-align:center; margin-top:40px;">
+            <a href="contact.html" class="action-btn" style="background:var(--text-main); color:#000;">INITIATE REQUEST</a>
+        </div>
     </main>
 
-    <footer style="padding:50px 0; text-align:center; border-top:1px solid var(--border);">
-        <a href="https://instagram.com/mvnfinhub" target="_blank" style="color:#fff; font-size:30px; margin-bottom:15px; display:inline-block;">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
-        <p style="color:var(--text-secondary); font-size:12px;">&copy; 2026 MVN FinHub. Status: Operational.</p>
-        <div style="margin-top:10px;">
-            <a href="legal.html" style="color:var(--text-secondary); font-size:12px; margin:0 10px;">Privacy Policy</a>
-        </div>
-    </footer>
+    <div class="marquee-container">
+        <div class="marquee-text">/// WARNING: MVN FINHUB IS A DOCUMENTATION CONCIERGE. WE DO NOT PROVIDE INVESTMENT ADVICE, TIPS, OR MARKET RECOMMENDATIONS. ALL SERVICES ARE PROCEDURAL. ///</div>
+    </div>
 
-    <a href="auth/connect.html" class="whatsapp-stealth" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script type="module" src="js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="module">
+        import './js/app.js';
+        var swiper = new Swiper(".mySwiper", {
+            effect: "cube",
+            grabCursor: true,
+            cubeEffect: { shadow: true, slideShadows: true, shadowOffset: 20, shadowScale: 0.94 },
+            autoplay: { delay: 3000, disableOnInteraction: true },
+            pagination: { el: ".swiper-pagination" },
+        });
+    </script>
 </body>
 </html>
