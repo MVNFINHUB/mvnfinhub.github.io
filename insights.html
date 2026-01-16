@@ -5,22 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insights | MVN FinHub</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="container" style="display:flex; justify-content:space-between; align-items:center; height:100%;">
-            <div class="logo"><a href="index.html" style="text-decoration:none; color:#fff; font-weight:700; font-size:24px;">MVN<span style="color:var(--accent-cyan);">FINHUB</span></a></div>
-            <nav class="nav-links"><a href="index.html">Home</a></nav>
+            <a href="index.html" class="logo mono" style="font-weight:700;">MVN<span style="color:var(--cyan);">FINHUB</span></a>
+            <div class="nav-btn"><i class="fa-solid fa-bars"></i></div>
         </div>
     </header>
-    <main style="padding-top:120px;">
-        <div class="container">
-            <h1>Market <span style="color:var(--accent-cyan);">Intelligence</span></h1>
-            <div class="bento-grid" style="margin-top:40px;">
-                <div class="spotlight-card"><h3>Global Economy</h3><p style="color:var(--text-secondary);">Fed rates and global currency analysis.</p></div>
-                <div class="spotlight-card"><h3>Indian Markets</h3><p style="color:var(--text-secondary);">SEBI updates and regulatory changes.</p></div>
+    <div class="nav-curtain">
+         <a href="services.html" class="nav-link">01. SERVICES</a>
+         <a href="insights.html" class="nav-link">02. INSIGHTS</a>
+         <a href="about.html" class="nav-link">03. PROTOCOL (ABOUT)</a>
+         <a href="contact.html" class="nav-link" style="color:var(--green);">04. CONNECT</a>
+    </div>
+
+    <div style="background:#0f172a; padding:5px 0; border-bottom:1px solid var(--border); overflow:hidden;">
+        <div style="white-space:nowrap; animation:scroll 30s linear infinite; font-size:11px; color:var(--cyan);" class="mono">
+            USD/INR: 83.15 ▲ • EUR/INR: 90.20 ▼ • GOLD (10g): ₹62,500 • REPO RATE: 6.50% • NOTICE: KYC DEADLINE MAR 31 •
+        </div>
+    </div>
+
+    <main class="container" style="padding-top:80px;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:30px;">
+            <h1>MARKET INTELLIGENCE</h1>
+            <div class="status-dot"></div>
+        </div>
+
+        <div class="flip-grid">
+            <div style="background:rgba(255,255,255,0.05); padding:20px; border-radius:12px; border:1px solid var(--border);">
+                <h3 style="color:var(--cyan); margin-bottom:15px;"><i class="fa-solid fa-building-columns"></i> INDIA CORE</h3>
+                <div style="margin-bottom:15px; border-left:2px solid var(--green); padding-left:10px;">
+                    <p style="font-size:10px; color:var(--green); font-weight:700;">ACTION REQUIRED</p>
+                    <p style="font-size:14px;">IEPF Form 5 Digitization</p>
+                    <p style="font-size:12px; color:var(--text-muted);">New Entitlement Letter mandatory for claims > ₹5L.</p>
+                </div>
+            </div>
+
+            <div style="background:rgba(255,255,255,0.05); padding:20px; border-radius:12px; border:1px solid var(--border);">
+                <h3 style="color:#818cf8; margin-bottom:15px;"><i class="fa-solid fa-globe"></i> GLOBAL PULSE</h3>
+                <div style="margin-bottom:15px;">
+                    <p style="font-size:14px;">FEMA Notification 2026</p>
+                    <p style="font-size:12px; color:var(--text-muted);">Relaxation in NRE repatriation norms for inherited assets.</p>
+                </div>
             </div>
         </div>
     </main>
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>
