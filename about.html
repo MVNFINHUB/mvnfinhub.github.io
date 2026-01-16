@@ -3,45 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Protocol | MVN FinHub</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>About MVN FinHub | Non-Advisory Financial Process Support</title>
+    <meta name="description" content="Learn why MVN FinHub was created to simplify financial documentation and legacy processes through structured, non-advisory support.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #0B3C5D;
+            --text-color: #4A5568;
+            --accent-color: #2F855A;
+            --background-white: #FFFFFF;
+            --background-section: #F7FAFC;
+            --border-color: #E2E8F0;
+            --spacing-unit: 8px;
+            --max-width: 1200px;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 calc(var(--spacing-unit) * 3);
+        }
+
+        .section {
+            padding: calc(var(--spacing-unit) * 8) 0;
+        }
+
+        .bg-section {
+            background-color: var(--background-section);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            color: var(--primary-color);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            max-width: 800px;
+        }
+
+        /* List Styling */
+        .styled-list li {
+            position: relative;
+            padding-left: calc(var(--spacing-unit) * 3);
+            margin-bottom: var(--spacing-unit);
+        }
+
+        .styled-list li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Header */
+        header {
+            padding: calc(var(--spacing-unit) * 3) 0;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--background-white);
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* Hero */
+        .page-intro {
+            padding: calc(var(--spacing-unit) * 8) 0;
+            text-align: center;
+        }
+
+        .page-intro h1 {
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sub-heading {
+            font-size: 1.125rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Comparison Grids (Do vs Don't, For vs Not For) */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: calc(var(--spacing-unit) * 6);
+        }
+
+        .column {
+            background: var(--background-white);
+            padding: calc(var(--spacing-unit) * 4);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+        }
+
+        .column.bg-contrast {
+            background-color: #F7FAFC;
+        }
+
+        .column h3 {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: var(--spacing-unit);
+        }
+
+        /* Closing Statement */
+        .closing-statement {
+            text-align: center;
+            background-color: var(--primary-color);
+            color: #FFFFFF;
+            padding: calc(var(--spacing-unit) * 8) 0;
+        }
+
+        .closing-statement p {
+            margin: 0 auto calc(var(--spacing-unit) * 2);
+            max-width: 700px;
+            font-size: 1.125rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--background-white);
+            color: var(--text-color);
+            padding: calc(var(--spacing-unit) * 6) 0;
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: calc(var(--spacing-unit) * 2);
+        }
+
+        .footer-links a {
+            color: var(--primary-color);
+            margin: 0 var(--spacing-unit);
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .section { padding: calc(var(--spacing-unit) * 6) 0; }
+        }
+    </style>
 </head>
 <body>
+
     <header>
-        <div class="container" style="display:flex; justify-content:space-between; align-items:center; height:100%;">
-            <a href="index.html" class="logo mono" style="font-weight:700;">MVN<span style="color:var(--cyan);">FINHUB</span></a>
-            <div class="nav-btn"><i class="fa-solid fa-bars"></i></div>
+        <div class="container">
+            <a href="index.html" class="brand-name">MVN FinHub</a>
         </div>
     </header>
-    <div class="nav-curtain">
-         <a href="services.html" class="nav-link">01. SERVICES</a>
-         <a href="insights.html" class="nav-link">02. INSIGHTS</a>
-         <a href="about.html" class="nav-link">03. PROTOCOL (ABOUT)</a>
-         <a href="contact.html" class="nav-link" style="color:var(--green);">04. CONNECT</a>
-    </div>
 
-    <main class="container" style="padding-top:100px; padding-bottom:100px;">
-        <p class="mono" style="color:var(--cyan);">/// ORG_PROFILE: CLASSIFIED</p>
-        <h1 style="font-size:40px; margin-bottom:40px;">THE <span style="color:var(--cyan);">PROTOCOL</span></h1>
+    <main>
+        <section class="page-intro bg-section">
+            <div class="container">
+                <h1>About MVN FinHub</h1>
+                <p class="sub-heading">
+                    MVN FinHub exists to simplify complex financial documentation and legacy processes through structured, non-advisory support.
+                </p>
+            </div>
+        </section>
 
-        <div style="border-left:4px solid var(--green); padding-left:20px; margin-bottom:40px;">
-            <h2 style="font-size:24px;">₹82,199 CRORE</h2>
-            <p style="color:var(--text-muted);">Unclaimed Corporate Assets (MCA Data, Aug 2024)</p>
-        </div>
+        <section class="section">
+            <div class="container">
+                <h2>Why MVN FinHub Was Created</h2>
+                <p>
+                    MVN FinHub was created after observing how individuals and families struggle with real-world financial paperwork—
+                    physical share certificates, legacy assets, banking documentation, and compliance processes that are rarely explained clearly.
+                </p>
+                <p>Most challenges were not about lack of money or intent, but about:</p>
+                <ul class="styled-list">
+                    <li>Missing documentation</li>
+                    <li>Unclear procedures</li>
+                    <li>Repeated rejections</li>
+                    <li>Lack of process guidance</li>
+                </ul>
+                <p style="margin-top: 16px;">
+                    MVN FinHub was built to address process confusion, not to offer advice or promises.
+                </p>
+            </div>
+        </section>
 
-        <p style="color:var(--text-muted); line-height:1.6; max-width:800px; margin-bottom:40px;">
-            Pursuant to <strong>Notification G.S.R. 733(E)</strong>, the landscape of asset recovery has shifted. 
-            We operate as the Execution Layer between legacy paper assets and the digital Demat ecosystem.
-        </p>
+        <section class="section bg-section">
+            <div class="container">
+                <h2>What We Believe In</h2>
+                <ul class="styled-list">
+                    <li>Process before opinion</li>
+                    <li>Clarity over complexity</li>
+                    <li>Documentation discipline</li>
+                    <li>Compliance-first thinking</li>
+                    <li>Education that supports responsibility, not dependency</li>
+                </ul>
+            </div>
+        </section>
 
-        <h3 style="margin-bottom:20px;">COMPLIANCE MATRIX</h3>
-        <ul style="list-style:none; color:var(--text-muted);" class="mono">
-            <li style="margin-bottom:10px;"><i class="fa-solid fa-check" style="color:var(--green);"></i> COMPANIES ACT 2013 (Sec 124/125)</li>
-            <li style="margin-bottom:10px;"><i class="fa-solid fa-check" style="color:var(--green);"></i> FEMA 1999 (NRI Protocols)</li>
-            <li style="margin-bottom:10px;"><i class="fa-solid fa-check" style="color:var(--green);"></i> DATA PRIVACY (256-bit Encryption)</li>
-        </ul>
+        <section class="section">
+            <div class="container">
+                <h2>What MVN FinHub Does — and Does Not Do</h2>
+                <div class="comparison-grid">
+                    <div class="column">
+                        <h3>We Do</h3>
+                        <ul class="styled-list">
+                            <li>Provide structured financial process and documentation support</li>
+                            <li>Help users understand requirements and workflows</li>
+                            <li>Assist with real-world paperwork coordination</li>
+                            <li>Offer educational explanations alongside services</li>
+                        </ul>
+                    </div>
+                    <div class="column bg-contrast">
+                        <h3>We Do Not</h3>
+                        <ul class="styled-list">
+                            <li>Give investment advice</li>
+                            <li>Recommend financial products</li>
+                            <li>Promise outcomes or approvals</li>
+                            <li>Influence financial decisions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-section">
+            <div class="container">
+                <h2>Why Services Come First, Education Supports</h2>
+                <p>At MVN FinHub:</p>
+                <ul class="styled-list">
+                    <li>Services address execution-level needs.</li>
+                    <li>Education ensures users understand what is happening, why documentation matters, and where responsibility lies.</li>
+                </ul>
+                <p style="margin-top: 16px;">
+                    Education exists to strengthen service outcomes, not replace professional advice.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Trust Is Built Through Discipline</h2>
+                <ul class="styled-list">
+                    <li>No data selling</li>
+                    <li>No unsolicited communication</li>
+                    <li>No phone numbers exposed publicly</li>
+                    <li>Secure systems and controlled access</li>
+                    <li>User-initiated contact only</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section bg-section">
+            <div class="container">
+                <div class="comparison-grid">
+                    <div class="column">
+                        <h2>Who This Platform Is For</h2>
+                        <ul class="styled-list">
+                            <li>Individuals handling complex financial documentation</li>
+                            <li>Families managing legacy or transmission-related processes</li>
+                            <li>NRIs navigating Indian banking and compliance systems</li>
+                            <li>Users who value clarity, process, and responsibility</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h2>And Who It Is Not For</h2>
+                        <ul class="styled-list">
+                            <li>Those seeking shortcuts or guarantees</li>
+                            <li>Those looking for investment tips</li>
+                            <li>Those unwilling to follow structured processes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="closing-statement">
+            <div class="container">
+                <p>
+                    MVN FinHub is designed to work quietly, carefully, and responsibly in areas where accuracy matters more than speed.
+                </p>
+                <p>
+                    If your requirement involves documentation, process clarity, or compliance understanding, MVN FinHub exists to support you — without advice, pressure, or promises.
+                </p>
+            </div>
+        </section>
     </main>
-    <script type="module" src="js/app.js"></script>
+
+    <footer>
+        <div class="container footer-content">
+            <div>© MVN FinHub</div>
+            <p style="margin: 0; color: #718096;">MVN FinHub provides strictly non-advisory financial process, documentation, and educational support.</p>
+            <div class="footer-links">
+                <a href="services.html">Services</a>
+                <a href="insights.html">Insights</a>
+                <a href="contact.html">Contact</a>
+                <a href="#">Privacy & Legal</a>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
