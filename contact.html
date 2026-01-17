@@ -10,14 +10,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/main.css?v=2">
 
     <script src="assets/js/app.js" defer></script>
 
     <style>
         /* --- 1. LAYOUT FIXES (Force Center) --- */
         body {
-            background-color: #F8FAFC; /* Lightest Grey/Blue background */
+            background-color: var(--bg-body); /* Adaptive Background */
         }
         
         .contact-section {
@@ -29,11 +29,11 @@
         .form-wrapper {
             width: 100%;
             max-width: 550px; /* Perfect width for reading */
-            background: #ffffff;
+            background: var(--surface-card); /* Adaptive Card Color */
             padding: 48px;
             border-radius: 16px; /* Softer corners */
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05); /* Premium float effect */
-            border: 1px solid #e2e8f0;
+            box-shadow: var(--shadow-lg); /* Premium float effect */
+            border: 1px solid var(--border-color);
         }
 
         /* --- 2. HEADER PATCH (Fixes the visible hamburger on desktop) --- */
@@ -45,27 +45,28 @@
 
         /* --- 3. FORM STYLING --- */
         .form-header { text-align: center; margin-bottom: 32px; }
-        .form-header h1 { font-size: 2rem; color: #0F172A; margin-bottom: 12px; letter-spacing: -0.5px; }
-        .form-header p { color: #64748B; font-size: 0.95rem; line-height: 1.5; }
+        .form-header h1 { font-size: 2rem; color: var(--text-head); margin-bottom: 12px; letter-spacing: -0.5px; }
+        .form-header p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
 
         .form-group { margin-bottom: 20px; }
-        .form-label { display: block; margin-bottom: 8px; font-weight: 600; color: #334155; font-size: 0.9rem; }
+        .form-label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-main); font-size: 0.9rem; }
         
         .form-input, .form-select, .form-textarea {
             width: 100%;
             padding: 12px 16px;
-            border: 1px solid #cbd5e1;
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             font-family: 'Inter', sans-serif;
             font-size: 1rem;
-            background-color: #fff;
+            background-color: var(--bg-body); /* Slightly distinct from card */
+            color: var(--text-main); /* Ensures text is visible in Dark Mode */
             transition: all 0.2s;
         }
         
         .form-input:focus, .form-select:focus, .form-textarea:focus {
             outline: none;
-            border-color: #0A2540;
-            box-shadow: 0 0 0 4px rgba(10, 37, 64, 0.1); /* Subtle blue glow */
+            border-color: var(--primary-navy);
+            box-shadow: 0 0 0 4px rgba(10, 37, 64, 0.1);
         }
         
         .form-textarea { min-height: 120px; resize: vertical; }
@@ -78,13 +79,13 @@
             padding: 4px 0;
         }
         .checkbox-input { margin-top: 4px; width: 16px; height: 16px; cursor: pointer; }
-        .checkbox-label { font-size: 0.85rem; color: #475569; line-height: 1.4; cursor: pointer; }
+        .checkbox-label { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; cursor: pointer; }
 
         /* --- 4. MODERN ICONS (2026 Style) --- */
         .icon-container {
             margin-top: 40px;
             padding-top: 24px;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid var(--border-color);
             display: flex;
             justify-content: center;
             gap: 32px; /* Space between icons */
@@ -97,10 +98,11 @@
             width: 48px;
             height: 48px;
             border-radius: 12px;
-            background-color: #F1F5F9;
-            color: #334155;
+            background-color: var(--bg-body);
+            color: var(--text-main);
             transition: all 0.3s ease;
             text-decoration: none;
+            border: 1px solid var(--border-color);
         }
 
         .social-icon svg {
@@ -112,9 +114,10 @@
         /* Hover Effects */
         .social-icon:hover {
             transform: translateY(-4px); /* Lifts up */
-            background-color: #0A2540; /* Turns Navy */
-            color: #ffffff; /* Icon turns white */
-            box-shadow: 0 4px 12px rgba(10, 37, 64, 0.2);
+            background-color: var(--primary-navy); /* Turns Navy/White */
+            color: var(--bg-body); /* Icon contrast */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border-color: transparent;
         }
 
         /* Mobile Adjustments */
@@ -151,10 +154,10 @@
                 <p>Securely submit your documentation requirements. <br>Response within 24 hours.</p>
             </div>
 
-            <div id="successMessage" style="display: none; text-align: center; color: #059669; padding: 20px;">
+            <div id="successMessage" style="display: none; text-align: center; color: var(--accent-emerald); padding: 20px;">
                 <h2 style="margin-bottom: 10px;">✓ Enquiry Sent</h2>
-                <p>Reference ID: <strong id="refIdDisplay" style="color: #0A2540;"></strong></p>
-                <p style="margin-top: 10px; font-size: 0.9rem;">Thank you. We will contact you shortly.</p>
+                <p>Reference ID: <strong id="refIdDisplay" style="color: var(--text-head);"></strong></p>
+                <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-main);">Thank you. We will contact you shortly.</p>
                 <a href="index.html" class="btn btn-primary" style="margin-top: 15px; display: inline-block;">Return Home</a>
             </div>
 
@@ -199,7 +202,7 @@
                     </label>
                 </div>
 
-                <button type="submit" class="submit-btn btn btn-primary" style="width: 100%; padding: 14px; font-size: 1rem; cursor: pointer; background: #0A2540; color: white; border: none; border-radius: 8px;">
+                <button type="submit" class="submit-btn btn btn-primary" style="width: 100%; padding: 14px; font-size: 1rem; cursor: pointer; border: none; border-radius: 8px;">
                     Submit Enquiry
                 </button>
 
