@@ -10,78 +10,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="assets/css/main.css?v=2">
+
+    <script src="assets/js/app.js" defer></script>
+
     <style>
-        /* --- DESIGN SYSTEM REUSED --- */
-        :root {
-            --primary-navy: #0A2540;
-            --accent-emerald: #059669;
-            --bg-cream: #F8FAFC;
-            --surface-white: #FFFFFF;
-            --text-slate: #334155;
-            --border-color: #E2E8F0;
-            --section-grey: #F1F5F9;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* --- PAGE SPECIFIC STYLES --- */
         
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-cream);
-            color: var(--text-slate);
-            line-height: 1.7; /* Increased for reading comfort on About page */
-        }
-
-        h1, h2, h3 {
-            font-family: 'Merriweather', serif;
-            color: var(--primary-navy);
-        }
-
-        /* --- LAYOUT UTILITIES --- */
-        .container {
-            max-width: 900px; /* Narrower container for better reading experience */
+        /* Layout Utilities */
+        .container-narrow {
+            max-width: 900px; /* Narrower for reading comfort */
             margin: 0 auto;
             padding: 0 20px;
         }
-        .section-padding { padding: 80px 0; }
-        
-        /* --- HEADER & FOOTER --- */
-        header {
-            background: var(--surface-white);
-            border-bottom: 1px solid var(--border-color);
-            padding: 20px 0;
-        }
-        .brand-logo {
-            font-family: 'Merriweather', serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary-navy);
-            text-decoration: none;
-        }
-        footer {
-            background: #0F172A;
-            color: #94A3B8;
-            padding: 40px 0;
-            text-align: center;
-            font-size: 0.9rem;
-            margin-top: auto;
-        }
 
-        /* --- HERO / IDENTITY --- */
+        /* --- HERO --- */
         .about-hero {
-            background-color: var(--primary-navy);
+            background: var(--gradient-primary);
             color: white;
-            padding: 80px 0;
+            padding: 100px 0;
             text-align: center;
         }
-        .about-hero h1 { color: white; margin-bottom: 24px; font-size: 2.5rem; }
+        .about-hero h1 { color: white !important; margin-bottom: 24px; font-size: 2.5rem; }
         .about-hero p {
-            color: #CBD5E1;
+            color: rgba(255,255,255,0.9);
             font-size: 1.25rem;
             max-width: 700px;
             margin: 0 auto;
         }
 
-        /* --- TEXT SECTIONS --- */
+        /* --- CONTENT BLOCKS --- */
         .content-block {
             margin-bottom: 60px;
         }
@@ -91,6 +49,7 @@
             padding-bottom: 10px;
             border-bottom: 2px solid var(--border-color);
             display: inline-block;
+            color: var(--text-head);
         }
 
         /* --- PHILOSOPHY GRID --- */
@@ -101,67 +60,89 @@
             margin-top: 30px;
         }
         .value-card {
-            background: var(--surface-white);
+            background: var(--surface-card); /* Adaptive Card */
             padding: 30px;
-            border-radius: 8px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
             border-left: 4px solid var(--accent-emerald);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease;
         }
-        .value-card h3 { font-size: 1.1rem; margin-bottom: 0; }
+        .value-card:hover { transform: translateY(-3px); }
+        .value-card h3 { font-size: 1.1rem; margin-bottom: 0; color: var(--text-head); }
 
-        /* --- COMMITMENT BOX (Grey Section) --- */
+        /* --- COMMITMENT SECTION (Grey Box) --- */
         .commitment-section {
-            background-color: var(--section-grey);
+            background-color: var(--bg-body); /* Adaptive Background */
             padding: 80px 0;
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
         }
         
-        .commitment-list li {
-            position: relative;
-            padding-left: 24px;
-            margin-bottom: 12px;
-            list-style: none;
-        }
-        .commitment-list li::before {
-            content: "🛡"; /* Shield icon for security/privacy */
-            position: absolute;
-            left: 0;
-            font-size: 0.9rem;
+        /* Make it slightly darker/distinct in Light Mode */
+        @media (prefers-color-scheme: light) {
+            [data-theme="light"] .commitment-section {
+                background-color: #F1F5F9; 
+            }
         }
 
-        /* --- AUDIENCE SECTION --- */
+        .commitment-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            list-style: none;
+            color: var(--text-main);
+        }
+        .commitment-list li::before {
+            content: "🛡"; /* Shield icon */
+            position: absolute;
+            left: 0;
+            font-size: 1rem;
+        }
+
+        /* --- AUDIENCE LIST --- */
         .audience-list li {
             margin-bottom: 16px;
             padding-left: 20px;
             border-left: 3px solid var(--primary-navy);
+            color: var(--text-main);
+            list-style: none;
         }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .about-hero h1 { font-size: 2rem; }
             .section-padding { padding: 50px 0; }
-            .container { padding: 0 24px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container" style="max-width: 1100px;">
+        <div class="container nav-flex">
             <a href="index.html" class="brand-logo">MVN FinHub</a>
+            
+            <button class="mobile-toggle" id="mobile-menu-toggle">☰</button>
+
+            <nav class="nav-links" id="nav-links">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="services.html" class="nav-item">Services</a>
+                <a href="insights.html" class="nav-item">Insights</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="contact.html" class="nav-item btn-nav">Contact</a>
+            </nav>
         </div>
     </header>
 
     <section class="about-hero">
-        <div class="container">
+        <div class="container-narrow">
             <h1>MVN FinHub</h1>
             <p>MVN FinHub operates as a non-advisory financial process and documentation support platform focused on compliance, clarity, and education.</p>
         </div>
     </section>
 
     <section class="section-padding">
-        <div class="container">
+        <div class="container-narrow">
             
             <div class="content-block">
                 <h2>Why MVN FinHub Exists</h2>
@@ -194,7 +175,7 @@
     </section>
 
     <section class="commitment-section">
-        <div class="container">
+        <div class="container-narrow">
             
             <div class="content-block">
                 <h2>Non-Advisory Commitment</h2>
@@ -219,9 +200,9 @@
     </section>
 
     <section class="section-padding">
-        <div class="container">
+        <div class="container-narrow">
             <h2>Who the Platform Is For</h2>
-            <ul class="audience-list" style="margin-top: 24px; list-style: none;">
+            <ul class="audience-list" style="margin-top: 24px;">
                 <li>Individuals managing personal financial documentation</li>
                 <li>Families handling legacy assets or inheritance-related processes</li>
                 <li>Resident Indians (RI) and Non-Resident Indians (NRI) navigating compliance requirements</li>
@@ -232,9 +213,15 @@
 
     <footer>
         <div class="container">
-            <p>&copy; MVN FinHub</p>
+            <p>&copy; <span class="copyright-year">2026</span> MVN FinHub</p>
             <p style="margin-top: 8px;">MVN FinHub is a support and awareness platform, not a decision-making authority.</p>
-            <p>Trust is built through transparency, boundaries, and consistency. The platform’s role ends at process clarity and documentation support.</p>
+            <p style="margin-bottom: 24px;">Trust is built through transparency, boundaries, and consistency. The platform’s role ends at process clarity and documentation support.</p>
+            
+            <div class="footer-links">
+                <a href="legal.html">Privacy & Legal</a>
+                <a href="contact.html">Contact</a>
+                <a href="https://instagram.com/mvnfinhub" target="_blank">Instagram</a>
+            </div>
         </div>
     </footer>
 
