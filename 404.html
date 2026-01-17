@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page Not Found - MVN FinHub">
+    <title>Page Not Found | MVN FinHub</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- DESIGN SYSTEM REUSED --- */
+        :root {
+            --primary-navy: #0A2540;
+            --accent-emerald: #059669;
+            --accent-hover: #047857;
+            --bg-cream: #F8FAFC;
+            --surface-white: #FFFFFF;
+            --text-slate: #334155;
+            --border-color: #E2E8F0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-slate);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background: var(--surface-white);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .brand-logo {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+            text-decoration: none;
+        }
+
+        /* --- 404 CONTENT --- */
+        .error-section {
+            flex: 1; /* Pushes footer down */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .error-card {
+            background: var(--surface-white);
+            padding: 60px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .error-code {
+            font-family: 'Merriweather', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            line-height: 1;
+            margin-bottom: 24px;
+        }
+
+        .error-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-slate);
+            margin-bottom: 16px;
+        }
+
+        .error-desc {
+            color: #64748B;
+            margin-bottom: 32px;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-emerald);
+            color: white;
+        }
+        .btn-primary:hover { background-color: var(--accent-hover); }
+
+        .btn-outline {
+            border: 1px solid var(--primary-navy);
+            color: var(--primary-navy);
+            margin-left: 10px;
+        }
+        .btn-outline:hover { background-color: #F1F5F9; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #0F172A;
+            color: #94A3B8;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 600px) {
+            .error-code { font-size: 4rem; }
+            .btn { display: block; width: 100%; margin: 10px 0 0 0; }
+            .btn-outline { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="brand-logo">MVN FinHub</a>
+        </div>
+    </header>
+
+    <section class="error-section">
+        <div class="error-card">
+            <div class="error-code">404</div>
+            <h1 class="error-title">Page Not Found</h1>
+            <p class="error-desc">The page you are looking for does not exist or has been moved. Please check the URL or return to the home page.</p>
+            
+            <div class="action-buttons">
+                <a href="index.html" class="btn btn-primary">Return Home</a>
+                <a href="contact.html" class="btn btn-outline">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; MVN FinHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
