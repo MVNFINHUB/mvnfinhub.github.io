@@ -1,78 +1,137 @@
-/* MVN FINHUB - RESPONSIVE / MOBILE STYLES
+/* MVN FINHUB - MOBILE STYLES (PREMIUM EDITION)
    -------------------------------------------------------
-   Handles layout adaptation for Phones (<768px) and Tablets.
-   Ensures "Thumb-Friendly" UI.
+   Ensures the complex shadows and gradients look perfect on phones.
+   Handles layout adaptation for Devices < 768px.
 */
 
 /* --- TABLET & MOBILE (Max Width 768px) --- */
 @media (max-width: 768px) {
     
-    /* 1. LAYOUT STACKING */
+    /* 1. LAYOUT & SPACING */
     .container {
-        padding: 0 16px; /* Tighter margins on phone */
+        padding: 0 20px; /* More side breathing room */
     }
 
     .section-padding {
-        padding: 40px 0; /* Less vertical whitespace */
+        padding: 48px 0; /* Tightened vertical spacing */
     }
 
     /* Force Grids to Single Column */
+    /* We use !important to override the desktop grid rules */
     .grid-4, .services-grid, .insights-grid, .values-grid {
         grid-template-columns: 1fr !important;
-        gap: 20px;
+        gap: 24px; /* Space between stacked cards */
     }
 
-    /* 2. TYPOGRAPHY SCALING */
+    /* 2. CARD ADAPTATION */
+    /* Remove hover lift on mobile (touch screens don't have hover) */
+    .face-card:hover, .service-card:hover, .topic-card:hover {
+        transform: none;
+        box-shadow: var(--shadow-sm); /* Keep it subtle */
+    }
+
+    /* 3. TYPOGRAPHY SCALING */
     html {
-        font-size: 16px; /* Base size */
+        font-size: 16px;
     }
 
     h1, .hero h1 {
-        font-size: 1.8rem !important; /* Smaller headers to fit screen */
-        line-height: 1.2;
+        font-size: 2rem !important; /* Large but fits screen */
+        line-height: 1.25;
+        letter-spacing: -0.5px;
     }
 
     h2 {
-        font-size: 1.5rem !important;
+        font-size: 1.6rem !important;
     }
 
-    /* 3. NAVIGATION (Mobile Header) */
+    .hero p {
+        font-size: 1.05rem;
+        padding: 0 10px;
+    }
+
+    /* 4. NAVIGATION (Mobile Header) */
+    header {
+        padding: 12px 0; /* Slimmer header on mobile */
+    }
+
     .nav-flex {
+        flex-direction: row; /* Keep logo and hamburger side-by-side */
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* The Mobile Menu Drawer */
+    .nav-links {
+        display: none; 
         flex-direction: column;
-        align-items: flex-start;
+        width: 100%;
+        position: absolute;
+        top: 100%; /* Drops directly below header */
+        left: 0;
+        background-color: var(--surface-white);
+        border-bottom: 1px solid var(--border-color);
+        padding: 24px;
+        box-shadow: var(--shadow-lg); /* Deep shadow for depth */
+        gap: 16px;
+        z-index: 1000;
+        align-items: stretch; /* Full width links */
     }
 
-    .brand-logo {
-        margin-bottom: 10px;
+    .nav-links.active {
+        display: flex;
+        animation: slideDown 0.3s ease-out;
     }
 
-    /* 4. INTERACTIVE ELEMENTS (Thumb Zone) */
+    .nav-item {
+        font-size: 1.1rem;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--bg-cream);
+        color: var(--primary-navy);
+    }
+    
+    /* Special styling for the "Contact" button inside menu */
+    .nav-item.btn-nav {
+        margin-top: 12px;
+        background: var(--primary-navy);
+        color: white;
+        text-align: center;
+        border-radius: 8px;
+        border: none;
+    }
+
+    /* 5. BUTTONS & INTERACTIVE */
     .btn {
-        width: 100%; /* Full width buttons are easier to tap */
-        display: flex; /* Centered text */
-        margin-bottom: 10px;
+        width: 100%; /* Full width for easy tapping */
+        margin-bottom: 12px;
     }
 
-    /* 5. FORMS */
+    /* 6. FORMS */
     .contact-form {
-        padding: 20px !important; /* Reduce padding inside cards */
+        padding: 24px !important;
     }
 
-    /* 6. COMPLIANCE BAR */
-    /* Ensures the bottom disclaimer doesn't get cut off */
+    /* 7. FOOTER */
     footer {
-        padding-bottom: 80px; /* Space for fixed bottom bars if any */
         text-align: left;
+        padding-bottom: 40px;
+    }
+    
+    .footer-links {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 16px;
     }
 }
 
-/* --- SMALL MOBILE (Max Width 480px - iPhone SE size) --- */
-@media (max-width: 480px) {
-    .hero p {
-        font-size: 1rem;
-    }
-    
-    .trust-indicators {
-        justify-content: flex-start; /* Align left on small screens */
-    }
+/* --- ANIMATION FOR MENU --- */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- SMALL MOBILE (iPhone SE size) --- */
+@media (max-width: 380px) {
+    .hero h1 { font-size: 1.75rem !important; }
+    .trust-indicators { justify-content: center; }
 }
