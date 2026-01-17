@@ -1,32 +1,19 @@
 /**
- * MVN FINHUB - MAIN LOGIC (UNIFIED)
+ * MVN FINHUB - PRODUCTION JAVASCRIPT
  * -------------------------------------------------------
- * Handles:
- * 1. Mobile Menu (UI)
- * 2. Footer Dates (UI)
- * 3. Contact Form Submission (Database Connection)
+ * Combined Logic: Mobile Menu + Real Database Connection.
+ * NO DEMO MODE.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- CONFIGURATION (PASTE YOUR SUPABASE KEYS HERE) ---
+    // --- 1. CONFIGURATION (ENTER YOUR KEYS CAREFULLY) ---
+    // Do not leave spaces inside the quotes.
     const SUPABASE_URL = 'https://fviufivewglglnxhlmmf.supabase.co'; 
     const SUPABASE_KEY = 'sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah';
     // -------------------------------------------------------
 
-    console.log('MVN FinHub: System Active');
-
-    /* =========================================
-       PART 1: UI LOGIC (MENU & DATES)
-       ========================================= */
-    
-    // Dynamic Footer Year
-    const copyrightSpan = document.querySelector('.copyright-year');
-    if (copyrightSpan) {
-        copyrightSpan.textContent = new Date().getFullYear();
-    }
-
-    // Mobile Menu Logic
+    // --- 2. MOBILE MENU LOGIC ---
     const menuToggle = document.getElementById('mobile-menu-toggle');
     const navLinks = document.getElementById('nav-links');
 
@@ -39,60 +26,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Smooth Scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-                // Close menu if open
-                if (navLinks && navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    menuToggle.textContent = '☰';
-                }
-            }
-        });
-    });
+    // --- 3. DYNAMIC FOOTER YEAR ---
+    const copyrightSpan = document.querySelector('.copyright-year');
+    if (copyrightSpan) copyrightSpan.textContent = new Date().getFullYear();
 
-    /* =========================================
-       PART 2: DATABASE LOGIC (SUPABASE)
-       ========================================= */
-
+    // --- 4. FORM SUBMISSION LOGIC (REAL DATABASE) ---
     const enquiryForm = document.getElementById('enquiryForm');
     const successMessage = document.getElementById('successMessage');
     const refIdDisplay = document.getElementById('refIdDisplay');
 
     if (enquiryForm) {
         enquiryForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
+            e.preventDefault(); // Stop page reload
 
-            // 1. Validate Consent
-            const consentCheckbox = document.getElementById('consent');
-            if (!consentCheckbox.checked) {
-                alert("You must agree to the Privacy Policy to proceed.");
+            // A. Basic Check
+            if (!document.getElementById('consent').checked) {
+                alert("You must agree to the Privacy Policy.");
                 return;
             }
 
-            // 2. Lock Button
+            // B. Lock Button (Prevent double clicks)
             const submitBtn = enquiryForm.querySelector('.submit-btn');
-            const originalBtnText = submitBtn.textContent;
+            const originalText = submitBtn.textContent;
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
 
-            // 3. Prepare Data
+            // C. Generate a Reference ID (For tracking)
+            const refID = `MVN-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
+
+            // D. Prepare Data Payload
             const formData = {
                 full_name: document.getElementById('fullName').value,
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
                 service_type: document.getElementById('service').value,
                 message: document.getElementById('message').value,
-                reference_id: `MVN-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`,
+                reference_id: refID,
                 status: 'New'
             };
 
             try {
-                // 4. Send to Supabase via REST API (No external script needed)
+                // E. Send to Supabase
                 const response = await fetch(`${SUPABASE_URL}/rest/v1/enquiries`, {
                     method: 'POST',
                     headers: {
@@ -104,21 +78,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify(formData)
                 });
 
-                if (!response.ok) throw new Error('Network response was not ok');
+                if (!response.ok) {
+                    throw new Error(`Server responded with ${response.status}`);
+                }
 
-                // 5. Success State
-                if (refIdDisplay) refIdDisplay.textContent = formData.reference_id;
+                // F. Success: Hide Form, Show Message
                 enquiryForm.style.display = 'none';
+                if (refIdDisplay) refIdDisplay.textContent = refID;
                 if (successMessage) {
                     successMessage.style.display = 'block';
                     successMessage.scrollIntoView({ behavior: 'smooth' });
                 }
 
             } catch (error) {
-                console.error('Error:', error);
-                alert("Unable to send enquiry. Please check your connection or contact us directly.");
+                console.error('Submission Error:', error);
+                alert("Connection Error: Please check your internet or try again later.");
+                // Reset Button
                 submitBtn.disabled = false;
-                submitBtn.textContent = originalBtnText;
+                submitBtn.textContent = originalText;
             }
         });
     }
