@@ -3,411 +3,335 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start a Secure Enquiry | MVN FinHub</title>
-    <meta name="description" content="Submit a secure enquiry for non-advisory financial documentation and process support. Privacy-first, response within 24 hours.">
+    <meta name="description" content="Contact MVN FinHub - Start a secure enquiry for financial documentation and process support.">
+    <title>Start an Enquiry | MVN FinHub</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* CSS Variables */
+        /* --- DESIGN SYSTEM REUSED --- */
         :root {
-            --primary-color: #0B3C5D;
-            --text-color: #4A5568;
-            --accent-color: #2F855A;
-            --background-white: #FFFFFF;
-            --background-section: #F7FAFC;
+            --primary-navy: #0A2540;
+            --accent-emerald: #059669;
+            --accent-hover: #047857;
+            --bg-cream: #F8FAFC;
+            --surface-white: #FFFFFF;
+            --text-slate: #334155;
             --border-color: #E2E8F0;
-            --input-bg: #FFFFFF;
-            --spacing-unit: 8px;
-            --max-width: 1200px;
-            --form-width: 600px;
+            --input-border: #CBD5E1;
+            --success-bg: #ECFDF5;
+            --success-text: #065F46;
         }
 
-        /* Reset & Base Styles */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--text-color);
-            background-color: var(--background-white);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
+            background-color: var(--bg-cream);
+            color: var(--text-slate);
+            line-height: 1.6;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
+        h1, h2 {
+            font-family: 'Merriweather', serif;
+            color: var(--primary-navy);
         }
 
-        /* Layout Utilities */
+        /* --- LAYOUT UTILITIES --- */
         .container {
-            max-width: var(--max-width);
+            max-width: 600px; /* Centered, focused form container */
             margin: 0 auto;
-            padding: 0 calc(var(--spacing-unit) * 2);
+            padding: 0 20px;
         }
-
-        .section {
-            padding: calc(var(--spacing-unit) * 6) 0;
-        }
-
-        .bg-section {
-            background-color: var(--background-section);
-        }
-
-        /* Typography */
-        h1, h2, h3 {
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        h1 {
-            font-size: 2rem;
-            margin-bottom: var(--spacing-unit);
-            text-align: center;
-        }
-
-        .sub-heading {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto calc(var(--spacing-unit) * 4);
-            font-size: 1rem;
-            color: var(--text-color);
-        }
-
-        /* Header */
+        .section-padding { padding: 60px 0; }
+        
+        /* --- HEADER & FOOTER --- */
         header {
-            padding: calc(var(--spacing-unit) * 3) 0;
+            background: var(--surface-white);
             border-bottom: 1px solid var(--border-color);
-            background-color: var(--background-white);
+            padding: 20px 0;
         }
-
-        .brand-name {
-            font-size: 1.5rem;
+        .brand-logo {
+            font-family: 'Merriweather', serif;
             font-weight: 700;
-            color: var(--primary-color);
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+            text-decoration: none;
         }
-
-        /* Qualification Notice */
-        .qualification-notice {
-            background-color: #EBF8FF; /* Light Blue-ish for notice */
-            border-left: 4px solid var(--primary-color);
-            padding: calc(var(--spacing-unit) * 2);
-            margin: 0 auto calc(var(--spacing-unit) * 4);
-            max-width: var(--form-width);
+        footer {
+            background: #0F172A;
+            color: #94A3B8;
+            padding: 40px 0;
+            text-align: center;
             font-size: 0.9rem;
-            color: #2C5282;
+            margin-top: auto;
         }
 
-        /* Form Styling */
-        .form-container {
-            max-width: var(--form-width);
-            margin: 0 auto;
-            background: var(--background-white);
+        /* --- PAGE HEADER --- */
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
         }
-
-        .form-group {
-            margin-bottom: calc(var(--spacing-unit) * 3);
+        .form-header h1 { margin-bottom: 16px; font-size: 2rem; }
+        .form-header p {
+            color: var(--text-slate);
+            font-size: 1.05rem;
         }
-
-        label {
-            display: block;
-            margin-bottom: var(--spacing-unit);
-            font-weight: 600;
+        .disclaimer-text {
             font-size: 0.9rem;
-            color: var(--primary-color);
+            color: #64748B;
+            margin-top: 8px;
+            font-weight: 500;
         }
 
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 12px;
+        /* --- ENQUIRY FORM --- */
+        .contact-form {
+            background: var(--surface-white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             border: 1px solid var(--border-color);
-            border-radius: 4px;
+        }
+
+        .form-group { margin-bottom: 24px; }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-navy);
+            font-size: 0.95rem;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--input-border);
+            border-radius: 6px;
             font-family: 'Inter', sans-serif;
             font-size: 1rem;
-            color: var(--text-color);
-            background-color: var(--input-bg);
+            color: var(--text-slate);
+            transition: border-color 0.2s;
         }
 
-        input:focus,
-        select:focus,
-        textarea:focus {
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
             outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 2px rgba(11, 60, 93, 0.1);
+            border-color: var(--primary-navy);
+            box-shadow: 0 0 0 3px rgba(10, 37, 64, 0.1);
         }
 
-        textarea {
-            resize: vertical;
+        .form-textarea {
             min-height: 120px;
+            resize: vertical;
         }
 
-        .helper-text {
-            display: block;
-            font-size: 0.8rem;
-            color: #718096;
-            margin-top: 6px;
-        }
-
-        /* Checkbox */
+        /* Consent Checkbox */
         .checkbox-group {
             display: flex;
             align-items: flex-start;
-            margin-bottom: calc(var(--spacing-unit) * 4);
+            gap: 12px;
+            margin-bottom: 24px;
         }
-
-        .checkbox-group input {
-            margin-top: 4px;
-            margin-right: 12px;
-            width: 16px;
-            height: 16px;
+        .checkbox-input {
+            margin-top: 5px; /* Align with top line of text */
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
         }
-
         .checkbox-label {
             font-size: 0.9rem;
-            font-weight: 400;
-            line-height: 1.4;
-            color: var(--text-color);
-            margin-bottom: 0; /* Override default label margin */
-        }
-
-        /* Button */
-        .btn-primary {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: #FFFFFF;
-            padding: 14px 28px;
-            border-radius: 4px;
-            font-weight: 600;
-            border: none;
+            color: var(--text-slate);
             cursor: pointer;
-            font-size: 1rem;
+        }
+
+        /* Submit Button */
+        .submit-btn {
             width: 100%;
-            text-align: center;
-        }
-
-        .btn-primary:hover {
-            opacity: 0.95;
-        }
-
-        /* Success State (Hidden by default, structure provided) */
-        .success-state {
-            display: none; /* Toggle to block via JS in production */
-            max-width: var(--form-width);
-            margin: 0 auto;
-            text-align: center;
-            padding: calc(var(--spacing-unit) * 4);
-            background-color: #F0FFF4;
-            border: 1px solid #C6F6D5;
-            border-radius: 6px;
-        }
-
-        .success-icon {
-            display: inline-block;
-            width: 48px;
-            height: 48px;
-            background-color: var(--accent-color);
+            padding: 16px;
+            background-color: var(--accent-emerald);
             color: white;
-            border-radius: 50%;
-            line-height: 48px;
-            font-size: 24px;
-            margin-bottom: calc(var(--spacing-unit) * 2);
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
         }
+        .submit-btn:hover { background-color: var(--accent-hover); }
 
-        .success-heading {
-            color: var(--accent-color);
-            font-size: 1.5rem;
-            margin-bottom: var(--spacing-unit);
-        }
-
-        .reference-text {
-            font-family: monospace;
-            background: #E2E8F0;
-            padding: 4px 8px;
-            border-radius: 4px;
-            display: inline-block;
-            margin-bottom: calc(var(--spacing-unit) * 2);
-            font-size: 0.9rem;
-        }
-
-        /* Security Assurance */
-        .security-assurance {
-            max-width: var(--form-width);
-            margin: calc(var(--spacing-unit) * 6) auto 0;
-            text-align: center;
-            padding-top: calc(var(--spacing-unit) * 4);
-            border-top: 1px solid var(--border-color);
-        }
-
-        .security-assurance h4 {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-color);
-            margin-bottom: var(--spacing-unit);
-        }
-
-        .security-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: calc(var(--spacing-unit) * 2);
+        .submission-context {
+            margin-top: 24px;
             font-size: 0.85rem;
-            color: #718096;
-        }
-
-        .security-item::before {
-            content: "🔒";
-            margin-right: 6px;
-            font-size: 0.8rem;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-color);
-            color: #FFFFFF;
-            padding: calc(var(--spacing-unit) * 6) 0;
-            font-size: 0.875rem;
-            margin-top: calc(var(--spacing-unit) * 8);
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            color: #64748B;
             text-align: center;
-            gap: calc(var(--spacing-unit) * 2);
+            border-top: 1px solid var(--border-color);
+            padding-top: 16px;
         }
 
-        .footer-links a {
-            color: #FFFFFF;
-            opacity: 0.8;
-            margin: 0 var(--spacing-unit);
+        /* --- SUCCESS MESSAGE (Hidden by default) --- */
+        .success-message {
+            display: none; /* Hidden via CSS */
+            background-color: var(--success-bg);
+            border: 1px solid var(--success-text);
+            color: var(--success-text);
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
         }
+        .success-icon { font-size: 3rem; margin-bottom: 16px; display: block; }
+        .ref-id { font-weight: bold; font-family: monospace; font-size: 1.1rem; margin: 8px 0; }
 
-        .footer-links a:hover {
-            opacity: 1;
-            text-decoration: underline;
+        /* --- DIRECT CONTACT LINKS --- */
+        .direct-contact {
+            margin-top: 40px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
         }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-navy);
+            font-weight: 500;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: white;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s;
+        }
+        .contact-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        /* Simple SVG Icons */
+        .icon-svg { width: 24px; height: 24px; }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 1.75rem; }
-            .btn-primary { width: 100%; }
+        /* --- RESPONSIVE --- */
+        @media (max-width: 600px) {
+            .contact-form { padding: 24px; }
+            .direct-contact { flex-direction: column; gap: 16px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container">
-            <a href="index.html" class="brand-name">MVN FinHub</a>
+        <div class="container" style="max-width: 1100px;">
+            <a href="index.html" class="brand-logo">MVN FinHub</a>
         </div>
     </header>
 
-    <main>
-        <section class="section">
-            <div class="container">
+    <section class="section-padding">
+        <div class="container">
+            
+            <div class="form-header">
                 <h1>Start an Enquiry</h1>
-                <p class="sub-heading">
-                    Submit your documentation or process-related enquiry securely.<br>
-                    MVN FinHub provides strictly non-advisory financial process and documentation support.
-                </p>
-
-                <div class="qualification-notice">
-                    This enquiry form is intended for documentation, process, and compliance-related support only.<br>
-                    We do not provide investment advice, recommendations, or guarantees.
-                </div>
-
-                <div class="form-container">
-                    <form action="#" method="POST" id="enquiryForm">
-                        
-                        <div class="form-group">
-                            <label for="fullName">Full Name</label>
-                            <input type="text" id="fullName" name="fullName" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone">Phone Number (10 digits)</label>
-                            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="service">Service Required</label>
-                            <select id="service" name="service" required>
-                                <option value="" disabled selected>Select a service...</option>
-                                <option value="shares">Shares & Legacy Asset Recovery</option>
-                                <option value="ri">RI Documentation Services</option>
-                                <option value="nri">NRI Documentation Services</option>
-                                <option value="banking">Banking & Loan Documentation</option>
-                                <option value="awareness">Financial Structuring Awareness</option>
-                                <option value="other">Other / Not Sure</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" minlength="20" required></textarea>
-                            <span class="helper-text">Briefly describe your documentation or process requirement. Minimum 20 characters.</span>
-                        </div>
-
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="consent" name="consent" required>
-                            <label for="consent" class="checkbox-label">
-                                I agree to the Privacy Policy and authorize MVN FinHub to contact me regarding my enquiry.<br>
-                                I understand that services are strictly non-advisory in nature.
-                            </label>
-                        </div>
-
-                        <button type="submit" class="btn-primary">Submit Enquiry</button>
-                    </form>
-
-                    <div class="success-state" id="successMessage">
-                        <div class="success-icon">✓</div>
-                        <h3 class="success-heading">Enquiry Received</h3>
-                        <div class="reference-text">Reference ID: Auto-generated</div>
-                        <p>We will review your documentation requirements and respond within 24 hours.</p>
-                        <p>Please keep your reference ID for future communication.</p>
-                    </div>
-                </div>
-
-                <div class="security-assurance">
-                    <div class="security-list">
-                        <span class="security-item">Enquiries are processed through secure systems.</span>
-                        <span class="security-item">No data is shared with third parties.</span>
-                        <span class="security-item">No unsolicited communication.</span>
-                        <span class="security-item">User-initiated contact only.</span>
-                    </div>
-                </div>
-
+                <p>This form allows you to contact MVN FinHub regarding documentation and process support requirements.</p>
+                <p class="disclaimer-text">No investment advice or recommendations are provided.</p>
             </div>
-        </section>
-    </main>
+
+            <div id="successMessage" class="success-message">
+                <span class="success-icon">✓</span>
+                <h2>Enquiry Received</h2>
+                <p>Reference ID: <span id="refIdDisplay" class="ref-id"></span></p>
+                <p style="margin-top: 12px;">We will review your documentation requirements and respond within 24 hours.</p>
+            </div>
+
+            <form id="enquiryForm" class="contact-form">
+                
+                <div class="form-group">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" class="form-input" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-input" required placeholder="name@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number (10 digits)</label>
+                    <input type="tel" id="phone" name="phone" class="form-input" required pattern="[0-9]{10}" placeholder="9876543210">
+                </div>
+
+                <div class="form-group">
+                    <label for="service" class="form-label">Service Required</label>
+                    <select id="service" name="service" class="form-select" required>
+                        <option value="" disabled selected>Select a service...</option>
+                        <option value="Financial Structure & Readiness">Financial Structure & Readiness</option>
+                        <option value="Legacy Asset Recovery">Shares & Legacy Asset Recovery</option>
+                        <option value="NRI Documentation">RI & NRI Documentation Support</option>
+                        <option value="Banking Documentation">Banking & Loan Documentation</option>
+                        <option value="Other">Other Process Support</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name="message" class="form-textarea" required minlength="20" placeholder="Please describe your documentation requirement (min 20 characters)..."></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="consent" name="consent" class="checkbox-input" required>
+                    <label for="consent" class="checkbox-label">
+                        I agree to the Privacy Policy and authorize MVN FinHub to contact me regarding my enquiry.
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Enquiry</button>
+
+                <div class="submission-context">
+                    <p>Submitting an enquiry does not constitute financial advice or a service guarantee.</p>
+                    <p>All enquiries are reviewed for documentation and process requirements only.</p>
+                </div>
+            </form>
+
+            <div class="direct-contact">
+                <a href="mailto:mvnfinhub.connect@gmail.com" class="contact-link">
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    mvnfinhub.connect@gmail.com
+                </a>
+                
+                <a href="https://instagram.com/mvnfinhub" target="_blank" rel="noopener noreferrer" class="contact-link">
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    mvnfinhub
+                </a>
+            </div>
+
+        </div>
+    </section>
 
     <footer>
-        <div class="container footer-content">
-            <div>© MVN FinHub</div>
-            <p>MVN FinHub provides strictly non-advisory financial process, documentation, and educational support.</p>
-            <div class="footer-links">
-                <a href="services.html">Services</a>
-                <a href="insights.html">Insights</a>
-                <a href="#">Privacy & Legal</a>
-            </div>
+        <div class="container">
+            <p>&copy; MVN FinHub</p>
+            <p style="margin-top: 8px;">No login is required to submit an enquiry. Personal information is used solely for responding to enquiries.</p>
+            <p>All financial decisions remain the responsibility of the user.</p>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('enquiryForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent actual page reload
+            
+            // Generate Random Reference ID
+            const refId = 'MVN-' + Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('refIdDisplay').textContent = refId;
+
+            // Hide Form, Show Success Message
+            this.style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Scroll to top of message
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
 
 </body>
 </html>
