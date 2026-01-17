@@ -10,73 +10,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="assets/css/main.css?v=2">
+
+    <script src="assets/js/app.js" defer></script>
+
     <style>
-        /* --- DESIGN SYSTEM REUSED --- */
-        :root {
-            --primary-navy: #0A2540;
-            --accent-emerald: #059669;
-            --bg-cream: #F8FAFC;
-            --surface-white: #FFFFFF;
-            --text-slate: #334155;
-            --border-color: #E2E8F0;
-            --notice-bg: #EFF6FF; /* Soft Blue for Notice */
-            --notice-border: #1E40AF;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* --- PAGE SPECIFIC STYLES --- */
         
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-cream);
-            color: var(--text-slate);
-            line-height: 1.6;
+        /* Notice Box Colors (Adaptive) */
+        :root {
+            --notice-bg: #EFF6FF;
+            --notice-border: #1E40AF;
+            --notice-text: #1E3A8A;
         }
-
-        h1, h2, h3 {
-            font-family: 'Merriweather', serif;
-            color: var(--primary-navy);
-        }
-
-        /* --- LAYOUT UTILITIES --- */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .section-padding { padding: 60px 0; }
-
-        /* --- HEADER & FOOTER --- */
-        header {
-            background: var(--surface-white);
-            border-bottom: 1px solid var(--border-color);
-            padding: 20px 0;
-        }
-        .brand-logo {
-            font-family: 'Merriweather', serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary-navy);
-            text-decoration: none;
-        }
-        footer {
-            background: #0F172A;
-            color: #94A3B8;
-            padding: 40px 0;
-            text-align: center;
-            font-size: 0.9rem;
-            margin-top: auto;
+        
+        [data-theme="dark"] {
+            --notice-bg: #172554; /* Deep Blue for Dark Mode */
+            --notice-border: #60A5FA; /* Lighter Blue Border */
+            --notice-text: #DBEAFE; /* Light Blue Text */
         }
 
         /* --- PAGE HEADER --- */
         .page-header {
-            background-color: var(--surface-white);
+            background-color: var(--surface-glass); /* Glass effect */
             padding: 60px 0 40px;
             border-bottom: 1px solid var(--border-color);
             text-align: center;
         }
-        .page-header h1 { margin-bottom: 16px; font-size: 2.2rem; }
+        .page-header h1 { margin-bottom: 16px; font-size: 2.2rem; color: var(--text-head); }
         .page-header p {
-            color: var(--text-slate);
+            color: var(--text-muted);
             max-width: 700px;
             margin: 0 auto;
             font-size: 1.1rem;
@@ -90,23 +53,25 @@
         }
 
         .topic-card {
-            background: var(--surface-white);
+            background: var(--surface-card); /* Adaptive Card */
             padding: 32px;
-            border-radius: 8px;
+            border-radius: 12px;
             border: 1px solid var(--border-color);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .topic-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-emerald);
         }
 
         .topic-card h3 {
             font-size: 1.35rem;
             margin-bottom: 20px;
             padding-bottom: 16px;
-            border-bottom: 2px solid var(--bg-cream);
+            border-bottom: 2px solid var(--bg-body); /* Adaptive Line */
+            color: var(--text-head);
         }
 
         .topic-list li {
@@ -114,10 +79,10 @@
             padding-left: 24px;
             margin-bottom: 12px;
             list-style: none;
-            color: var(--text-slate);
+            color: var(--text-main);
         }
         
-        /* Using a book/document icon style bullet for education */
+        /* Bullet Point */
         .topic-list li::before {
             content: "▪"; 
             position: absolute;
@@ -134,13 +99,17 @@
             border-left: 4px solid var(--notice-border);
             padding: 30px;
             margin-top: 60px;
-            border-radius: 4px;
+            border-radius: 8px;
         }
         
         .notice-box h2 {
             font-size: 1.25rem;
             margin-bottom: 12px;
-            color: var(--primary-navy);
+            color: var(--notice-border); /* Matches border color */
+        }
+        
+        .notice-box p {
+            color: var(--notice-text);
         }
 
         /* --- RESPONSIVE --- */
@@ -154,8 +123,18 @@
 <body>
 
     <header>
-        <div class="container">
+        <div class="container nav-flex">
             <a href="index.html" class="brand-logo">MVN FinHub</a>
+            
+            <button class="mobile-toggle" id="mobile-menu-toggle">☰</button>
+
+            <nav class="nav-links" id="nav-links">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="services.html" class="nav-item">Services</a>
+                <a href="insights.html" class="nav-item">Insights</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="contact.html" class="nav-item btn-nav">Contact</a>
+            </nav>
         </div>
     </header>
 
@@ -221,9 +200,15 @@
 
     <footer>
         <div class="container">
-            <p>&copy; MVN FinHub</p>
+            <p>&copy; <span class="copyright-year">2026</span> MVN FinHub</p>
             <p style="margin-top: 8px;">Content explains processes, not decisions. No predictions, comparisons, or outcomes.</p>
-            <p>Users remain solely responsible for financial decisions. MVN FinHub’s role is limited to education and process clarity.</p>
+            <p style="margin-bottom: 24px;">Users remain solely responsible for financial decisions. MVN FinHub’s role is limited to education and process clarity.</p>
+            
+            <div class="footer-links">
+                <a href="legal.html">Privacy & Legal</a>
+                <a href="contact.html">Contact</a>
+                <a href="https://instagram.com/mvnfinhub" target="_blank">Instagram</a>
+            </div>
         </div>
     </footer>
 
