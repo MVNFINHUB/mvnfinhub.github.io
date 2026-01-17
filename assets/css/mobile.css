@@ -1,0 +1,78 @@
+/* MVN FINHUB - RESPONSIVE / MOBILE STYLES
+   -------------------------------------------------------
+   Handles layout adaptation for Phones (<768px) and Tablets.
+   Ensures "Thumb-Friendly" UI.
+*/
+
+/* --- TABLET & MOBILE (Max Width 768px) --- */
+@media (max-width: 768px) {
+    
+    /* 1. LAYOUT STACKING */
+    .container {
+        padding: 0 16px; /* Tighter margins on phone */
+    }
+
+    .section-padding {
+        padding: 40px 0; /* Less vertical whitespace */
+    }
+
+    /* Force Grids to Single Column */
+    .grid-4, .services-grid, .insights-grid, .values-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+
+    /* 2. TYPOGRAPHY SCALING */
+    html {
+        font-size: 16px; /* Base size */
+    }
+
+    h1, .hero h1 {
+        font-size: 1.8rem !important; /* Smaller headers to fit screen */
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: 1.5rem !important;
+    }
+
+    /* 3. NAVIGATION (Mobile Header) */
+    .nav-flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .brand-logo {
+        margin-bottom: 10px;
+    }
+
+    /* 4. INTERACTIVE ELEMENTS (Thumb Zone) */
+    .btn {
+        width: 100%; /* Full width buttons are easier to tap */
+        display: flex; /* Centered text */
+        margin-bottom: 10px;
+    }
+
+    /* 5. FORMS */
+    .contact-form {
+        padding: 20px !important; /* Reduce padding inside cards */
+    }
+
+    /* 6. COMPLIANCE BAR */
+    /* Ensures the bottom disclaimer doesn't get cut off */
+    footer {
+        padding-bottom: 80px; /* Space for fixed bottom bars if any */
+        text-align: left;
+    }
+}
+
+/* --- SMALL MOBILE (Max Width 480px - iPhone SE size) --- */
+@media (max-width: 480px) {
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .trust-indicators {
+        justify-content: flex-start; /* Align left on small screens */
+    }
+}
