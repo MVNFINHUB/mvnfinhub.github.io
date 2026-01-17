@@ -10,226 +10,32 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
-    <style>
-        /* --- DESIGN SYSTEM REUSED --- */
-        :root {
-            --primary-navy: #0A2540;
-            --accent-emerald: #059669;
-            --accent-hover: #047857;
-            --bg-cream: #F8FAFC;
-            --surface-white: #FFFFFF;
-            --text-slate: #334155;
-            --border-color: #E2E8F0;
-            --input-border: #CBD5E1;
-            --success-bg: #ECFDF5;
-            --success-text: #065F46;
-        }
+    <link rel="stylesheet" href="assets/css/main.css">
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-cream);
-            color: var(--text-slate);
-            line-height: 1.6;
-        }
-
-        h1, h2 {
-            font-family: 'Merriweather', serif;
-            color: var(--primary-navy);
-        }
-
-        /* --- LAYOUT UTILITIES --- */
-        .container {
-            max-width: 600px; /* Centered, focused form container */
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .section-padding { padding: 60px 0; }
-        
-        /* --- HEADER & FOOTER --- */
-        header {
-            background: var(--surface-white);
-            border-bottom: 1px solid var(--border-color);
-            padding: 20px 0;
-        }
-        .brand-logo {
-            font-family: 'Merriweather', serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary-navy);
-            text-decoration: none;
-        }
-        footer {
-            background: #0F172A;
-            color: #94A3B8;
-            padding: 40px 0;
-            text-align: center;
-            font-size: 0.9rem;
-            margin-top: auto;
-        }
-
-        /* --- PAGE HEADER --- */
-        .form-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .form-header h1 { margin-bottom: 16px; font-size: 2rem; }
-        .form-header p {
-            color: var(--text-slate);
-            font-size: 1.05rem;
-        }
-        .disclaimer-text {
-            font-size: 0.9rem;
-            color: #64748B;
-            margin-top: 8px;
-            font-weight: 500;
-        }
-
-        /* --- ENQUIRY FORM --- */
-        .contact-form {
-            background: var(--surface-white);
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border: 1px solid var(--border-color);
-        }
-
-        .form-group { margin-bottom: 24px; }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--primary-navy);
-            font-size: 0.95rem;
-        }
-
-        .form-input, .form-select, .form-textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid var(--input-border);
-            border-radius: 6px;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            color: var(--text-slate);
-            transition: border-color 0.2s;
-        }
-
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
-            outline: none;
-            border-color: var(--primary-navy);
-            box-shadow: 0 0 0 3px rgba(10, 37, 64, 0.1);
-        }
-
-        .form-textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        /* Consent Checkbox */
-        .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-        .checkbox-input {
-            margin-top: 5px; /* Align with top line of text */
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-        .checkbox-label {
-            font-size: 0.9rem;
-            color: var(--text-slate);
-            cursor: pointer;
-        }
-
-        /* Submit Button */
-        .submit-btn {
-            width: 100%;
-            padding: 16px;
-            background-color: var(--accent-emerald);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .submit-btn:hover { background-color: var(--accent-hover); }
-
-        .submission-context {
-            margin-top: 24px;
-            font-size: 0.85rem;
-            color: #64748B;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-            padding-top: 16px;
-        }
-
-        /* --- SUCCESS MESSAGE (Hidden by default) --- */
-        .success-message {
-            display: none; /* Hidden via CSS */
-            background-color: var(--success-bg);
-            border: 1px solid var(--success-text);
-            color: var(--success-text);
-            padding: 40px;
-            border-radius: 8px;
-            text-align: center;
-        }
-        .success-icon { font-size: 3rem; margin-bottom: 16px; display: block; }
-        .ref-id { font-weight: bold; font-family: monospace; font-size: 1.1rem; margin: 8px 0; }
-
-        /* --- DIRECT CONTACT LINKS --- */
-        .direct-contact {
-            margin-top: 40px;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
-        
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--primary-navy);
-            font-weight: 500;
-            text-decoration: none;
-            padding: 10px 20px;
-            background: white;
-            border-radius: 50px;
-            border: 1px solid var(--border-color);
-            transition: transform 0.2s;
-        }
-        .contact-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-        
-        /* Simple SVG Icons */
-        .icon-svg { width: 24px; height: 24px; }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 600px) {
-            .contact-form { padding: 24px; }
-            .direct-contact { flex-direction: column; gap: 16px; }
-        }
-    </style>
+    <script src="assets/js/app.js" defer></script>
 </head>
 <body>
 
     <header>
-        <div class="container" style="max-width: 1100px;">
+        <div class="container nav-flex">
             <a href="index.html" class="brand-logo">MVN FinHub</a>
+            
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
+                ☰
+            </button>
+
+            <nav class="nav-links" id="nav-links">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="services.html" class="nav-item">Services</a>
+                <a href="insights.html" class="nav-item">Insights</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="contact.html" class="nav-item btn-nav">Contact</a>
+            </nav>
         </div>
     </header>
 
     <section class="section-padding">
-        <div class="container">
+        <div class="container" style="max-width: 600px;">
             
             <div class="form-header">
                 <h1>Start an Enquiry</h1>
@@ -237,11 +43,12 @@
                 <p class="disclaimer-text">No investment advice or recommendations are provided.</p>
             </div>
 
-            <div id="successMessage" class="success-message">
+            <div id="successMessage" class="success-message" style="display: none;">
                 <span class="success-icon">✓</span>
                 <h2>Enquiry Received</h2>
                 <p>Reference ID: <span id="refIdDisplay" class="ref-id"></span></p>
                 <p style="margin-top: 12px;">We will review your documentation requirements and respond within 24 hours.</p>
+                <a href="index.html" class="btn btn-primary" style="margin-top: 20px;">Return Home</a>
             </div>
 
             <form id="enquiryForm" class="contact-form">
@@ -278,30 +85,26 @@
                     <textarea id="message" name="message" class="form-textarea" required minlength="20" placeholder="Please describe your documentation requirement (min 20 characters)..."></textarea>
                 </div>
 
-                <div class="checkbox-group">
-                    <input type="checkbox" id="consent" name="consent" class="checkbox-input" required>
-                    <label for="consent" class="checkbox-label">
+                <div class="checkbox-group" style="display: flex; gap: 12px; align-items: flex-start; margin-bottom: 24px;">
+                    <input type="checkbox" id="consent" name="consent" class="checkbox-input" style="margin-top: 5px;" required>
+                    <label for="consent" class="checkbox-label" style="font-size: 0.9rem;">
                         I agree to the Privacy Policy and authorize MVN FinHub to contact me regarding my enquiry.
                     </label>
                 </div>
 
-                <button type="submit" class="submit-btn">Submit Enquiry</button>
+                <button type="submit" class="submit-btn btn btn-primary" style="width: 100%;">Submit Enquiry</button>
 
-                <div class="submission-context">
+                <div class="submission-context" style="margin-top: 24px; font-size: 0.85rem; color: #64748B; text-align: center;">
                     <p>Submitting an enquiry does not constitute financial advice or a service guarantee.</p>
-                    <p>All enquiries are reviewed for documentation and process requirements only.</p>
                 </div>
             </form>
 
-            <div class="direct-contact">
-                <a href="mailto:mvnfinhub.connect@gmail.com" class="contact-link">
-                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    mvnfinhub.connect@gmail.com
+            <div class="direct-contact" style="margin-top: 40px; text-align: center; display: flex; justify-content: center; gap: 20px;">
+                <a href="mailto:mvnfinhub.connect@gmail.com" class="contact-link" style="display: flex; align-items: center; gap: 8px;">
+                    📧 mvnfinhub.connect@gmail.com
                 </a>
-                
-                <a href="https://instagram.com/mvnfinhub" target="_blank" rel="noopener noreferrer" class="contact-link">
-                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    mvnfinhub
+                <a href="https://instagram.com/mvnfinhub" target="_blank" class="contact-link" style="display: flex; align-items: center; gap: 8px;">
+                    📷 mvnfinhub
                 </a>
             </div>
 
@@ -310,28 +113,14 @@
 
     <footer>
         <div class="container">
-            <p>&copy; MVN FinHub</p>
-            <p style="margin-top: 8px;">No login is required to submit an enquiry. Personal information is used solely for responding to enquiries.</p>
-            <p>All financial decisions remain the responsibility of the user.</p>
+            <p>&copy; <span class="copyright-year">2024</span> MVN FinHub</p>
+            <div class="footer-links">
+                <a href="legal.html">Privacy & Legal</a>
+                <a href="contact.html">Contact</a>
+                <a href="https://instagram.com/mvnfinhub" target="_blank">Instagram</a>
+            </div>
         </div>
     </footer>
-
-    <script>
-        document.getElementById('enquiryForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent actual page reload
-            
-            // Generate Random Reference ID
-            const refId = 'MVN-' + Math.floor(100000 + Math.random() * 900000);
-            document.getElementById('refIdDisplay').textContent = refId;
-
-            // Hide Form, Show Success Message
-            this.style.display = 'none';
-            document.getElementById('successMessage').style.display = 'block';
-            
-            // Scroll to top of message
-            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
-        });
-    </script>
 
 </body>
 </html>
