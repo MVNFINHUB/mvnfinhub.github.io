@@ -1,0 +1,51 @@
+/* MVN FINHUB - DESIGN SYSTEM (CORE VARIABLES)
+   -------------------------------------------------------
+   This file defines the "Source of Truth" for the design.
+   No actual styles are applied here, only definitions.
+*/
+
+:root {
+    /* --- COLOR PALETTE (PSYCHOLOGY OF TRUST) --- */
+    
+    /* Primary: Navy Blue (Authority, Legal, Trust) */
+    --primary-navy: #0A2540;
+    --primary-light: #183B5E; /* Hover state for navy */
+
+    /* Accent: Emerald Green (Readiness, Action, Safe) */
+    --accent-emerald: #059669;
+    --accent-hover: #047857;  /* Darker green for hover */
+
+    /* Alerts: Muted Red (Compliance Gaps - Use sparingly) */
+    --alert-bg: #FEF2F2;
+    --alert-text: #991B1B;
+    --alert-border: #FECACA;
+
+    /* Backgrounds: Cream/Off-White (Reading Comfort) */
+    --bg-cream: #F8FAFC;
+    --section-grey: #F1F5F9;
+    --surface-white: #FFFFFF;
+
+    /* Typography Colors */
+    --text-dark: #0F172A;     /* Headings */
+    --text-slate: #334155;    /* Body text (Softer than black) */
+    --text-muted: #64748B;    /* Meta text/Footer */
+    
+    /* Borders */
+    --border-color: #E2E8F0;
+    --input-border: #CBD5E1;
+
+    /* --- TYPOGRAPHY (FONTS) --- */
+    /* Trust/Formal Font (Headings) */
+    --font-serif: 'Merriweather', serif;
+    
+    /* Readable/Modern Font (Body) */
+    --font-sans: 'Inter', sans-serif;
+
+    /* --- SPACING & SIZES --- */
+    --container-width: 1100px;
+    --header-height: 70px;
+    --border-radius: 6px;     /* Professional curve, not too round */
+    
+    /* Mobile-First Touch Targets */
+    --touch-target: 48px;     /* Minimum clickable area for thumbs */
+}
