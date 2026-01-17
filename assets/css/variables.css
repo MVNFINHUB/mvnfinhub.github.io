@@ -1,35 +1,62 @@
-/* MVN FINHUB - PREMIUM VARIABLES
-   Adds Depth, Gradients, and Glassmorphism.
+/* MVN FINHUB - VARIABLES (PREMIUM + DARK MODE)
+   -------------------------------------------------------
+   Defines the palette for Light Mode and overrides for Dark Mode.
 */
+
 :root {
-    /* --- COLORS --- */
+    /* --- LIGHT MODE (Default) --- */
     --primary-navy: #0A2540;
     --primary-light: #183B5E;
-    /* The Modern Gradient (Navy to Blue) */
-    --gradient-primary: linear-gradient(135deg, #0A2540 0%, #1e40af 100%);
-
     --accent-emerald: #059669;
-    /* The Action Gradient (Green to Teal) */
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #0A2540 0%, #1e40af 100%);
     --gradient-action: linear-gradient(135deg, #059669 0%, #10b981 100%);
 
-    --bg-cream: #F8FAFC;       
-    --surface-white: #FFFFFF;  
-    --surface-glass: rgba(255, 255, 255, 0.85); /* Frosted Glass */
+    /* Backgrounds */
+    --bg-body: #F8FAFC;       
+    --surface-card: #FFFFFF;  
+    --surface-glass: rgba(255, 255, 255, 0.85); /* White Frost */
 
-    --text-slate: #334155;
+    /* Text */
+    --text-main: #334155;
+    --text-head: #0A2540;
+    --text-muted: #64748B;
+    
+    /* Borders & Shadows */
     --border-color: #E2E8F0;
-
-    /* --- SHADOWS (DEPTH) --- */
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    --shadow-lg: 0 10px 25px -3px rgba(0,0,0,0.1);
 
     /* --- SIZES --- */
     --container-width: 1100px;
-    --header-height: 72px;
-    --border-radius: 12px;
-    
-    /* --- FONTS --- */
+    --border-radius: 16px;
     --font-serif: 'Merriweather', serif;
     --font-sans: 'Inter', sans-serif;
+}
+
+/* --- DARK MODE OVERRIDES --- */
+[data-theme="dark"] {
+    /* Recalibrate Colors for Dark Theme */
+    --primary-navy: #E2E8F0; /* Light text for headers */
+    --primary-light: #94A3B8;
+    
+    /* Gradients (Darker, subtler) */
+    --gradient-primary: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    --gradient-action: linear-gradient(135deg, #059669 0%, #047857 100%);
+
+    /* Backgrounds */
+    --bg-body: #0F172A;       /* Deep Navy Bg */
+    --surface-card: #1E293B;  /* Slate Card */
+    --surface-glass: rgba(15, 23, 42, 0.85); /* Dark Frost */
+
+    /* Text */
+    --text-main: #CBD5E1;     /* Light Grey */
+    --text-head: #F8FAFC;     /* White */
+    --text-muted: #94A3B8;
+    
+    /* Borders & Shadows */
+    --border-color: #334155;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-lg: 0 10px 25px -3px rgba(0,0,0,0.5);
 }
