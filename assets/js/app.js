@@ -1,29 +1,34 @@
 /**
  * MVN FINHUB - APP CONTROLLER
- * Handles: Database, Mobile Menu, and Floating Dark Mode Button.
+ * Handles: Database, Mobile Menu, and Footer Dark Mode.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- CONFIGURATION ---
-    const SUPABASE_URL = 'https://fviufivewglglnxhlmmf.supabase.co'; 
-    const SUPABASE_KEY = 'sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah';
+     const SUPABASE_URL = 'https://fviufivewglglnxhlmmf.supabase.co'; 
+     const SUPABASE_KEY = 'sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah';
     // ----------------------
 
-    // --- 1. DARK MODE LOGIC (FLOATING BUTTON) ---
-    // Loads saved theme
+    // --- 1. DARK MODE LOGIC (ATTACHED TO FOOTER) ---
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
 
-    // Create the Floating Button
+    // Create the Minimal Button
     const themeBtn = document.createElement('button');
-    themeBtn.className = 'theme-btn-floating';
+    themeBtn.className = 'theme-btn-footer'; // New Class Name
     themeBtn.innerHTML = savedTheme === 'dark' ? '☀️' : '🌙';
     themeBtn.setAttribute('aria-label', 'Toggle Dark Mode');
-    themeBtn.title = "Toggle Dark Mode";
+    themeBtn.title = "Toggle Theme";
 
-    // Add to the body (Bottom Right Corner)
-    document.body.appendChild(themeBtn);
+    // Attach to Footer Container
+    const footerContainer = document.querySelector('footer .container');
+    if (footerContainer) {
+        footerContainer.appendChild(themeBtn);
+    } else {
+        // Fallback if no footer found
+        document.body.appendChild(themeBtn);
+    }
 
     // Toggle Function
     themeBtn.addEventListener('click', () => {
@@ -48,11 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 3. DYNAMIC FOOTER ---
+    // --- 3. DYNAMIC FOOTER YEAR ---
     const yearSpan = document.querySelector('.copyright-year');
     if(yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-    // --- 4. FORM SUBMISSION (DATABASE) ---
+    // --- 4. FORM SUBMISSION ---
     const enquiryForm = document.getElementById('enquiryForm');
     const successMessage = document.getElementById('successMessage');
     const refIdDisplay = document.getElementById('refIdDisplay');
@@ -61,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
         enquiryForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Validation
             if (!document.getElementById('consent').checked) {
                 alert("Please agree to the Privacy Policy."); return;
             }
