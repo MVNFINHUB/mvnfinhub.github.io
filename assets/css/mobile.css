@@ -1,14 +1,14 @@
-/* MVN FINHUB - MOBILE CORRECTIONS (FINAL FIX) */
+/* MVN FINHUB - MOBILE CORRECTIONS (FINAL) */
 
 @media (max-width: 768px) {
     
     /* 1. Header Layout */
     .nav-flex {
         flex-wrap: wrap; 
-        position: relative; /* Secures the layout */
+        position: relative; 
     }
 
-    /* 2. Hamburger Button (Make it visible) */
+    /* 2. Hamburger Button */
     .mobile-toggle {
         display: block !important;
         font-size: 1.8rem;
@@ -17,12 +17,12 @@
         cursor: pointer;
         color: var(--text-head);
         padding: 5px;
-        margin-left: auto; /* Pushes button to the right */
+        margin-left: auto; 
     }
 
-    /* 3. The Menu List (FORCE HIDDEN by default) */
+    /* 3. The Menu List (FORCE HIDDEN) */
     .nav-links {
-        display: none !important; /* <--- THIS FIXES THE ISSUE */
+        display: none !important;
         width: 100%;
         flex-direction: column;
         background-color: var(--surface-card);
@@ -32,18 +32,18 @@
         box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         border: 1px solid var(--border-color);
         gap: 16px;
-        position: absolute; /* Floats it on top of content */
-        top: 60px; /* Pushes it below header */
+        position: absolute; 
+        top: 60px; 
         left: 0;
-        z-index: 9999; /* Ensures it sits on top of everything */
+        z-index: 9999; 
     }
 
-    /* 4. The "Active" State (Only show when clicked) */
+    /* 4. The "Active" State */
     .nav-links.active {
-        display: flex !important; /* Shows menu when open */
+        display: flex !important; 
     }
 
-    /* 5. Menu Items Styling */
+    /* 5. Menu Items */
     .nav-item {
         width: 100%;
         text-align: center;
@@ -53,7 +53,6 @@
     }
     .nav-item:last-child { border-bottom: none; }
     
-    /* 6. Button in Menu */
     .nav-item.btn-nav {
         margin-top: 10px;
         background-color: var(--primary-navy);
@@ -61,9 +60,24 @@
         border-radius: 8px;
     }
 
-    /* 7. Content Adjustments */
-    .hero { padding-top: 60px; } /* Prevent overlap */
+    /* 6. Content Adjustments */
+    .hero { padding-top: 60px; } 
     .hero h1 { font-size: 2rem !important; }
     .grid-4 { grid-template-columns: 1fr !important; }
     .container { padding: 0 20px; }
+
+    /* --- NEW FOOTER BUTTON MOBILE TWEAKS --- */
+    /* Ensures the new minimal button sits nicely on mobile */
+    .theme-btn-footer {
+        width: 36px;
+        height: 36px;
+        top: 0;
+        right: 0; /* Aligns to right edge of footer container */
+        border-color: rgba(148, 163, 184, 0.4);
+    }
+    
+    /* Ensure footer text doesn't hit the button */
+    footer .container {
+        padding-right: 40px; /* Makes room for the button so text doesn't overlap */
+    }
 }
