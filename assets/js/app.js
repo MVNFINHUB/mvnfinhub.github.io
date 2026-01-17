@@ -1,60 +1,84 @@
 /**
- * MVN FINHUB - PRODUCTION JAVASCRIPT
- * -------------------------------------------------------
- * Combined Logic: Mobile Menu + Real Database Connection.
- * NO DEMO MODE.
+ * MVN FINHUB - APP CONTROLLER
+ * Handles: Database, Mobile Menu, and Dark Mode Injection.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. CONFIGURATION (ENTER YOUR KEYS CAREFULLY) ---
-    // Do not leave spaces inside the quotes.
+    // --- CONFIGURATION ---
     const SUPABASE_URL = 'https://fviufivewglglnxhlmmf.supabase.co'; 
     const SUPABASE_KEY = 'sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah';
-    // -------------------------------------------------------
+    // ----------------------
 
-    // --- 2. MOBILE MENU LOGIC ---
+    // --- 1. DARK MODE LOGIC (AUTO-INJECT) ---
+    // This creates the button without you touching HTML files.
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+
+    const navFlex = document.querySelector('.nav-flex');
+    const mobileToggle = document.querySelector('.mobile-toggle');
+
+    // Create the button
+    const themeBtn = document.createElement('button');
+    themeBtn.className = 'theme-btn';
+    themeBtn.innerHTML = savedTheme === 'dark' ? '☀️' : '🌙';
+    themeBtn.setAttribute('aria-label', 'Toggle Dark Mode');
+
+    // Insert button before the mobile menu toggle
+    if (navFlex && mobileToggle) {
+        navFlex.insertBefore(themeBtn, mobileToggle);
+    } else if (navFlex) {
+        navFlex.appendChild(themeBtn);
+    }
+
+    // Toggle Function
+    themeBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeBtn.innerHTML = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+
+
+    // --- 2. MOBILE MENU ---
     const menuToggle = document.getElementById('mobile-menu-toggle');
     const navLinks = document.getElementById('nav-links');
 
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
-            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-            menuToggle.setAttribute('aria-expanded', !isExpanded);
             navLinks.classList.toggle('active');
-            menuToggle.textContent = !isExpanded ? '✕' : '☰';
+            const isExpanded = navLinks.classList.contains('active');
+            menuToggle.textContent = isExpanded ? '✕' : '☰';
         });
     }
 
-    // --- 3. DYNAMIC FOOTER YEAR ---
-    const copyrightSpan = document.querySelector('.copyright-year');
-    if (copyrightSpan) copyrightSpan.textContent = new Date().getFullYear();
+    // --- 3. DYNAMIC FOOTER ---
+    const yearSpan = document.querySelector('.copyright-year');
+    if(yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-    // --- 4. FORM SUBMISSION LOGIC (REAL DATABASE) ---
+    // --- 4. FORM SUBMISSION (DATABASE) ---
     const enquiryForm = document.getElementById('enquiryForm');
     const successMessage = document.getElementById('successMessage');
     const refIdDisplay = document.getElementById('refIdDisplay');
 
     if (enquiryForm) {
         enquiryForm.addEventListener('submit', async function(e) {
-            e.preventDefault(); // Stop page reload
-
-            // A. Basic Check
+            e.preventDefault();
+            
+            // Validation
             if (!document.getElementById('consent').checked) {
-                alert("You must agree to the Privacy Policy.");
-                return;
+                alert("Please agree to the Privacy Policy."); return;
             }
 
-            // B. Lock Button (Prevent double clicks)
             const submitBtn = enquiryForm.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
-            submitBtn.disabled = true;
+            submitBtn.disabled = true; 
             submitBtn.textContent = 'Sending...';
 
-            // C. Generate a Reference ID (For tracking)
             const refID = `MVN-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
 
-            // D. Prepare Data Payload
             const formData = {
                 full_name: document.getElementById('fullName').value,
                 email: document.getElementById('email').value,
@@ -66,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                // E. Send to Supabase
                 const response = await fetch(`${SUPABASE_URL}/rest/v1/enquiries`, {
                     method: 'POST',
                     headers: {
@@ -78,22 +101,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify(formData)
                 });
 
-                if (!response.ok) {
-                    throw new Error(`Server responded with ${response.status}`);
-                }
+                if (!response.ok) throw new Error('Server Error');
 
-                // F. Success: Hide Form, Show Message
                 enquiryForm.style.display = 'none';
-                if (refIdDisplay) refIdDisplay.textContent = refID;
-                if (successMessage) {
+                if(refIdDisplay) refIdDisplay.textContent = refID;
+                if(successMessage) {
                     successMessage.style.display = 'block';
                     successMessage.scrollIntoView({ behavior: 'smooth' });
                 }
 
             } catch (error) {
-                console.error('Submission Error:', error);
-                alert("Connection Error: Please check your internet or try again later.");
-                // Reset Button
+                console.error(error);
+                alert("Connection Error. Please try again.");
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
             }
