@@ -1,6 +1,6 @@
 /**
  * MVN FINHUB - APP CONTROLLER
- * Handles: Database, Mobile Menu, and Dark Mode Injection.
+ * Handles: Database, Mobile Menu, and Floating Dark Mode Button.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,26 +10,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const SUPABASE_KEY = 'sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah';
     // ----------------------
 
-    // --- 1. DARK MODE LOGIC (AUTO-INJECT) ---
-    // This creates the button without you touching HTML files.
+    // --- 1. DARK MODE LOGIC (FLOATING BUTTON) ---
+    // Loads saved theme
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
 
-    const navFlex = document.querySelector('.nav-flex');
-    const mobileToggle = document.querySelector('.mobile-toggle');
-
-    // Create the button
+    // Create the Floating Button
     const themeBtn = document.createElement('button');
-    themeBtn.className = 'theme-btn';
+    themeBtn.className = 'theme-btn-floating';
     themeBtn.innerHTML = savedTheme === 'dark' ? '☀️' : '🌙';
     themeBtn.setAttribute('aria-label', 'Toggle Dark Mode');
+    themeBtn.title = "Toggle Dark Mode";
 
-    // Insert button before the mobile menu toggle
-    if (navFlex && mobileToggle) {
-        navFlex.insertBefore(themeBtn, mobileToggle);
-    } else if (navFlex) {
-        navFlex.appendChild(themeBtn);
-    }
+    // Add to the body (Bottom Right Corner)
+    document.body.appendChild(themeBtn);
 
     // Toggle Function
     themeBtn.addEventListener('click', () => {
