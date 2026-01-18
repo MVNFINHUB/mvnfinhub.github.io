@@ -66,18 +66,18 @@
     .grid-4 { grid-template-columns: 1fr !important; }
     .container { padding: 0 20px; }
 
-    /* --- NEW FOOTER BUTTON MOBILE TWEAKS --- */
-    /* Ensures the new minimal button sits nicely on mobile */
-    .theme-btn-footer {
-        width: 36px;
-        height: 36px;
-        top: 0;
-        right: 0; /* Aligns to right edge of footer container */
-        border-color: rgba(148, 163, 184, 0.4);
-    }
-    
-    /* Ensure footer text doesn't hit the button */
+    /* --- MOBILE FOOTER FIX --- */
     footer .container {
-        padding-right: 40px; /* Makes room for the button so text doesn't overlap */
+        padding-bottom: 50px; /* Make room at the bottom for the button */
     }
-}
+
+    .theme-btn-footer {
+        top: auto;          /* Unset top alignment */
+        bottom: 0;          /* Stick to bottom center */
+        left: 50%;          /* Move to center */
+        right: auto;        /* Unset right alignment */
+        transform: translateX(-50%); /* Center it perfectly */
+        
+        margin-top: 20px;   /* Space from text */
+        background: rgba(255, 255, 255, 0.05);
+    }
