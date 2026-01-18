@@ -46,29 +46,31 @@ body {
 
 .nav-flex { display: flex; justify-content: space-between; align-items: center; }
 
-/* --- BIGGER & CLEARER LOGO DESIGN --- */
+/* --- BIGGER LOGO & TIGHTER SPACING --- */
 .brand-logo { 
     display: flex; 
     align-items: center; 
-    gap: 15px; 
+    gap: 8px; /* REDUCED GAP: Connects logo to text */
     text-decoration: none; 
-    padding: 4px 0;
+    padding: 2px 0;
 }
 
-/* 1. Bigger Icon */
+/* 1. Even Bigger Icon */
 .logo-icon-wrapper img {
-    height: 54px; /* BIG SIZE */
+    height: 60px; /* INCREASED SIZE (Was 54px) */
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
     transition: all 0.3s ease;
+    /* Negative margin to pull it slightly closer if image has built-in padding */
+    margin-right: -4px; 
 }
 
-/* 2. High-Contrast "Day Mode" Text (Readable) */
+/* 2. Brand Text */
 .brand-text {
     font-family: 'Merriweather', serif;
     font-weight: 900;
-    font-size: 1.7rem; 
+    font-size: 1.8rem; /* Slightly larger text to match new logo */
     line-height: 1;
     letter-spacing: -0.5px;
     display: flex;
