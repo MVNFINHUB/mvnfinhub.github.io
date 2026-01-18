@@ -151,20 +151,35 @@ body {
 .glow-left { width: 400px; height: 400px; background: rgba(0, 200, 255, 0.15); top: -100px; left: -100px; }
 .glow-right { width: 500px; height: 500px; background: rgba(10, 37, 64, 0.1); bottom: -100px; right: -100px; }
 
-/* The Glass Card */
+/* --- PREMIUM HERO CARD (Restored & Fixed) --- */
 .hero-glass-card {
     position: relative;
     z-index: 1;
-    background: rgba(255, 255, 255, 0.7);
+
+    /* 1. THE LOOK YOU LIKED (Frosted Glass) */
+    background: rgba(255, 255, 255, 0.7); /* Semi-transparent again */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.8);
     border-radius: 24px;
+
+    /* 2. SPACIOUS PADDING */
     padding: 60px 40px;
+
+    /* 3. SIZE & ALIGNMENT (The Fix) */
+    width: 92%;              /* Keeps it wide but prevents edge-touching */
+    max-width: 950px;        /* Wide premium size (not a small box) */
+    margin: 0 auto;          /* Perfectly centered */
+
     text-align: center;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-    max-width: 900px;
-    margin: 0 auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05); /* Soft, premium shadow */
+}
+
+/* Ensure container helps centering */
+.hero-premium .container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 /* Typography */
