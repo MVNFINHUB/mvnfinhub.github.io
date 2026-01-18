@@ -32,28 +32,44 @@ header {
 .nav-flex { display: flex; justify-content: space-between; align-items: center; }
 
 /* LOGO UPDATE (Image Style) */
-/* --- BRAND LOGO & NAME --- */
+/* --- PREMIUM BRANDING (LOGO & NAME) --- */
 .brand-logo { 
     display: flex; 
     align-items: center; 
-    gap: 12px; /* Space between logo and text */
+    gap: 14px; /* More breathing room */
     text-decoration: none; 
 }
 
+/* 1. Bigger, clearer Logo */
 .brand-logo img {
-    height: 36px;  /* Slightly smaller to fit nicely */
+    height: 48px;  /* Increased from 36px to 48px for better visibility */
     width: auto;
     object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05)); /* Subtle 3D lift */
+    transition: transform 0.3s ease;
 }
 
-/* Unique Brand Name Design */
+.brand-logo:hover img {
+    transform: scale(1.05); /* Gentle zoom on hover */
+}
+
+/* 2. "Top 1%" Brand Name Design */
 .brand-name {
-    font-family: 'Merriweather', serif; /* Premium Serif Font */
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: var(--text-head); /* Adapts to Dark Mode automatically */
-    letter-spacing: -0.5px;  /* Tight, modern spacing */
+    font-family: 'Merriweather', serif;
+    font-weight: 800; /* Extra Bold */
+    font-size: 1.6rem; /* Larger and authoritative */
     line-height: 1;
+    letter-spacing: -0.75px; /* Tighter spacing looks modern/expensive */
+    
+    /* THE "PREMIUM" GRADIENT EFFECT */
+    background: linear-gradient(135deg, var(--text-head) 30%, var(--accent-emerald) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: var(--text-head); /* Fallback */
+    
+    position: relative;
+    top: 1px; /* Optical alignment correction */
 }
 
 /* Keep the rest of your CSS below this line (.nav-links, etc.) */
