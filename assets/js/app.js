@@ -1,17 +1,15 @@
 /**
  * MVN FINHUB - APP CONTROLLER (FINAL)
- * Handles: Database, Mobile Menu, and Footer Dark Mode.
+ * Handles: Dark Mode, Mobile Menu, and Database.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- CONFIGURATION (PASTE YOUR KEYS HERE) ---
-     const SUPABASE_URL = 'https://fviufivewglglnxhlmmf.supabase.co'; 
-     const SUPABASE_KEY = 'sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah';'
-    // -------------------------------------------
-
-    // --- 1. DARK MODE LOGIC (STRICT FOOTER TARGET) ---
-    // We target the specific ID we added to the HTML footer
+    // ==========================================
+    // 1. DARK MODE LOGIC (PRIORITY - RUNS FIRST)
+    // ==========================================
+    
+    // Target the specific Footer Button ID
     const themeBtn = document.getElementById('footer-theme-btn');
     const htmlElement = document.documentElement;
 
@@ -19,11 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme === 'dark') {
         htmlElement.setAttribute('data-theme', 'dark');
-        // Update the icon to Sun if it's already dark mode
-        if (themeBtn) themeBtn.textContent = '☀️';
+        if (themeBtn) themeBtn.textContent = '☀️'; // Set Sun Icon
     }
 
-    // B. Toggle Function
+    // B. Click Event Listener
     if (themeBtn) {
         themeBtn.addEventListener('click', () => {
             const isDark = htmlElement.getAttribute('data-theme') === 'dark';
@@ -40,9 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 themeBtn.textContent = '☀️';
             }
         });
+    } else {
+        console.warn("Dark Mode Button not found. Check HTML ID is 'footer-theme-btn'");
     }
 
-    // --- 2. MOBILE MENU ---
+    // ==========================================
+    // 2. MOBILE MENU LOGIC
+    // ==========================================
     const menuToggle = document.getElementById('mobile-menu-toggle');
     const navLinks = document.getElementById('nav-links');
 
@@ -50,17 +51,27 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             const isExpanded = navLinks.classList.contains('active');
-            // Toggle between Hamburger (☰) and Close (✕)
             menuToggle.textContent = isExpanded ? '✕' : '☰';
         });
     }
 
-    // --- 3. DYNAMIC FOOTER YEAR ---
-    // Automatically updates the year in the footer
+    // ==========================================
+    // 3. DYNAMIC FOOTER YEAR
+    // ==========================================
     const yearSpan = document.querySelector('.copyright-year');
     if(yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-    // --- 4. FORM SUBMISSION (SUPABASE) ---
+
+    // ==========================================
+    // 4. DATABASE & FORM LOGIC (SUPABASE)
+    // ==========================================
+    
+    // --- CONFIGURATION ---
+    // If these are empty, the form won't work, but Dark Mode WILL work now.
+    const SUPABASE_URL = 'https://fviufivewglglnxhlmmf.supabase.co'; 
+     const SUPABASE_KEY = 'sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah';'
+    // ---------------------
+
     const enquiryForm = document.getElementById('enquiryForm');
     const successMessage = document.getElementById('successMessage');
     const refIdDisplay = document.getElementById('refIdDisplay');
@@ -69,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
         enquiryForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Check Consent Checkbox
             const consentCheckbox = document.getElementById('consent');
             if (consentCheckbox && !consentCheckbox.checked) {
                 alert("Please agree to the Privacy Policy."); return;
@@ -80,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true; 
             submitBtn.textContent = 'Sending...';
 
-            // Generate Reference ID: MVN-YYYY-RANDOM
+            // Generate Ref ID
             const refID = `MVN-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
 
             const formData = {
@@ -94,6 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
+                if(!SUPABASE_URL || !SUPABASE_KEY) throw new Error("Database Configuration Missing");
+
                 const response = await fetch(`${SUPABASE_URL}/rest/v1/enquiries`, {
                     method: 'POST',
                     headers: {
@@ -107,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (!response.ok) throw new Error('Server Error');
 
-                // Success State
                 enquiryForm.style.display = 'none';
                 if(refIdDisplay) refIdDisplay.textContent = refID;
                 if(successMessage) {
@@ -117,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             } catch (error) {
                 console.error(error);
-                alert("Connection Error. Please try again.");
+                alert("Message could not be sent. Please contact us directly.");
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
             }
