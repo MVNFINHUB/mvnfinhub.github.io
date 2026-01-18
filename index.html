@@ -9,8 +9,151 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/main.css?v=platinum">
+    <link rel="stylesheet" href="assets/css/main.css?v=platinum_home">
     <script src="assets/js/app.js" defer></script>
+
+    <style>
+        /* --- HOME PAGE SPECIFIC PREMIUM STYLES --- */
+
+        /* 1. HERO SECTION UPGRADE (Prism Glass Effect) */
+        .hero-premium {
+            /* Adds a subtle animated background mesh */
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
+        }
+
+        .hero-glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            /* Gradient Border Effect */
+            border: double 1px transparent;
+            border-radius: 24px;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+                              linear-gradient(135deg, #0EA5E9 0%, #10B981 100%);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            
+            padding: 60px 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Hero Text Gradient */
+        .hero-glass-card h1 {
+            background: linear-gradient(135deg, #0F172A 0%, #1E40AF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            /* Fallback color */
+            color: #0F172A;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        /* 2. FEATURED SERVICE RIBBON (New Addition) */
+        .featured-ribbon {
+            background: linear-gradient(90deg, #EFF6FF 0%, #F0FDF4 100%);
+            border: 1px solid #BAE6FD;
+            border-radius: 50px;
+            padding: 8px 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #0369A1;
+            font-weight: 600;
+        }
+        .ribbon-dot {
+            width: 8px; height: 8px; background: #0EA5E9; border-radius: 50%;
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.3);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+        /* 3. TRUST INDICATORS (Modern Pills) */
+        .trust-indicators { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 35px; }
+        .trust-tag {
+            font-size: 0.85rem; font-weight: 600; 
+            color: #334155; 
+            background: white;
+            padding: 8px 16px; 
+            border-radius: 50px; 
+            border: 1px solid #E2E8F0;
+            display: flex; align-items: center; gap: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+        .trust-tag::before {
+            content: "🛡️"; font-size: 0.8rem;
+        }
+        /* Custom Icons for each tag */
+        .trust-tag:nth-child(2)::before { content: "🔒"; }
+        .trust-tag:nth-child(3)::before { content: "⚙️"; }
+        .trust-tag:nth-child(4)::before { content: "✅"; }
+
+        /* 4. FACE CARDS (Color Coded Top Borders) */
+        .face-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.6);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Color Coding the Grid */
+        .grid-4 .face-card:nth-child(1) { border-top: 4px solid #64748B; } /* Slate (Framework) */
+        .grid-4 .face-card:nth-child(2) { border-top: 4px solid #F59E0B; } /* Amber (Execution) */
+        .grid-4 .face-card:nth-child(3) { border-top: 4px solid #3B82F6; } /* Blue (Awareness) */
+        .grid-4 .face-card:nth-child(4) { border-top: 4px solid #10B981; } /* Green (Status) */
+
+        .face-card:hover { transform: translateY(-5px); }
+
+        /* --- NUCLEAR DARK MODE OVERRIDES --- */
+        [data-theme="dark"] .hero-premium { background-image: none !important; }
+        
+        [data-theme="dark"] .hero-glass-card {
+            background: rgba(30, 41, 59, 0.7) !important;
+            background-image: none !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
+        }
+        [data-theme="dark"] .hero-glass-card h1 {
+            background: none !important;
+            -webkit-text-fill-color: #ffffff !important;
+            color: #ffffff !important;
+        }
+        
+        [data-theme="dark"] .featured-ribbon {
+            background: rgba(15, 23, 42, 0.6) !important;
+            border-color: #38bdf8 !important;
+            color: #7dd3fc !important;
+        }
+        
+        [data-theme="dark"] .trust-tag {
+            background: rgba(30, 41, 59, 0.6) !important;
+            border-color: #475569 !important;
+            color: #cbd5e1 !important;
+        }
+
+        [data-theme="dark"] .face-card {
+            background: rgba(30, 41, 59, 0.6) !important;
+            border-color: rgba(255,255,255,0.05) !important;
+        }
+        /* Restore border tops in dark mode */
+        [data-theme="dark"] .grid-4 .face-card:nth-child(1) { border-top-color: #94a3b8 !important; }
+        [data-theme="dark"] .grid-4 .face-card:nth-child(2) { border-top-color: #fbbf24 !important; }
+        [data-theme="dark"] .grid-4 .face-card:nth-child(3) { border-top-color: #60a5fa !important; }
+        [data-theme="dark"] .grid-4 .face-card:nth-child(4) { border-top-color: #34d399 !important; }
+        
+        [data-theme="dark"] .face-card h3 { color: white !important; }
+        [data-theme="dark"] .face-card p { color: #cbd5e1 !important; }
+    </style>
 </head>
 <body>
 
@@ -43,6 +186,12 @@
 
         <div class="container">
             <div class="hero-glass-card">
+                
+                <div class="featured-ribbon">
+                    <div class="ribbon-dot"></div>
+                    Featured: Financial Structure & Readiness
+                </div>
+
                 <h1>Simplify Financial Documentation & Legacy Recovery</h1>
                 <p>Independent, strictly non-advisory process support for physical share recovery, IEPF claims, NRI banking, and financial documentation.</p>
                 
@@ -54,7 +203,7 @@
                 </div>
 
                 <div class="btn-group">
-                    <a href="contact.html" class="btn btn-primary" style="background: #0A2540; color: white; padding: 12px 30px; border-radius: 50px; display: inline-block; font-weight: 600;">Start an Enquiry</a>
+                    <a href="contact.html" class="btn btn-primary" style="background: #0A2540; color: white; padding: 12px 30px; border-radius: 50px; display: inline-block; font-weight: 600; box-shadow: 0 4px 14px 0 rgba(10,37,64,0.39);">Start an Enquiry</a>
                 </div>
                 
                 <div class="hero-micro-text">No login required • Response within 24 hours</div>
@@ -129,7 +278,7 @@
     <section class="section-padding">
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 30px;">Why Clients Choose MVN FinHub</h2>
-            <ul class="why-list" style="max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; border: 1px solid #eee;">
+            <ul class="why-list" style="max-width: 800px; margin: 0 auto; padding: 30px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); background: rgba(255,255,255,0.6);">
                 <li>No investment advice or product selling</li>
                 <li>No commissions or conflicts of interest</li>
                 <li>Secure handling of personal information</li>
@@ -190,13 +339,13 @@
         </div>
 
         <script>
-            // 1. Force check on load
+            // 1. Theme Logic
             if(localStorage.getItem('theme') === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'dark');
-                document.getElementById('footer-theme-btn').textContent = '☀️';
+                const btn = document.getElementById('footer-theme-btn');
+                if(btn) btn.textContent = '☀️';
             }
 
-            // 2. The Toggle Function (Triggered by onclick)
             function toggleTheme() {
                 const html = document.documentElement;
                 const btn = document.getElementById('footer-theme-btn');
@@ -212,6 +361,12 @@
                     btn.textContent = '☀️';
                 }
             }
+
+            // 2. Kill Ghost Icons
+            window.addEventListener('load', function() {
+                const ghosts = document.querySelectorAll('.theme-btn-floating, #theme-toggle-float');
+                ghosts.forEach(el => el.remove());
+            });
         </script>
     </footer>
 
