@@ -19,18 +19,17 @@
 
         /* 1. PRIMARY SERVICE (The Featured Box) */
         .primary-service {
-            /* Subtle Blue Tint for "Premium" feel */
+            /* Light Mode Gradient */
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 249, 255, 0.9) 100%);
             backdrop-filter: blur(12px);
-            border: 2px solid #0A2540; /* Navy Border */
+            border: 2px solid #0A2540;
             border-radius: 16px;
             padding: 40px;
             margin-bottom: 60px;
-            box-shadow: 0 10px 30px rgba(10, 37, 64, 0.1); /* Deep Shadow */
+            box-shadow: 0 10px 30px rgba(10, 37, 64, 0.1);
             position: relative;
             overflow: hidden;
         }
-        /* A subtle decorative glow */
         .primary-service::before {
             content: ''; position: absolute; top: 0; right: 0;
             width: 100px; height: 100px;
@@ -57,10 +56,9 @@
             margin-bottom: 10px;
         }
 
-        /* Boundary Box (Inside Primary) */
         .boundary-box {
             background-color: rgba(255, 255, 255, 0.6); 
-            border-left: 4px solid #0077B6; /* FinHub Blue */
+            border-left: 4px solid #0077B6;
             padding: 20px;
             margin-top: 30px;
             font-size: 0.95rem;
@@ -68,7 +66,7 @@
             color: #334155;
         }
 
-        /* 2. SERVICES GRID (Standard Glass Cards) */
+        /* 2. SERVICES GRID */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -98,7 +96,7 @@
             font-family: 'Merriweather', serif;
         }
 
-        /* 3. CHECK LISTS (Vivid Colors) */
+        /* 3. CHECK LISTS */
         .check-list li {
             position: relative;
             padding-left: 32px;
@@ -111,7 +109,7 @@
             content: "✓";
             position: absolute;
             left: 0; top: 0;
-            color: #10B981; /* Emerald Green */
+            color: #10B981;
             font-weight: 900;
             font-size: 1.1rem;
             background: rgba(16, 185, 129, 0.1);
@@ -120,11 +118,11 @@
             border-radius: 50%;
         }
 
-        /* 4. EXCLUSION SECTION (Elegant Red Warning) */
+        /* 4. EXCLUSION SECTION (Red Box) */
         .exclusion-section {
             background: linear-gradient(135deg, #FEF2F2 0%, #FFF1F2 100%);
             border: 1px solid #FECACA;
-            border-left: 5px solid #EF4444; /* Strong Red Border */
+            border-left: 5px solid #EF4444;
             border-radius: 12px;
             padding: 40px;
             margin-top: 60px;
@@ -132,14 +130,12 @@
         }
         
         .exclusion-section h2 {
-            color: #991B1B; /* Dark Red */
+            color: #991B1B;
             margin-bottom: 24px;
             font-size: 1.6rem;
             display: flex; align-items: center; gap: 10px;
         }
-        .exclusion-section h2::before {
-            content: "⚠️"; font-size: 1.4rem;
-        }
+        .exclusion-section h2::before { content: "⚠️"; font-size: 1.4rem; }
 
         .cross-list {
             display: grid;
@@ -158,14 +154,15 @@
             content: "✕";
             position: absolute;
             left: 0; top: 2px;
-            color: #EF4444; /* Bright Red */
+            color: #EF4444;
             font-weight: 900;
             font-size: 1.1rem;
         }
 
-        /* --- DARK MODE OVERRIDES --- */
+        /* --- DARK MODE OVERRIDES (FIXED) --- */
         [data-theme="dark"] .primary-service {
-            background: rgba(30, 41, 59, 0.6);
+            /* Use !important to override the gradient image */
+            background: rgba(30, 41, 59, 0.6) !important;
             border-color: #38bdf8;
         }
         [data-theme="dark"] .primary-service h2 { color: white; }
@@ -186,9 +183,10 @@
         }
         [data-theme="dark"] .check-list li { color: #cbd5e1; }
         
-        /* Red Box Dark Mode */
+        /* Red Box Dark Mode Fix */
         [data-theme="dark"] .exclusion-section {
-            background-color: rgba(69, 10, 10, 0.4);
+            /* Force dark background, removing the light pink gradient */
+            background: rgba(69, 10, 10, 0.6) !important;
             border-color: #7f1d1d;
             border-left-color: #ef4444;
         }
@@ -333,9 +331,11 @@
     </footer>
 
     <script>
+        // 1. Theme Logic
         if(localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
-            document.getElementById('footer-theme-btn').textContent = '☀️';
+            const btn = document.getElementById('footer-theme-btn');
+            if(btn) btn.textContent = '☀️';
         }
 
         function toggleTheme() {
@@ -353,6 +353,12 @@
                 btn.textContent = '☀️';
             }
         }
+
+        // 2. "Ghost Icon" Killer (Removes any floating button)
+        window.addEventListener('load', function() {
+            const ghosts = document.querySelectorAll('.theme-btn-floating, #theme-toggle-float');
+            ghosts.forEach(el => el.remove());
+        });
     </script>
 
 </body>
