@@ -1,14 +1,13 @@
-/* MVN FINHUB - MOBILE CORRECTIONS (FINAL) */
+/* MVN FINHUB - MOBILE CORRECTIONS (FINAL POLISH) */
 
 @media (max-width: 768px) {
     
-    /* 1. Header Layout */
+    /* --- 1. HEADER & MENU LAYOUT --- */
     .nav-flex {
         flex-wrap: wrap; 
         position: relative; 
     }
 
-    /* 2. Hamburger Button */
     .mobile-toggle {
         display: block !important;
         font-size: 1.8rem;
@@ -20,7 +19,7 @@
         margin-left: auto; 
     }
 
-    /* 3. The Menu List (FORCE HIDDEN) */
+    /* --- 2. MENU DROPDOWN --- */
     .nav-links {
         display: none !important;
         width: 100%;
@@ -29,7 +28,7 @@
         padding: 24px;
         margin-top: 16px;
         border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Stronger shadow */
         border: 1px solid var(--border-color);
         gap: 16px;
         position: absolute; 
@@ -38,46 +37,55 @@
         z-index: 9999; 
     }
 
-    /* 4. The "Active" State */
     .nav-links.active {
         display: flex !important; 
     }
 
-    /* 5. Menu Items */
     .nav-item {
         width: 100%;
         text-align: center;
         padding: 12px 0;
         border-bottom: 1px solid var(--border-color);
         font-size: 1.1rem;
+        color: var(--text-main);
     }
     .nav-item:last-child { border-bottom: none; }
     
+    /* --- 3. MENU BUTTON FIX (Visible Text) --- */
     .nav-item.btn-nav {
         margin-top: 10px;
-        background-color: var(--primary-navy);
-        color: white !important;
+        background-color: #ffffff !important; /* Force White Button */
+        color: #0A2540 !important;          /* Force Navy Text (Visible) */
+        border: 1px solid #e2e8f0;
+        font-weight: 700;
         border-radius: 8px;
     }
 
-    /* 6. Content Adjustments */
+    /* --- 4. CONTENT FIXES --- */
     .hero { padding-top: 60px; } 
     .hero h1 { font-size: 2rem !important; }
     .grid-4 { grid-template-columns: 1fr !important; }
     .container { padding: 0 20px; }
 
-    /* --- MOBILE FOOTER FIX --- */
+    /* --- 5. FOOTER OVERLAP FIX (Critical) --- */
     footer .container {
-        padding-bottom: 50px; /* Make room at the bottom for the button */
+        /* Adds 100px empty space at the bottom so links don't touch the icon */
+        padding-bottom: 100px !important; 
+        position: relative;
     }
 
+    /* Positions the icon in that empty space */
     .theme-btn-footer {
-        top: auto;          /* Unset top alignment */
-        bottom: 0;          /* Stick to bottom center */
-        left: 50%;          /* Move to bottom */
-        right: auto;        /* Unset right alignment */
-        transform: translateX(-50%); /* Center it perfectly */
-        
-        margin-top: 20px;   /* Space from text */
-        background: rgba(255, 255, 255, 0.05);
+        position: absolute;
+        bottom: 30px !important; 
+        left: 50% !important;
+        transform: translateX(-50%) !important; /* Center Horizontally */
+        width: 44px;
+        height: 44px;
+        background-color: var(--surface-card);
+        border: 1px solid var(--border-color);
+        z-index: 20;
+        top: auto !important;
+        right: auto !important;
     }
+}
