@@ -1,62 +1,51 @@
-/* MVN FINHUB - VARIABLES (PREMIUM + DARK MODE)
-   -------------------------------------------------------
-   Defines the palette for Light Mode and overrides for Dark Mode.
-*/
+/* MVN FINHUB - PREMIUM VARIABLES (2026) */
 
 :root {
-    /* --- LIGHT MODE (Default) --- */
-    --primary-navy: #0A2540;
-    --primary-light: #183B5E;
-    --accent-emerald: #059669;
-    
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #0A2540 0%, #1e40af 100%);
-    --gradient-action: linear-gradient(135deg, #059669 0%, #10b981 100%);
-
-    /* Backgrounds */
-    --bg-body: #F8FAFC;       
-    --surface-card: #FFFFFF;  
-    --surface-glass: rgba(255, 255, 255, 0.85); /* White Frost */
-
-    /* Text */
-    --text-main: #334155;
-    --text-head: #0A2540;
-    --text-muted: #64748B;
-    
-    /* Borders & Shadows */
-    --border-color: #E2E8F0;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-    --shadow-lg: 0 10px 25px -3px rgba(0,0,0,0.1);
-
-    /* --- SIZES --- */
-    --container-width: 1100px;
-    --border-radius: 16px;
+    /* --- TYPOGRAPHY --- */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
     --font-serif: 'Merriweather', serif;
-    --font-sans: 'Inter', sans-serif;
+
+    /* --- PREMIUM COLOR PALETTE --- */
+    /* Primary Brand Colors */
+    --primary-navy: #0A2540;       /* Deep Trust Navy */
+    --primary-royal: #1E40AF;      /* Royal Blue (Highlights) */
+    --accent-sky: #0EA5E9;         /* Sky Blue (Accents) */
+    --accent-emerald: #10B981;     /* Success/Growth Green */
+    
+    /* Backgrounds (The Platinum Look) */
+    --bg-body: #F8FAFC;            /* Base Platinum */
+    --bg-gradient: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+    
+    /* Surfaces (Glass) */
+    --surface-glass: rgba(255, 255, 255, 0.85);
+    --surface-card: #FFFFFF;
+    
+    /* Text Colors */
+    --text-head: #0A2540;          /* Darkest Navy for Headers */
+    --text-main: #334155;          /* Slate for Body Text */
+    --text-muted: #64748B;         /* Lighter Grey for hints */
+    
+    /* Borders */
+    --border-color: #E2E8F0;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.05);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.08);
 }
 
-/* --- DARK MODE OVERRIDES --- */
+/* --- DARK MODE VARIABLES --- */
 [data-theme="dark"] {
-    /* Recalibrate Colors for Dark Theme */
-    --primary-navy: #E2E8F0; /* Light text for headers */
-    --primary-light: #94A3B8;
+    --primary-navy: #FFFFFF;       /* Headers turn white */
+    --bg-body: #0F172A;            /* Dark Slate Background */
+    --bg-gradient: linear-gradient(135deg, #0F172A 0%, #020617 100%);
     
-    /* Gradients (Darker, subtler) */
-    --gradient-primary: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    --gradient-action: linear-gradient(135deg, #059669 0%, #047857 100%);
-
-    /* Backgrounds */
-    --bg-body: #0F172A;       /* Deep Navy Bg */
-    --surface-card: #1E293B;  /* Slate Card */
-    --surface-glass: rgba(15, 23, 42, 0.85); /* Dark Frost */
-
-    /* Text */
-    --text-main: #CBD5E1;     /* Light Grey */
-    --text-head: #F8FAFC;     /* White */
+    --surface-glass: rgba(30, 41, 59, 0.7);
+    --surface-card: rgba(30, 41, 59, 0.5);
+    
+    --text-head: #F8FAFC;
+    --text-main: #CBD5E1;
     --text-muted: #94A3B8;
     
-    /* Borders & Shadows */
-    --border-color: #334155;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
-    --shadow-lg: 0 10px 25px -3px rgba(0,0,0,0.5);
+    --border-color: rgba(255, 255, 255, 0.1);
 }
