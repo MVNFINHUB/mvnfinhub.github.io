@@ -19,45 +19,28 @@ body {
 h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--text-head); letter-spacing: -0.5px; margin-bottom: 16px; }
 a { text-decoration: none; color: inherit; transition: color 0.2s; }
 
-/* --- GLASS HEADER --- */
+/* --- NORMAL GLASS HEADER (Scrolls Away) --- */
 header {
-    background-color: var(--surface-glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-color);
-    padding: 16px 0;
-    position: sticky; top: 0; z-index: 1000;
-}
-
-.nav-flex { display: flex; justify-content: space-between; align-items: center; }
-
-/* LOGO UPDATE (Image Style) */
-/* --- FIXED GLASS HEADER (Stays on Top) --- */
-header {
-    background-color: rgba(255, 255, 255, 0.85); /* Stronger white for visibility */
+    background-color: rgba(255, 255, 255, 0.95); /* Solid white for maximum clarity */
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(0,0,0,0.05);
     padding: 12px 0;
     
-    /* FORCE STICKY BEHAVIOR */
-    position: fixed; /* Changed from sticky to fixed for better stability */
-    top: 0;
-    left: 0;
-    width: 100%;
+    /* SCROLLS AWAY (Not Sticky) */
+    position: relative; 
     z-index: 1000;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03); /* Subtle shadow for depth */
+    width: 100%;
 }
 
-/* Add padding to body so content doesn't hide behind fixed header */
+/* Remove extra padding since header is no longer floating */
 body {
-    padding-top: 80px; /* Adjust this to match header height */
+    padding-top: 0; 
 }
 
-/* Dark Mode Header Fix */
+/* Dark Mode Header */
 [data-theme="dark"] header {
-    background-color: rgba(15, 23, 42, 0.85); /* Dark Glass */
+    background-color: rgba(15, 23, 42, 0.9);
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
@@ -67,17 +50,17 @@ body {
 .brand-logo { 
     display: flex; 
     align-items: center; 
-    gap: 15px; /* More space */
+    gap: 15px; 
     text-decoration: none; 
     padding: 4px 0;
 }
 
 /* 1. Bigger Icon */
 .logo-icon-wrapper img {
-    height: 54px; /* INCREASED SIZE (Was 46px) */
+    height: 54px; /* BIG SIZE */
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); /* Solid shadow for Day Mode */
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
     transition: all 0.3s ease;
 }
 
@@ -85,35 +68,35 @@ body {
 .brand-text {
     font-family: 'Merriweather', serif;
     font-weight: 900;
-    font-size: 1.7rem; /* Larger Text */
+    font-size: 1.7rem; 
     line-height: 1;
     letter-spacing: -0.5px;
     display: flex;
     align-items: baseline;
 }
 
-/* "MVN" - Deep Navy (Solid & Professional) */
+/* "MVN" - Solid Navy (Clear in Day Mode) */
 .text-mvn {
-    color: #0A2540; /* Solid Navy Blue */
-    background: none; /* Remove gradient for clarity in Day Mode */
+    color: #0A2540; 
+    background: none; 
     text-shadow: none;
 }
 
-/* "FinHub" - Royal Blue (Clear & Distinct) */
+/* "FinHub" - Solid Royal Blue (Clear in Day Mode) */
 .text-finhub {
-    color: #0077B6; /* Solid Royal Blue */
-    background: none; /* Remove glowing gradient in Day Mode */
+    color: #0077B6; 
+    background: none; 
     font-weight: 900;
     margin-left: 2px;
 }
 
-/* --- DARK MODE TRANSFORMATION (The "Flashy" Look) --- */
+/* --- DARK MODE (The "Glowing" Look) --- */
+/* These effects ONLY happen when Dark Mode is ON */
 [data-theme="dark"] .logo-icon-wrapper img {
-    filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.6)); /* Glow turns ON at night */
+    filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.6)); 
 }
 
 [data-theme="dark"] .text-mvn {
-    /* Silver Metal Gradient for Night */
     background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -121,14 +104,12 @@ body {
 }
 
 [data-theme="dark"] .text-finhub {
-    /* Electric Cyan Gradient for Night */
     background: linear-gradient(180deg, #00C8FF 0%, #E0F7FF 50%, #0077B6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
     filter: drop-shadow(0 0 5px rgba(0, 200, 255, 0.4));
 }
-
 /* Keep the rest of your CSS below this line (.nav-links, etc.) */
 
 .nav-links { display: flex; gap: 32px; align-items: center; }
