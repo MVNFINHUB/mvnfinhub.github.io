@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/main.css?v=final2">
+    <link rel="stylesheet" href="assets/css/main.css?v=platinum">
     <script src="assets/js/app.js" defer></script>
 </head>
 <body>
@@ -185,29 +185,24 @@
                 <a href="contact.html">Contact</a>
                 <a href="https://instagram.com/mvnfinhub" target="_blank">Instagram</a>
                 
-                <button id="footer-theme-btn" class="theme-btn-footer" aria-label="Toggle Dark Mode">🌙</button>
+                <button id="footer-theme-btn" class="theme-btn-footer" onclick="toggleTheme()" aria-label="Toggle Dark Mode" style="cursor: pointer;">🌙</button>
             </div>
         </div>
-    </footer>
-<script>
-    (function() {
-        const btn = document.getElementById('footer-theme-btn');
-        const html = document.documentElement;
 
-        // 1. Check saved theme immediately
-        const saved = localStorage.getItem('theme');
-        if(saved === 'dark') {
-            html.setAttribute('data-theme', 'dark');
-            if(btn) btn.textContent = '☀️';
-        }
+        <script>
+            // 1. Force check on load
+            if(localStorage.getItem('theme') === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.getElementById('footer-theme-btn').textContent = '☀️';
+            }
 
-        // 2. Add Click Listener
-        if(btn) {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const isDark = html.getAttribute('data-theme') === 'dark';
-                
-                if(isDark) {
+            // 2. The Toggle Function (Triggered by onclick)
+            function toggleTheme() {
+                const html = document.documentElement;
+                const btn = document.getElementById('footer-theme-btn');
+                const current = html.getAttribute('data-theme');
+
+                if (current === 'dark') {
                     html.setAttribute('data-theme', 'light');
                     localStorage.setItem('theme', 'light');
                     btn.textContent = '🌙';
@@ -216,9 +211,9 @@
                     localStorage.setItem('theme', 'dark');
                     btn.textContent = '☀️';
                 }
-            });
-        }
-    })();
-</script>
+            }
+        </script>
+    </footer>
+
 </body>
 </html>
