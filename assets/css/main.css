@@ -32,78 +32,101 @@ header {
 .nav-flex { display: flex; justify-content: space-between; align-items: center; }
 
 /* LOGO UPDATE (Image Style) */
-/* --- QUANTUM GLOW BRANDING (Main Design) --- */
+/* --- FIXED GLASS HEADER (Stays on Top) --- */
+header {
+    background-color: rgba(255, 255, 255, 0.85); /* Stronger white for visibility */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding: 12px 0;
+    
+    /* FORCE STICKY BEHAVIOR */
+    position: fixed; /* Changed from sticky to fixed for better stability */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03); /* Subtle shadow for depth */
+}
+
+/* Add padding to body so content doesn't hide behind fixed header */
+body {
+    padding-top: 80px; /* Adjust this to match header height */
+}
+
+/* Dark Mode Header Fix */
+[data-theme="dark"] header {
+    background-color: rgba(15, 23, 42, 0.85); /* Dark Glass */
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav-flex { display: flex; justify-content: space-between; align-items: center; }
+
+/* --- BIGGER & CLEARER LOGO DESIGN --- */
 .brand-logo { 
     display: flex; 
     align-items: center; 
-    gap: 12px; 
+    gap: 15px; /* More space */
     text-decoration: none; 
-    padding: 6px 0;
+    padding: 4px 0;
 }
 
-/* 1. THE GLOWING ICON WRAPPER */
-.logo-icon-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* The Icon Image - Making it Glow */
+/* 1. Bigger Icon */
 .logo-icon-wrapper img {
-    height: 46px; 
+    height: 54px; /* INCREASED SIZE (Was 46px) */
     width: auto;
     object-fit: contain;
-    /* This creates the electric blue aura around the image */
-    filter: drop-shadow(0 0 8px rgba(0, 210, 255, 0.5));
-    transition: all 0.4s ease;
-    z-index: 2;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); /* Solid shadow for Day Mode */
+    transition: all 0.3s ease;
 }
 
-/* Hover Effect: Pulse brighter */
-.brand-logo:hover .logo-icon-wrapper img {
-    transform: scale(1.08) rotate(2deg); /* slight 3D tilt */
-    filter: drop-shadow(0 0 14px rgba(0, 210, 255, 0.8));
-}
-
-/* 2. THE METALLIC TEXT CONTAINER */
+/* 2. High-Contrast "Day Mode" Text (Readable) */
 .brand-text {
-    font-family: 'Merriweather', serif; /* Premium Font */
-    font-weight: 900; /* Ultra Bold */
-    font-size: 1.6rem;
+    font-family: 'Merriweather', serif;
+    font-weight: 900;
+    font-size: 1.7rem; /* Larger Text */
     line-height: 1;
     letter-spacing: -0.5px;
     display: flex;
     align-items: baseline;
 }
 
-/* "MVN" - Deep Navy Steel Look */
+/* "MVN" - Deep Navy (Solid & Professional) */
 .text-mvn {
-    /* Metallic Gradient: Dark -> Light -> Dark */
-    background: linear-gradient(180deg, #0f172a 0%, #334155 50%, #0f172a 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0px 1px 1px rgba(255,255,255,0.1); /* Subtle edge shine */
+    color: #0A2540; /* Solid Navy Blue */
+    background: none; /* Remove gradient for clarity in Day Mode */
+    text-shadow: none;
 }
 
-/* "FinHub" - Electric Cyan Chrome Look */
+/* "FinHub" - Royal Blue (Clear & Distinct) */
 .text-finhub {
-    /* Electric Gradient: Cyan -> White -> Blue */
-    background: linear-gradient(180deg, #00C8FF 0%, #E0F7FF 45%, #0077B6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    
-    /* The Glow Effect */
-    filter: drop-shadow(0 0 2px rgba(0, 200, 255, 0.5));
-    
-    margin-left: 2px; /* Slight separation */
+    color: #0077B6; /* Solid Royal Blue */
+    background: none; /* Remove glowing gradient in Day Mode */
+    font-weight: 900;
+    margin-left: 2px;
 }
 
-/* Dark Mode Adjustment: "MVN" becomes Silver Steel */
+/* --- DARK MODE TRANSFORMATION (The "Flashy" Look) --- */
+[data-theme="dark"] .logo-icon-wrapper img {
+    filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.6)); /* Glow turns ON at night */
+}
+
 [data-theme="dark"] .text-mvn {
-    background: linear-gradient(180deg, #ffffff 0%, #94a3b8 50%, #cbd5e1 100%);
+    /* Silver Metal Gradient for Night */
+    background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent; 
+}
+
+[data-theme="dark"] .text-finhub {
+    /* Electric Cyan Gradient for Night */
+    background: linear-gradient(180deg, #00C8FF 0%, #E0F7FF 50%, #0077B6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    filter: drop-shadow(0 0 5px rgba(0, 200, 255, 0.4));
 }
 
 /* Keep the rest of your CSS below this line (.nav-links, etc.) */
