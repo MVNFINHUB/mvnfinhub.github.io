@@ -2,28 +2,33 @@
 
 @media (max-width: 768px) {
     
-   /* 1. HEADER & LOGO (Mobile Optimized) */
+ /* 1. STICKY HEADER & LOGO (Mobile) */
+    
+    /* Fix header content spacing */
+    .hero, .section-padding { 
+        padding-top: 40px !important; /* Prevents overlap with sticky header */
+    }
+
     .nav-flex {
         flex-wrap: nowrap;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
         justify-content: space-between;
     }
     
     .brand-logo {
-        gap: 8px;
+        gap: 10px;
     }
 
-    /* Smaller Icon */
+    /* Bigger Mobile Icon */
     .logo-icon-wrapper img {
-        height: 38px;
-        filter: drop-shadow(0 0 4px rgba(0, 210, 255, 0.4)); /* Less glow on mobile */
+        height: 44px; /* Increased from 38px */
     }
 
-    /* Smaller Text */
+    /* Readable Mobile Text */
     .brand-text {
-        font-size: 1.25rem;
-    }}
+        font-size: 1.35rem; /* Larger */
+    }
 
     /* 2. HAMBURGER BUTTON */
     .mobile-toggle {
