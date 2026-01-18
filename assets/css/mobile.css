@@ -1,13 +1,19 @@
-/* MVN FINHUB - MOBILE CORRECTIONS (FINAL POLISH) */
+/* MVN FINHUB - MOBILE CORRECTIONS (FINAL v4) */
 
 @media (max-width: 768px) {
     
-    /* --- 1. HEADER & MENU LAYOUT --- */
+    /* 1. HEADER & LOGO */
     .nav-flex {
         flex-wrap: wrap; 
         position: relative; 
     }
+    
+    /* Make brand name slightly smaller on mobile to fit */
+    .brand-name {
+        font-size: 1.1rem;
+    }
 
+    /* 2. HAMBURGER BUTTON */
     .mobile-toggle {
         display: block !important;
         font-size: 1.8rem;
@@ -19,7 +25,7 @@
         margin-left: auto; 
     }
 
-    /* --- 2. MENU DROPDOWN --- */
+    /* 3. MENU DROPDOWN */
     .nav-links {
         display: none !important;
         width: 100%;
@@ -28,7 +34,7 @@
         padding: 24px;
         margin-top: 16px;
         border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Stronger shadow */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         border: 1px solid var(--border-color);
         gap: 16px;
         position: absolute; 
@@ -51,35 +57,35 @@
     }
     .nav-item:last-child { border-bottom: none; }
     
-    /* --- 3. MENU BUTTON FIX (Visible Text) --- */
+    /* --- FIX: MOBILE MENU BUTTON (Force Dark Text) --- */
     .nav-item.btn-nav {
         margin-top: 10px;
-        background-color: #ffffff !important; /* Force White Button */
-        color: #0A2540 !important;          /* Force Navy Text (Visible) */
+        background-color: #ffffff !important; 
+        color: #0A2540 !important; /* NAVY BLUE TEXT (Fixes invisible text) */
         border: 1px solid #e2e8f0;
         font-weight: 700;
         border-radius: 8px;
     }
 
-    /* --- 4. CONTENT FIXES --- */
+    /* 4. CONTENT ADJUSTMENTS */
     .hero { padding-top: 60px; } 
     .hero h1 { font-size: 2rem !important; }
     .grid-4 { grid-template-columns: 1fr !important; }
     .container { padding: 0 20px; }
 
-    /* --- 5. FOOTER OVERLAP FIX (Critical) --- */
+    /* --- FIX: FOOTER OVERLAP --- */
     footer .container {
-        /* Adds 100px empty space at the bottom so links don't touch the icon */
-        padding-bottom: 100px !important; 
+        /* Adds BIG space at bottom so icon doesn't touch text */
+        padding-bottom: 90px !important; 
         position: relative;
     }
 
-    /* Positions the icon in that empty space */
+    /* Positions icon in that empty space */
     .theme-btn-footer {
         position: absolute;
-        bottom: 30px !important; 
+        bottom: 25px !important; 
         left: 50% !important;
-        transform: translateX(-50%) !important; /* Center Horizontally */
+        transform: translateX(-50%) !important; /* Centers it */
         width: 44px;
         height: 44px;
         background-color: var(--surface-card);
