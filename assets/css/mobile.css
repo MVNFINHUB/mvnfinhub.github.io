@@ -74,7 +74,7 @@
     .theme-btn-footer {
         top: auto;          /* Unset top alignment */
         bottom: 0;          /* Stick to bottom center */
-        left: 50%;          /* Move to center */
+        left: 50%;          /* Move to bottom */
         right: auto;        /* Unset right alignment */
         transform: translateX(-50%); /* Center it perfectly */
         
