@@ -76,11 +76,12 @@
     /* Hero Mobile Fixes */
 @media (max-width: 768px) {
     .hero-premium { padding-top: 130px; }
-    /* --- MOBILE HERO ALIGNMENT FIX --- */
+   /* --- MOBILE HERO FIX --- */
     .hero-glass-card {
-        width: 92% !important; /* Leave small gaps on sides */
-        margin: 0 auto !important; /* Center it */
-        padding: 30px 20px !important; /* Internal spacing */
+        width: auto !important; /* Let it flow naturally */
+        max-width: 100% !important; 
+        margin: 0 15px !important; /* 15px gap on left/right edges */
+        padding: 30px 20px !important;
         border-radius: 16px;
     }
 
