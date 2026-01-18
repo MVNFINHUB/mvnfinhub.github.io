@@ -2,11 +2,11 @@
 
 @media (max-width: 768px) {
     
- /* 1. STICKY HEADER & LOGO (Mobile) */
+ /* 1. NORMAL HEADER (Mobile) */
     
-    /* Fix header content spacing */
+    /* Remove the padding hack we added for the sticky header */
     .hero, .section-padding { 
-        padding-top: 40px !important; /* Prevents overlap with sticky header */
+        padding-top: 0 !important; 
     }
 
     .nav-flex {
@@ -20,16 +20,14 @@
         gap: 10px;
     }
 
-    /* Bigger Mobile Icon */
+    /* Mobile Sizes */
     .logo-icon-wrapper img {
-        height: 44px; /* Increased from 38px */
+        height: 44px; /* Good visible size */
     }
 
-    /* Readable Mobile Text */
     .brand-text {
-        font-size: 1.35rem; /* Larger */
+        font-size: 1.35rem; /* Readable text */
     }
-
     /* 2. HAMBURGER BUTTON */
     .mobile-toggle {
         display: block !important;
