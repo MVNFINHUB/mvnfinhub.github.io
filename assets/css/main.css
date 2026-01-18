@@ -1,18 +1,27 @@
-/* MVN FINHUB - FINAL GOLD STYLES (Fixed Dark Mode) */
+/* MVN FINHUB - FINAL PLATINUM STYLES (Gradient + Dark Mode Fixed) */
 
 @import url('./variables.css');
 @import url('./components.css');
 
-/* --- 1. GLOBAL LAYOUT --- */
+/* --- 1. GLOBAL LAYOUT & GRADIENT BACKGROUND --- */
 html { scroll-behavior: smooth; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: var(--font-sans);
-    background-color: var(--bg-body);
+    
+    /* NEW: Premium Gradient Background (Removes Flat White Look) */
+    background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 50%, #E2E8F0 100%);
+    background-attachment: fixed; /* Keeps gradient steady while scrolling */
+    
     color: var(--text-main);
     line-height: 1.6;
     display: flex; flex-direction: column; min-height: 100vh;
+}
+
+/* Ensure sections are transparent so the gradient shows through */
+.hero-premium, .section-padding {
+    background-color: transparent !important;
 }
 
 /* THE CONTAINER */
@@ -30,10 +39,10 @@ ul { list-style: none; }
 
 /* --- 2. HEADER --- */
 header {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.85); /* Slightly more transparent for glass effect */
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.5);
     padding: 12px 0;
     position: relative; z-index: 1000; width: 100%;
 }
@@ -55,18 +64,19 @@ header {
 .mobile-toggle { display: none; }
 
 /* --- 3. HERO SECTION --- */
-.hero-premium { position: relative; padding: 100px 0; background-color: #F8FAFC; overflow: hidden; }
+.hero-premium { position: relative; padding: 100px 0; overflow: hidden; }
 .hero-glow { position: absolute; border-radius: 50%; filter: blur(90px); z-index: 0; opacity: 0.5; }
 .glow-left { width: 400px; height: 400px; background: rgba(0, 200, 255, 0.15); top: -100px; left: -100px; }
 .glow-right { width: 500px; height: 500px; background: rgba(10, 37, 64, 0.1); bottom: -100px; right: -100px; }
 
 .hero-glass-card {
     position: relative; z-index: 1;
-    background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 24px;
+    background: rgba(255, 255, 255, 0.75); /* More glass-like */
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 24px;
     padding: 60px 40px;
     width: 100%; max-width: 900px; margin: 0 auto; 
-    text-align: center; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    text-align: center; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 }
 .hero-glass-card h1 { color: #0A2540; font-family: 'Merriweather', serif; font-weight: 800; font-size: 2.6rem; margin-bottom: 24px; line-height: 1.3; }
 .hero-glass-card p { color: #475569; font-size: 1.15rem; margin-bottom: 30px; line-height: 1.6; max-width: 750px; margin-left: auto; margin-right: auto; }
@@ -78,7 +88,12 @@ header {
 .section-padding { padding: 60px 0; }
 .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
 
-.face-card { background: var(--surface-card); padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+.face-card { 
+    background: rgba(255, 255, 255, 0.8); /* Slight transparency */
+    backdrop-filter: blur(10px);
+    padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.6); 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02); 
+}
 .face-card h3 { margin-bottom: 15px; color: var(--text-head); }
 .service-list li, .why-list li { margin-bottom: 10px; padding-left: 20px; position: relative; font-size: 0.95rem; color: var(--text-main); }
 .service-list li::before, .why-list li::before { content: "✓"; color: var(--accent-emerald); position: absolute; left: 0; top: 0; font-weight: bold; }
@@ -86,7 +101,9 @@ header {
 /* FAQ Styles */
 .faq-container { max-width: 800px; margin: 0 auto; }
 details.faq-item {
-    background: var(--surface-card); border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.8); 
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.6);
     margin-bottom: 12px; border-radius: 8px; overflow: hidden;
 }
 summary.faq-question {
@@ -113,6 +130,13 @@ footer { background-color: #0F172A; color: #94A3B8; padding: 60px 0 30px 0; text
     display: flex; align-items: center; justify-content: center;
 }
 .theme-btn-footer:hover { opacity: 1; color: white; }
+/* FORCE VISIBILITY */
+#footer-theme-btn {
+    display: flex !important;
+    position: relative !important;
+    z-index: 10000 !important;
+    pointer-events: auto !important;
+}
 
 /* --- 6. MOBILE --- */
 @media (max-width: 768px) {
@@ -132,8 +156,13 @@ footer { background-color: #0F172A; color: #94A3B8; padding: 60px 0 30px 0; text
     .hero-glass-card { padding: 40px 20px; border-radius: 16px; }
 }
 
-/* --- 7. DARK MODE FIXES (The Critical Part) --- */
-[data-theme="dark"] .hero-premium { background-color: #0F172A; }
+/* --- 7. DARK MODE FIXES (Critical) --- */
+/* Dark Mode Gradient Body */
+[data-theme="dark"] body {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    background-attachment: fixed;
+}
+[data-theme="dark"] .hero-premium { background-color: transparent !important; }
 [data-theme="dark"] .hero-glass-card { background: rgba(30, 41, 59, 0.6); border-color: rgba(255,255,255,0.05); }
 [data-theme="dark"] .hero-glass-card h1 { color: #ffffff; }
 [data-theme="dark"] .hero-glass-card p { color: #cbd5e1; }
@@ -143,12 +172,15 @@ footer { background-color: #0F172A; color: #94A3B8; padding: 60px 0 30px 0; text
 [data-theme="dark"] .text-finhub { color: #00C8FF; }
 
 /* FIX: TURN THE WHITE BOX DARK IN NIGHT MODE */
-[data-theme="dark"] .why-list {
-    background: rgba(30, 41, 59, 0.6) !important; /* Forces Dark Background */
+[data-theme="dark"] .why-list, 
+[data-theme="dark"] .face-card, 
+[data-theme="dark"] details.faq-item {
+    background: rgba(30, 41, 59, 0.6) !important;
     border: 1px solid rgba(255,255,255,0.1) !important;
     color: #cbd5e1 !important;
 }
-[data-theme="dark"] .why-list li { color: #cbd5e1 !important; }
+[data-theme="dark"] .why-list li, 
+[data-theme="dark"] .service-list li { color: #cbd5e1 !important; }
 
-/* KILL SWITCH: Hides the old "Left" button if it tries to appear */
-.theme-btn-floating, #theme-toggle-float { display: none !important; }
+/* KILL SWITCH */
+.theme-btn-floating, #theme-toggle-float, #theme-toggle { display: none !important; }
