@@ -4,18 +4,20 @@
     
 /* 1. MOBILE HEADER - TIGHT FIT */
     .brand-logo {
-        gap: 0px; /* No gap on mobile either */
+        gap: 0px;
     }
 
     /* Mobile Icon */
     .logo-icon-wrapper img {
-        height: 50px; /* Big for mobile */
-        margin-right: -8px; /* Pull text close */
+        height: 55px; /* Very big for mobile */
+        /* Aggressive pull for mobile */
+        margin-right: -18px; 
     }
 
     /* Mobile Text */
     .brand-text {
-        font-size: 1.5rem; 
+        font-size: 1.6rem;
+        margin-left: -4px;
     }
     /* 2. HAMBURGER BUTTON */
     .mobile-toggle {
