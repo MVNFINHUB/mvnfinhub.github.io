@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MVN FinHub - Non-advisory financial process and documentation support.">
     <title>MVN FinHub | Financial Documentation & Process Support</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/main.css?v=final">
+    <link rel="stylesheet" href="assets/css/main.css?v=final2">
     <script src="assets/js/app.js" defer></script>
 </head>
 <body>
@@ -140,16 +139,38 @@
         </div>
     </section>
 
-    <section class="section-padding contact-teaser" style="background-color: #0A2540; color: white; text-align: center;">
+    <section class="section-padding">
         <div class="container">
-            <h2 style="color: white;">Start an Enquiry</h2>
-            <a href="contact.html" class="btn" style="background: white; color: #0A2540; padding: 12px 30px; border-radius: 8px; font-weight: 600; display: inline-block; margin-top: 10px;">Submit Enquiry</a>
+            <h2 style="text-align: center; margin-bottom: 30px;">Common Questions</h2>
+            <div class="faq-container">
+                
+                <details class="faq-item">
+                    <summary class="faq-question">Do I need to visit India personally?</summary>
+                    <div class="faq-answer">
+                        For most processes like share recovery or banking documentation, physical presence is not required. We coordinate the paperwork remotely, though specific bank rules may vary.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Do you offer investment advice?</summary>
+                    <div class="faq-answer">
+                        No. MVN FinHub is strictly a process and documentation support service. We do not sell financial products, offer trading tips, or provide investment advisory services.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">How long does the IEPF claim process take?</summary>
+                    <div class="faq-answer">
+                        Timelines vary based on government processing speeds and the complexity of the case. Generally, it takes between 6 to 12 months for final approval and transfer.
+                    </div>
+                </details>
+
+            </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            
             <div class="footer-logo-container">
                 <img src="assets/images/logo-3d-full.png" alt="MVN FinHub Premium" class="footer-3d-logo">
             </div>
@@ -163,9 +184,8 @@
                 <a href="legal.html">Privacy & Legal</a>
                 <a href="contact.html">Contact</a>
                 <a href="https://instagram.com/mvnfinhub" target="_blank">Instagram</a>
+                <button id="theme-toggle" class="theme-btn-footer" aria-label="Toggle Dark Mode">🌙</button>
             </div>
-
-            <button id="theme-toggle" class="theme-btn-footer" aria-label="Toggle Dark Mode">🌙</button>
         </div>
     </footer>
 
