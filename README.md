@@ -14,7 +14,7 @@
   </p>
 
   <p>
-    <a href="https://mvnfinhub.github.io/">View Live Platform ➜</a>
+    <a href="mvnfinhub.github.io/mvnfinhub/">View Live Platform ➜</a>
     <br />
     <br />
   </p>
