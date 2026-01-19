@@ -1,5 +1,5 @@
-/* MVN FINHUB - FINAL PLATINUM STYLES (v2026 - SCROLL & MENU FIX) */
-/* Includes: Mobile Dark Mode Menu Fix, Overscroll Fix, Compact Footer */
+/* MVN FINHUB - FINAL PLATINUM STYLES (v2026 - SCROLL FLASH FIX) */
+/* Includes: Fixed HTML Background Selector, Mobile Dark Menu, Compact Footer */
 
 @import url('./variables.css');
 @import url('./components.css');
@@ -7,8 +7,13 @@
 /* --- 1. GLOBAL LAYOUT & GRADIENT BACKGROUND --- */
 html { 
     scroll-behavior: smooth; 
-    /* FIX 1: Prevent white flash on scroll bounce */
+    /* BASE (LIGHT MODE) BACKGROUND - Prevents white flash */
     background-color: #F8FAFC; 
+}
+
+/* FIX: Corrected Selector for Dark Mode HTML Root */
+html[data-theme="dark"] {
+    background-color: #0F172A !important;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,7 +28,8 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     display: flex; flex-direction: column; min-height: 100vh;
-    overscroll-behavior-y: none; /* Prevents rubber-banding to white */
+    /* Prevents rubber-banding bounce effect */
+    overscroll-behavior-y: none; 
 }
 
 /* Ensure sections are transparent so the gradient shows through */
@@ -122,11 +128,10 @@ summary.faq-question::after { content: "+"; font-size: 1.2rem; color: var(--acce
 details[open] summary.faq-question::after { content: "−"; }
 .faq-answer { padding: 0 20px 20px 20px; font-size: 0.95rem; color: var(--text-main); border-top: 1px solid var(--border-color); }
 
-/* --- 5. FOOTER (EXTRA COMPACT) --- */
+/* --- 5. FOOTER (COMPACT & FIXED) --- */
 footer {
     background-color: #0F172A;
     color: #94A3B8;
-    /* FIX 3: Reduced padding even more for smaller footprint */
     padding: 30px 0 20px 0;
     text-align: center;
     margin-top: auto;
@@ -134,7 +139,7 @@ footer {
 }
 
 .footer-logo-container {
-    margin-bottom: 15px; /* Reduced Gap */
+    margin-bottom: 15px;
     display: flex; justify-content: center; align-items: center;
 }
 
@@ -155,7 +160,7 @@ footer {
 
 /* Footer Text */
 footer p {
-    font-size: 0.85rem; /* Slightly smaller text */
+    font-size: 0.85rem; 
     line-height: 1.5;
     max-width: 600px; margin: 0 auto 6px auto;
 }
@@ -196,9 +201,7 @@ footer p {
         gap: 15px; z-index: 999; border-top: 1px solid #eee;
     }
     
-    /* FIX 2: MOBILE MENU DARK MODE */
-    /* When active & data-theme='dark', change background to Navy */
-    
+    /* MOBILE DARK MENU FIX */
     .nav-links.active { display: flex; }
     .nav-item.btn-nav { background: #0A2540; color: white; margin-top: 10px; }
     
@@ -207,15 +210,15 @@ footer p {
 }
 
 /* --- 7. DARK MODE FIXES (Critical "Nuclear" Overrides) --- */
-/* FIX 1: FORCE DARK BACKGROUND ON HTML LAYER */
-[data-theme="dark"] html { background-color: #0F172A; }
+
+/* FIX 1: FORCE DARK BACKGROUND ON HTML LAYER AND BODY */
 [data-theme="dark"] body {
     background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
     background-attachment: fixed;
     background-color: #0F172A; /* Fallback */
 }
 
-/* FIX 2 (Continued): DARK MODE MENU OVERRIDE */
+/* FIX 2: MOBILE MENU OVERRIDE */
 @media (max-width: 768px) {
     [data-theme="dark"] .nav-links {
         background: #0F172A !important; /* Force Navy Background */
