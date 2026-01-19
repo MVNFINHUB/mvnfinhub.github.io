@@ -1,19 +1,22 @@
-/* MVN FINHUB - FINAL PLATINUM STYLES (v2026 - SCROLL FLASH FIX) */
-/* Includes: Fixed HTML Background Selector, Mobile Dark Menu, Compact Footer */
+/* MVN FINHUB - FINAL PLATINUM STYLES (v2026 - SCROLL LOCK FIX) */
+/* Includes: Overscroll Disable, Mobile Menu Dark Fix, Ultra-Compact Footer */
 
 @import url('./variables.css');
 @import url('./components.css');
 
-/* --- 1. GLOBAL LAYOUT & GRADIENT BACKGROUND --- */
+/* --- 1. GLOBAL LAYOUT & SCROLL FIXES --- */
 html { 
     scroll-behavior: smooth; 
-    /* BASE (LIGHT MODE) BACKGROUND - Prevents white flash */
+    /* FIX 1: Set Base Colors to prevent white flashes */
     background-color: #F8FAFC; 
+    /* FIX 2: DISABLE BOUNCE / RUBBER-BANDING */
+    overscroll-behavior: none; 
 }
 
-/* FIX: Corrected Selector for Dark Mode HTML Root */
+/* Force Dark Background on HTML Root in Dark Mode */
 html[data-theme="dark"] {
     background-color: #0F172A !important;
+    overscroll-behavior: none;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,7 +31,8 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     display: flex; flex-direction: column; min-height: 100vh;
-    /* Prevents rubber-banding bounce effect */
+    
+    /* Double Protection against White Flash */
     overscroll-behavior-y: none; 
 }
 
@@ -128,24 +132,25 @@ summary.faq-question::after { content: "+"; font-size: 1.2rem; color: var(--acce
 details[open] summary.faq-question::after { content: "−"; }
 .faq-answer { padding: 0 20px 20px 20px; font-size: 0.95rem; color: var(--text-main); border-top: 1px solid var(--border-color); }
 
-/* --- 5. FOOTER (COMPACT & FIXED) --- */
+/* --- 5. FOOTER (ULTRA COMPACT) --- */
 footer {
     background-color: #0F172A;
     color: #94A3B8;
-    padding: 30px 0 20px 0;
+    /* FIX 3: Tighter Padding */
+    padding: 24px 0 16px 0;
     text-align: center;
     margin-top: auto;
     border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 .footer-logo-container {
-    margin-bottom: 15px;
+    margin-bottom: 12px; /* Minimal gap */
     display: flex; justify-content: center; align-items: center;
 }
 
-/* 3D LOGO: Small, Centered, Clean Shadow */
+/* 3D LOGO: Tiny, Centered, Clean */
 .footer-3d-logo {
-    max-width: 110px; 
+    max-width: 90px; /* Smallest Premium Size */
     width: 100%; height: auto;
     display: block;
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
@@ -160,21 +165,21 @@ footer {
 
 /* Footer Text */
 footer p {
-    font-size: 0.85rem; 
+    font-size: 0.8rem; /* Compact Text */
     line-height: 1.5;
     max-width: 600px; margin: 0 auto 6px auto;
 }
 
 /* Links */
 .footer-links {
-    margin-top: 15px;
-    display: flex; justify-content: center; align-items: center; gap: 24px;
+    margin-top: 12px;
+    display: flex; justify-content: center; align-items: center; gap: 20px;
 }
 
 .theme-btn-footer {
     background: none; border: none; 
     color: #64748B; cursor: pointer;
-    font-size: 1.1rem; padding: 4px;
+    font-size: 1rem; padding: 4px;
     opacity: 0.8; transition: all 0.2s;
     display: flex; align-items: center; justify-content: center;
 }
@@ -201,7 +206,9 @@ footer p {
         gap: 15px; z-index: 999; border-top: 1px solid #eee;
     }
     
-    /* MOBILE DARK MENU FIX */
+    /* FIX 2: MOBILE MENU DARK MODE */
+    /* When active & data-theme='dark', change background to Navy */
+    
     .nav-links.active { display: flex; }
     .nav-item.btn-nav { background: #0A2540; color: white; margin-top: 10px; }
     
