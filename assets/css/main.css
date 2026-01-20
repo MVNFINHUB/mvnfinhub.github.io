@@ -4,6 +4,26 @@
 @import url('./variables.css');
 @import url('./components.css');
 
+/* --- 1. CRITICAL PERFORMANCE FIX (Stops White Flash on Scroll) --- */
+html {
+    /* Sets the browser canvas color immediately */
+    background-color: #F8FAFC; 
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    /* OPTIONAL: Makes scrolling feel heavier/smoother on mobile */
+    -webkit-overflow-scrolling: touch; 
+}
+
+/* --- DARK MODE INSTANT FIX --- */
+/* This forces the browser canvas to be dark BEFORE content loads */
+[data-theme="dark"] html,
+[data-theme="dark"] body {
+    background-color: #0F172A !important;
+}
+
 /* --- 1. GLOBAL LAYOUT & SCROLL FIXES --- */
 html { 
     scroll-behavior: smooth; 
