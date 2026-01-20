@@ -5,22 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found | MVN FinHub</title>
     
-    <meta name="description" content="Page Not Found - MVN FinHub">
-    
     <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
 
-    <link rel="stylesheet" href="/assets/css/main.css?v=platinum">
-
-    <script src="/assets/js/app.js" defer></script>
+    <link rel="preload" href="assets/css/main.css?v=final_perf" as="style">
+    <link rel="stylesheet" href="assets/css/main.css?v=final_perf">
+    
+    <script src="assets/js/app.js" defer></script>
     <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
     <script>
-        // CRITICAL: Set Theme BEFORE page loads to stop White Flash
         if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.setAttribute('data-theme', 'dark');
             const metaTheme = document.querySelector('meta[name="theme-color"]');
@@ -31,110 +33,48 @@
             if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
         }
     </script>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <style>
-        /* --- PAGE SPECIFIC STYLES (Premium 404) --- */
-        body { display: flex; flex-direction: column; min-height: 100vh; }
-
-        /* 1. ERROR SECTION (The Void) */
-        .error-section {
-            flex: 1;
-            display: flex; align-items: center; justify-content: center;
-            text-align: center; padding: 80px 20px;
-            background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+        /* 404 Specific Centering */
+        body {
+            display: flex; flex-direction: column; min-height: 100vh;
         }
-
-        /* 2. ERROR CARD (Prism Glass) */
-        .error-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 24px;
-            padding: 80px 40px;
-            max-width: 600px; width: 100%;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-            position: relative; overflow: hidden;
+        main {
+            flex: 1; display: flex; align-items: center; justify-content: center;
         }
-        
-        .error-card::before {
-            content: ''; position: absolute; top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(14, 165, 233, 0.05) 0%, transparent 50%);
-            animation: rotate 20s linear infinite;
+        .error-container {
+            text-align: center; padding: 40px 20px;
         }
-        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-        /* 3. TYPOGRAPHY */
-       .error-code {
+        .error-code {
             font-family: 'Merriweather', serif; font-size: 6rem; font-weight: 900; line-height: 1; margin-bottom: 20px;
             background: linear-gradient(135deg, #0F172A 0%, #1E40AF 100%);
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent;
             background-clip: text; 
-            /* text-fill-color: transparent; <-- REMOVED THIS LINE */
-            
+            /* Fixed CSS Error here */
             color: #0F172A; position: relative; z-index: 2;
         }
-
         .error-title {
-            font-size: 1.8rem; font-weight: 700; color: #0A2540; margin-bottom: 16px; position: relative; z-index: 2;
+            font-size: 1.5rem; color: #334155; margin-bottom: 30px; font-weight: 600;
         }
-
-        .error-desc {
-            color: #64748B; font-size: 1.1rem; margin-bottom: 40px; line-height: 1.6; position: relative; z-index: 2;
-        }
-
-        /* 4. BUTTONS */
-        .btn {
-            display: inline-block; padding: 14px 30px; border-radius: 50px; font-weight: 600;
-            text-decoration: none; transition: all 0.3s ease; cursor: pointer; position: relative; z-index: 2;
-        }
-
-        .btn-primary {
-            background: #0A2540; color: white; border: none;
-            box-shadow: 0 4px 10px rgba(10, 37, 64, 0.3);
-        }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(10, 37, 64, 0.4); }
-
-        .btn-outline {
-            border: 1px solid #CBD5E1; color: #0A2540; background: transparent; margin-left: 15px;
-        }
-        .btn-outline:hover { background-color: #F1F5F9; border-color: #94A3B8; }
-
-        /* --- NUCLEAR DARK MODE OVERRIDES --- */
-        [data-theme="dark"] .error-section {
-            background: linear-gradient(135deg, #0F172A 0%, #020617 100%) !important;
-        }
-        [data-theme="dark"] .error-card {
-            background: rgba(30, 41, 59, 0.6) !important;
-            border-color: rgba(255,255,255,0.05) !important;
-        }
-        [data-theme="dark"] .error-code {
-            background: none !important; -webkit-text-fill-color: #ffffff !important;
-            color: #ffffff !important; text-shadow: 0 0 20px rgba(56, 189, 248, 0.5); 
-        }
-        [data-theme="dark"] .error-title { color: #ffffff !important; }
-        [data-theme="dark"] .error-desc { color: #cbd5e1 !important; }
         
-        [data-theme="dark"] .btn-primary { background: #38bdf8 !important; color: #0f172a !important; }
-        [data-theme="dark"] .btn-outline { border-color: #475569 !important; color: #cbd5e1 !important; }
-        [data-theme="dark"] .btn-outline:hover { background: rgba(255,255,255,0.05) !important; }
-
-        @media (max-width: 600px) {
-            .error-code { font-size: 4.5rem; }
-            .btn { display: block; width: 100%; margin: 10px 0 0 0; }
-            .btn-outline { margin-left: 0; }
+        /* Dark Mode Overrides */
+        [data-theme="dark"] .error-code {
+            background: none !important;
+            -webkit-text-fill-color: #ffffff !important;
+            color: #ffffff !important;
         }
+        [data-theme="dark"] .error-title { color: #cbd5e1 !important; }
     </style>
-    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
 </head>
 <body>
 
     <header>
         <div class="container nav-flex">
-            <a href="/index.html" class="brand-logo">
+            <a href="index.html" class="brand-logo">
                 <div class="logo-icon-wrapper">
-                    <img src="/assets/images/logo-header.png" alt="MVN FinHub Logo" width="131" height="88">
+                    <img src="assets/images/logo-header.png" alt="MVN FinHub Logo" width="131" height="88">
                 </div>
                 <div class="brand-text">
                     <span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span>
@@ -144,50 +84,40 @@
             <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">☰</button>
 
             <nav class="nav-links" id="nav-links">
-                <a href="/index.html" class="nav-item">Home</a>
-                <a href="/services.html" class="nav-item">Services</a>
-                <a href="/insights.html" class="nav-item">Insights</a>
-                <a href="/about.html" class="nav-item">About</a>
-                <a href="/contact.html" class="nav-item btn-nav">Contact</a>
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="services.html" class="nav-item">Services</a>
+                <a href="insights.html" class="nav-item">Insights</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="contact.html" class="nav-item btn-nav">Contact</a>
             </nav>
         </div>
     </header>
 
     <main>
-    <section class="error-section">
-        <div class="error-card">
+        <div class="error-container">
             <div class="error-code">404</div>
-            <h1 class="error-title">Page Not Found</h1>
-            <p class="error-desc">The page you are looking for does not exist or has been moved. Please check the URL or return to the home page.</p>
-            
-            <div class="action-buttons">
-                <a href="/index.html" class="btn btn-primary">Return Home</a>
-                <a href="/contact.html" class="btn btn-outline">Contact Us</a>
-            </div>
+            <div class="error-title">Page Not Found</div>
+            <p style="margin-bottom: 30px; color: #64748B;">The page you are looking for might have been removed or is temporarily unavailable.</p>
+            <a href="index.html" class="btn btn-primary">Return Home</a>
         </div>
-    </section>
     </main>
 
     <footer>
         <div class="container">
             <div class="footer-logo-container">
-                <img src="/assets/images/logo-3d-full.png" alt="MVN FinHub Premium" class="footer-3d-logo" width="158" height="105">
+                <img src="assets/images/logo-3d-full.png" alt="MVN FinHub Premium" class="footer-3d-logo" width="158" height="105">
             </div>
-
-            <p>&copy; <span class="copyright-year">2026</span> MVN FinHub. All rights reserved.</p>
+            <p>&copy; 2026 MVN FinHub</p>
             
             <div class="footer-links">
-                <a href="/legal.html">Privacy & Legal</a>
-                <a href="/contact.html">Contact</a>
-                <a href="https://instagram.com/mvnfinhub" target="_blank">Instagram</a>
-                
+                <a href="legal.html">Privacy & Legal</a>
+                <a href="contact.html">Contact</a>
                 <button id="footer-theme-btn" class="theme-btn-footer" onclick="toggleTheme()" aria-label="Toggle Dark Mode" style="cursor: pointer;">🌙</button>
             </div>
         </div>
     </footer>
 
     <script>
-        // 1. Theme Logic
         if(localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
             const btn = document.getElementById('footer-theme-btn');
@@ -195,10 +125,7 @@
         }
 
         function toggleTheme() {
-            if (window.toggleTheme) {
-                window.toggleTheme();
-                return;
-            }
+            if (window.toggleTheme) { window.toggleTheme(); return; }
             const html = document.documentElement;
             const btn = document.getElementById('footer-theme-btn');
             const current = html.getAttribute('data-theme');
@@ -216,7 +143,11 @@
                 if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
             }
         }
+        
+        window.addEventListener('load', function() {
+            const ghosts = document.querySelectorAll('.theme-btn-floating, #theme-toggle-float');
+            ghosts.forEach(el => el.remove());
+        });
     </script>
-
 </body>
 </html>

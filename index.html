@@ -12,19 +12,36 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
     
-    <link rel="stylesheet" href="assets/css/main.css?v=platinum_home">
+    <link rel="preload" href="assets/css/main.css?v=final_perf" as="style">
+    <link rel="stylesheet" href="assets/css/main.css?v=final_perf">
     
     <script src="assets/js/app.js" defer></script>
     <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+    <script>
+        // CRITICAL: Set Theme BEFORE page loads to stop White Flash
+        if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
+        }
+    </script>
 
     <style>
         /* --- HOME PAGE SPECIFIC PREMIUM STYLES --- */
 
         /* 1. HERO SECTION UPGRADE (Prism Glass Effect) */
         .hero-premium {
-            /* Adds a subtle animated background mesh */
             background-image: 
                 radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.1) 0px, transparent 50%),
                 radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
@@ -33,14 +50,12 @@
         .hero-glass-card {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
-            /* Gradient Border Effect */
             border: double 1px transparent;
             border-radius: 24px;
             background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
                               linear-gradient(135deg, #0EA5E9 0%, #10B981 100%);
             background-origin: border-box;
             background-clip: padding-box, border-box;
-            
             padding: 60px 40px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
             position: relative;
@@ -53,7 +68,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            /* text-fill-color: transparent;  <-- REMOVED THIS LINE */
             
             /* Fallback color */
             color: #0F172A;
@@ -61,7 +75,7 @@
             line-height: 1.2;
         }
 
-        /* 2. FEATURED SERVICE RIBBON (New Addition) */
+        /* 2. FEATURED SERVICE RIBBON */
         .featured-ribbon {
             background: linear-gradient(90deg, #EFF6FF 0%, #F0FDF4 100%);
             border: 1px solid #BAE6FD;
@@ -82,7 +96,7 @@
         }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
 
-        /* 3. TRUST INDICATORS (Modern Pills) */
+        /* 3. TRUST INDICATORS */
         .trust-indicators { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 35px; }
         .trust-tag {
             font-size: 0.85rem; font-weight: 600; 
@@ -94,15 +108,12 @@
             display: flex; align-items: center; gap: 6px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.03);
         }
-        .trust-tag::before {
-            content: "🛡️"; font-size: 0.8rem;
-        }
-        /* Custom Icons for each tag */
+        .trust-tag::before { content: "🛡️"; font-size: 0.8rem; }
         .trust-tag:nth-child(2)::before { content: "🔒"; }
         .trust-tag:nth-child(3)::before { content: "⚙️"; }
         .trust-tag:nth-child(4)::before { content: "✅"; }
 
-        /* 4. FACE CARDS (Color Coded Top Borders) */
+        /* 4. FACE CARDS */
         .face-card {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
@@ -116,10 +127,10 @@
         }
         
         /* Color Coding the Grid */
-        .grid-4 .face-card:nth-child(1) { border-top: 4px solid #64748B; } /* Slate (Framework) */
-        .grid-4 .face-card:nth-child(2) { border-top: 4px solid #F59E0B; } /* Amber (Execution) */
-        .grid-4 .face-card:nth-child(3) { border-top: 4px solid #3B82F6; } /* Blue (Awareness) */
-        .grid-4 .face-card:nth-child(4) { border-top: 4px solid #10B981; } /* Green (Status) */
+        .grid-4 .face-card:nth-child(1) { border-top: 4px solid #64748B; } 
+        .grid-4 .face-card:nth-child(2) { border-top: 4px solid #F59E0B; } 
+        .grid-4 .face-card:nth-child(3) { border-top: 4px solid #3B82F6; } 
+        .grid-4 .face-card:nth-child(4) { border-top: 4px solid #10B981; } 
 
         .face-card:hover { transform: translateY(-5px); }
 
@@ -159,7 +170,6 @@
         [data-theme="dark"] .grid-4 .face-card:nth-child(3) { border-top-color: #60a5fa !important; }
         [data-theme="dark"] .grid-4 .face-card:nth-child(4) { border-top-color: #34d399 !important; }
         
-        /* ✅ FIX: Changed h3 to h2 here to match HTML change */
         [data-theme="dark"] .face-card h2 { color: white !important; }
         [data-theme="dark"] .face-card p { color: #cbd5e1 !important; }
     </style>

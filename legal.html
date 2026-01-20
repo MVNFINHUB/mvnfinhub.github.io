@@ -12,13 +12,31 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
 
-    <link rel="stylesheet" href="assets/css/main.css?v=platinum">
+    <link rel="preload" href="assets/css/main.css?v=final_perf" as="style">
+    <link rel="stylesheet" href="assets/css/main.css?v=final_perf">
     
     <script src="assets/js/app.js" defer></script>
-    <script data-goatcounter="https://mvnfinhub.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+    <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+    <script>
+        // CRITICAL: Set Theme BEFORE page loads to stop White Flash
+        if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
+        }
+    </script>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <style>
         /* --- PAGE SPECIFIC STYLES (Premium Legal Look) --- */
@@ -91,20 +109,6 @@
             .legal-section { padding: 24px; }
         }
     </style>
-
-    <script>
-        // CRITICAL: Set Theme BEFORE page loads to stop White Flash
-        if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-            if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-            if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
-        }
-    </script>
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
 </head>
 <body>
 
@@ -233,9 +237,11 @@
     </footer>
 
     <script>
+        // 1. Theme Logic
         if(localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
-            document.getElementById('footer-theme-btn').textContent = '☀️';
+            const btn = document.getElementById('footer-theme-btn');
+            if(btn) btn.textContent = '☀️';
         }
 
         function toggleTheme() {
@@ -244,7 +250,7 @@
                 window.toggleTheme();
                 return;
             }
-            // Fallback
+            // Fallback logic
             const html = document.documentElement;
             const btn = document.getElementById('footer-theme-btn');
             const current = html.getAttribute('data-theme');
@@ -262,6 +268,12 @@
                 if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
             }
         }
+
+        // 2. Kill Ghost Icons
+        window.addEventListener('load', function() {
+            const ghosts = document.querySelectorAll('.theme-btn-floating, #theme-toggle-float');
+            ghosts.forEach(el => el.remove());
+        });
     </script>
 
 </body>
