@@ -1,5 +1,15 @@
 User-agent: *
 Allow: /
-Disallow: /404.html
+Allow: /index.html
+Allow: /services.html
+Allow: /insights.html
+Allow: /about.html
+Allow: /contact.html
 
+# Hide technical assets from search results
+Disallow: /assets/
+Disallow: /css/
+Disallow: /js/
+
+# Path to your Sitemap
 Sitemap: https://mvnfinhub.github.io/sitemap.xml
