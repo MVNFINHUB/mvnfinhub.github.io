@@ -2,8 +2,11 @@
 
 :root {
     /* --- TYPOGRAPHY --- */
-    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-    --font-serif: 'Merriweather', serif;
+    /* We use Outfit for everything to keep it clean and futuristic */
+    --font-sans: 'Outfit', system-ui, -apple-system, sans-serif;
+    
+    /* You can delete --font-serif, we won't use it in Glassmorphism */
+}
 
     /* --- PREMIUM COLOR PALETTE --- */
     /* Primary Brand Colors */

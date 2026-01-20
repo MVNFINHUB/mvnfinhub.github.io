@@ -1,24 +1,29 @@
 /**
- * MVN FINHUB - APP CONTROLLER (FINAL)
- * Handles: Mobile Menu and Database.
- * Note: Dark Mode logic is now handled inline in the HTML files 
- * to ensure zero-latency switching.
+ * MVN FINHUB - APP CONTROLLER (FINAL v2026)
+ * Handles: Mobile Menu (Accessibility Optimized) and Database.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
-    // 1. MOBILE MENU LOGIC
+    // 1. MOBILE MENU LOGIC (ACCESSIBILITY UPGRADE)
     // ==========================================
     const menuToggle = document.getElementById('mobile-menu-toggle');
     const navLinks = document.getElementById('nav-links');
 
     if (menuToggle && navLinks) {
+        // Initialize state
+        menuToggle.setAttribute('aria-expanded', 'false');
+
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             
-            // Optional: Change icon from Hamburger to X
             const isExpanded = navLinks.classList.contains('active');
+            
+            // ACCESSIBILITY FIX: Tell screen readers the menu state
+            menuToggle.setAttribute('aria-expanded', isExpanded);
+            
+            // Change icon from Hamburger to X
             menuToggle.textContent = isExpanded ? '✕' : '☰';
         });
     }
@@ -36,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // --- CONFIGURATION ---
     // Replace these with your actual Supabase URL and Key when ready.
-    const SUPABASE_URL = "https://fviufivewglglnxhlmmf.supabase.co"; 
+    const SUPABASE_URL = "https://fviufivewglglnxhlmmf.supabase.co";      
     const SUPABASE_KEY = "sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah";
     // ---------------------
 

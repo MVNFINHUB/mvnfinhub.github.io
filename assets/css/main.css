@@ -1,5 +1,5 @@
-/* MVN FINHUB - FINAL PLATINUM STYLES (v2026 - SCROLL LOCK FIX) */
-/* Includes: Overscroll Disable, Mobile Menu Dark Fix, Ultra-Compact Footer */
+/* MVN FINHUB - FINAL PLATINUM STYLES (v2026 - VISIBILITY FIX) */
+/* Includes: Dark Mode Text Visibility, Scroll Lock Fix, Mobile Menu */
 
 @import url('./variables.css');
 @import url('./components.css');
@@ -225,7 +225,35 @@ footer p {
     background-color: #0F172A; /* Fallback */
 }
 
-/* FIX 2: MOBILE MENU OVERRIDE */
+/* FIX 2: TEXT VISIBILITY (The Ultimate Fix) */
+/* We use !important to force overrides on any specific card styles */
+
+/* Make Headings PURE WHITE in Dark Mode */
+[data-theme="dark"] h1, 
+[data-theme="dark"] h2, 
+[data-theme="dark"] h3, 
+[data-theme="dark"] h4, 
+[data-theme="dark"] h5, 
+[data-theme="dark"] h6 {
+    color: #ffffff !important;
+}
+
+/* Make Bold Text PURE WHITE in Dark Mode */
+[data-theme="dark"] strong, 
+[data-theme="dark"] b {
+    color: #ffffff !important;
+    font-weight: 700;
+}
+
+/* Make Normal Text LIGHT GREY (Readable) in Dark Mode */
+[data-theme="dark"] p, 
+[data-theme="dark"] li, 
+[data-theme="dark"] span, 
+[data-theme="dark"] .nav-item {
+    color: #E2E8F0 !important; /* Light Grey (Slate-200) */
+}
+
+/* FIX 3: MOBILE MENU OVERRIDE */
 @media (max-width: 768px) {
     [data-theme="dark"] .nav-links {
         background: #0F172A !important; /* Force Navy Background */

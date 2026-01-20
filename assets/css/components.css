@@ -1,4 +1,4 @@
-/* MVN FINHUB - PREMIUM COMPONENTS */
+/* MVN FINHUB - PREMIUM COMPONENTS (v2026 - ACCESSIBILITY OPTIMIZED) */
 
 /* --- 1. PREMIUM BUTTONS --- */
 .btn {
@@ -10,9 +10,11 @@
     font-weight: 600;
     font-size: 1rem;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     font-family: var(--font-sans);
+    position: relative;
+    overflow: hidden;
 }
 
 /* The "Fintech Blue" Gradient Button */
@@ -28,10 +30,17 @@
     box-shadow: 0 8px 20px rgba(10, 37, 64, 0.35);
 }
 
+/* tactile click effect */
+.btn-primary:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 10px rgba(10, 37, 64, 0.2);
+}
+
 /* Dark Mode Button Adjustment */
 [data-theme="dark"] .btn-primary {
     background: linear-gradient(135deg, #38BDF8 0%, #0284C7 100%);
-    color: #0F172A; /* Dark text on bright button */
+    color: #0F172A; /* Dark text on bright button for max contrast */
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
 }
 
 /* --- 2. GLASS CARDS (Global Helper) --- */
@@ -51,14 +60,24 @@ input, select, textarea {
     color: var(--text-main);
     border-radius: 8px;
     transition: 0.2s;
+    font-size: 1rem; /* Prevents auto-zoom on iPhone */
 }
 
+/* Dark Mode Inputs */
 [data-theme="dark"] input, 
 [data-theme="dark"] select, 
 [data-theme="dark"] textarea {
     background-color: rgba(15, 23, 42, 0.6);
     color: white;
     border-color: rgba(255,255,255,0.1);
+    
+    /* FIX: Make the dropdown arrow white in dark mode */
+    color-scheme: dark; 
+}
+
+/* FIX: Ensure Placeholders are readable in Dark Mode */
+[data-theme="dark"] ::placeholder {
+    color: rgba(255, 255, 255, 0.5);
 }
 
 input:focus, select:focus, textarea:focus {
