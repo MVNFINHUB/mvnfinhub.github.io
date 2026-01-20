@@ -7,7 +7,8 @@
 
     <meta name="description" content="MVN FinHub: Premier non-advisory platform for physical share recovery, IEPF claims, financial structure awareness, and documentation services. Secure & Compliant.">
     
-    <meta name="theme-color" content="#F8FAFC">
+    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -161,19 +162,6 @@
         [data-theme="dark"] .face-card h2 { color: white !important; }
         [data-theme="dark"] .face-card p { color: #cbd5e1 !important; }
     </style>
-
-    <script>
-        // CRITICAL: Set Theme BEFORE page loads to stop White Flash
-        if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-            if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-            const metaTheme = document.querySelector('meta[name="theme-color"]');
-            if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
-        }
-    </script>
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mvnfinhub.github.io/">

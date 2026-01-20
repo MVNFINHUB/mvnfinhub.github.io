@@ -6,7 +6,9 @@
     <title>Contact Us | MVN FinHub</title>
 
     <meta name="description" content="MVN FinHub: Premier non-advisory platform for physical share recovery, IEPF claims, financial structure awareness, and documentation services. Secure & Compliant.">
-    <meta name="theme-color" content="#F8FAFC">
+    
+    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -170,19 +172,19 @@
             .contact-section { padding: 40px 16px; }
         }
     </style>
+
     <script>
-    // CRITICAL: Set Theme BEFORE page loads to stop White Flash
-    if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        const metaTheme = document.querySelector('meta[name="theme-color"]');
-        if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        const metaTheme = document.querySelector('meta[name="theme-color"]');
-        if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
-    }
-</script>
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+        // CRITICAL: Set Theme BEFORE page loads to stop White Flash
+        if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
+        }
+    </script>
 </head>
 <body>
 
@@ -313,7 +315,7 @@
     </footer>
 
     <script>
-        // 1. Theme Logic
+        // 1. Theme Logic (Synced with app.js)
         if(localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
             const btn = document.getElementById('footer-theme-btn');
@@ -321,18 +323,27 @@
         }
 
         function toggleTheme() {
+            // Uses global function from app.js if available
+            if (window.toggleTheme) {
+                window.toggleTheme();
+                return;
+            }
+            // Fallback
             const html = document.documentElement;
             const btn = document.getElementById('footer-theme-btn');
             const current = html.getAttribute('data-theme');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
 
             if (current === 'dark') {
                 html.setAttribute('data-theme', 'light');
                 localStorage.setItem('theme', 'light');
                 btn.textContent = '🌙';
+                if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
             } else {
                 html.setAttribute('data-theme', 'dark');
                 localStorage.setItem('theme', 'dark');
                 btn.textContent = '☀️';
+                if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
             }
         }
 

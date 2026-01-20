@@ -4,62 +4,85 @@
 @import url('./variables.css');
 @import url('./components.css');
 
-/* --- 1. CRITICAL PERFORMANCE FIX (Stops White Flash on Scroll) --- */
+/* =========================================
+   1. CRITICAL PERFORMANCE & SCROLL FIXES
+   (Stops White Flash on Scroll)
+   ========================================= */
+
 html {
-    /* Sets the browser canvas color immediately */
+    /* Sets the browser canvas color immediately - Matches Light Mode */
     background-color: #F8FAFC; 
     height: 100%;
+    
+    /* Smooth scrolling for anchor links */
+    scroll-behavior: smooth; 
+    
+    /* Remove tap highlight on mobile */
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
     min-height: 100%;
+    margin: 0;
+    padding: 0;
+    
+    /* PLATINUM GRADIENT (Visuals for Light Mode) */
+    background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 50%, #E2E8F0 100%);
+    background-attachment: fixed;
+    
+    /* Font Settings */
+    font-family: var(--font-sans);
+    color: var(--text-main);
+    line-height: 1.6;
+    display: flex; 
+    flex-direction: column;
+    
     /* OPTIONAL: Makes scrolling feel heavier/smoother on mobile */
     -webkit-overflow-scrolling: touch; 
+    
+    /* Double Protection against White Flash (Stops "Rubber Banding") */
+    overscroll-behavior-y: none;
 }
 
-/* --- DARK MODE INSTANT FIX --- */
-/* This forces the browser canvas to be dark BEFORE content loads */
-[data-theme="dark"] html,
-[data-theme="dark"] body {
-    background-color: #0F172A !important;
+/* ✅ NATIVE DARK MODE (Instantly Paints Background Dark) */
+/* This runs with 0ms delay before JS loads */
+@media (prefers-color-scheme: dark) {
+    html {
+        background-color: #0F172A; 
+    }
+    body {
+        background: #0F172A; /* Overwrite the Light Gradient */
+    }
 }
 
-/* --- 1. GLOBAL LAYOUT & SCROLL FIXES --- */
-html { 
-    scroll-behavior: smooth; 
-    /* FIX 1: Set Base Colors to prevent white flashes */
-    background-color: #F8FAFC; 
-    /* FIX 2: DISABLE BOUNCE / RUBBER-BANDING */
-    overscroll-behavior: none; 
+/* ✅ MANUAL OVERRIDES (For the toggle button) */
+[data-theme="light"] html, [data-theme="light"] body {
+    background-color: #F8FAFC !important;
+    background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 50%, #E2E8F0 100%) !important;
+    background-attachment: fixed !important;
 }
 
-/* Force Dark Background on HTML Root in Dark Mode */
-html[data-theme="dark"] {
+[data-theme="dark"] html {
     background-color: #0F172A !important;
     overscroll-behavior: none;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    font-family: var(--font-sans);
-    
-    /* PREMIUM: Platinum Gradient Background */
-    background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 50%, #E2E8F0 100%);
-    background-attachment: fixed; 
-    
-    color: var(--text-main);
-    line-height: 1.6;
-    display: flex; flex-direction: column; min-height: 100vh;
-    
-    /* Double Protection against White Flash */
-    overscroll-behavior-y: none; 
+[data-theme="dark"] body {
+    background-color: #0F172A !important;
+    background: #0F172A !important;
 }
 
-/* Ensure sections are transparent so the gradient shows through */
+/* Global Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Ensure transparent sections so gradient shows */
 .hero-premium, .section-padding {
     background-color: transparent !important;
 }
+
+/* =========================================
+   2. LAYOUT & TYPOGRAPHY
+   ========================================= */
 
 /* THE CONTAINER */
 .container {
@@ -74,7 +97,7 @@ h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--text-head); letter
 a { text-decoration: none; color: inherit; transition: color 0.2s; }
 ul { list-style: none; }
 
-/* --- 2. HEADER --- */
+/* --- 3. HEADER --- */
 header {
     background-color: rgba(255, 255, 255, 0.85); /* Premium Glass */
     backdrop-filter: blur(16px);
@@ -100,7 +123,7 @@ header {
 .nav-item.btn-nav { background: var(--text-head); color: var(--bg-body); padding: 10px 24px; border-radius: 8px; }
 .mobile-toggle { display: none; }
 
-/* --- 3. HERO SECTION --- */
+/* --- 4. HERO SECTION --- */
 .hero-premium { position: relative; padding: 100px 0; overflow: hidden; }
 .hero-glow { position: absolute; border-radius: 50%; filter: blur(90px); z-index: 0; opacity: 0.5; }
 .glow-left { width: 400px; height: 400px; background: rgba(0, 200, 255, 0.15); top: -100px; left: -100px; }
@@ -121,7 +144,7 @@ header {
 .trust-tag { font-size: 0.85rem; font-weight: 600; color: #0A2540; background: rgba(0, 200, 255, 0.1); padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(0, 200, 255, 0.2); }
 .hero-micro-text { font-size: 0.85rem; color: #64748B; font-weight: 500; margin-top: 15px; }
 
-/* --- 4. CONTENT & FAQ --- */
+/* --- 5. CONTENT & FAQ --- */
 .section-padding { padding: 60px 0; }
 .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
 
@@ -152,7 +175,7 @@ summary.faq-question::after { content: "+"; font-size: 1.2rem; color: var(--acce
 details[open] summary.faq-question::after { content: "−"; }
 .faq-answer { padding: 0 20px 20px 20px; font-size: 0.95rem; color: var(--text-main); border-top: 1px solid var(--border-color); }
 
-/* --- 5. FOOTER (ULTRA COMPACT) --- */
+/* --- 6. FOOTER (ULTRA COMPACT) --- */
 footer {
     background-color: #0F172A;
     color: #94A3B8;
@@ -212,7 +235,7 @@ footer p {
     pointer-events: auto !important;
 }
 
-/* --- 6. MOBILE --- */
+/* --- 7. MOBILE --- */
 @media (max-width: 768px) {
     .container { padding: 0 20px; }
     .brand-text { font-size: 1.4rem; }
@@ -236,7 +259,7 @@ footer p {
     .hero-glass-card { padding: 40px 20px; border-radius: 16px; }
 }
 
-/* --- 7. DARK MODE FIXES (Critical "Nuclear" Overrides) --- */
+/* --- 8. DARK MODE FIXES (Critical "Nuclear" Overrides) --- */
 
 /* FIX 1: FORCE DARK BACKGROUND ON HTML LAYER AND BODY */
 [data-theme="dark"] body {

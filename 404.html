@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Page Not Found - MVN FinHub">
-    
-    <meta name="theme-color" content="#F8FAFC">
-
     <title>Page Not Found | MVN FinHub</title>
     
+    <meta name="description" content="Page Not Found - MVN FinHub">
+    
+    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -16,24 +17,30 @@
     <link rel="stylesheet" href="/assets/css/main.css?v=platinum">
 
     <script src="/assets/js/app.js" defer></script>
-    <script data-goatcounter="https://mvnfinhub.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+    <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+    <script>
+        // CRITICAL: Set Theme BEFORE page loads to stop White Flash
+        if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
+        }
+    </script>
 
     <style>
         /* --- PAGE SPECIFIC STYLES (Premium 404) --- */
-        
-        body {
-            display: flex; flex-direction: column; min-height: 100vh;
-        }
+        body { display: flex; flex-direction: column; min-height: 100vh; }
 
         /* 1. ERROR SECTION (The Void) */
         .error-section {
             flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 80px 20px;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 80px 20px;
             background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
         }
 
@@ -44,14 +51,11 @@
             border: 1px solid rgba(255, 255, 255, 0.8);
             border-radius: 24px;
             padding: 80px 40px;
-            max-width: 600px;
-            width: 100%;
+            max-width: 600px; width: 100%;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
+            position: relative; overflow: hidden;
         }
         
-        /* Decorative Background Elements */
         .error-card::before {
             content: ''; position: absolute; top: -50%; left: -50%;
             width: 200%; height: 200%;
@@ -62,122 +66,63 @@
 
         /* 3. TYPOGRAPHY */
         .error-code {
-            font-family: 'Merriweather', serif;
-            font-size: 6rem;
-            font-weight: 900;
-            line-height: 1;
-            margin-bottom: 20px;
+            font-family: 'Merriweather', serif; font-size: 6rem; font-weight: 900; line-height: 1; margin-bottom: 20px;
             background: linear-gradient(135deg, #0F172A 0%, #1E40AF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-            color: #0F172A;
-            position: relative; z-index: 2;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; text-fill-color: transparent;
+            color: #0F172A; position: relative; z-index: 2;
         }
 
         .error-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #0A2540;
-            margin-bottom: 16px;
-            position: relative; z-index: 2;
+            font-size: 1.8rem; font-weight: 700; color: #0A2540; margin-bottom: 16px; position: relative; z-index: 2;
         }
 
         .error-desc {
-            color: #64748B;
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-            line-height: 1.6;
-            position: relative; z-index: 2;
+            color: #64748B; font-size: 1.1rem; margin-bottom: 40px; line-height: 1.6; position: relative; z-index: 2;
         }
 
         /* 4. BUTTONS */
         .btn {
-            display: inline-block;
-            padding: 14px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative; z-index: 2;
+            display: inline-block; padding: 14px 30px; border-radius: 50px; font-weight: 600;
+            text-decoration: none; transition: all 0.3s ease; cursor: pointer; position: relative; z-index: 2;
         }
 
         .btn-primary {
-            background: #0A2540;
-            color: white;
-            border: none;
+            background: #0A2540; color: white; border: none;
             box-shadow: 0 4px 10px rgba(10, 37, 64, 0.3);
         }
-        .btn-primary:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 8px 20px rgba(10, 37, 64, 0.4);
-        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(10, 37, 64, 0.4); }
 
         .btn-outline {
-            border: 1px solid #CBD5E1;
-            color: #0A2540;
-            background: transparent;
-            margin-left: 15px;
+            border: 1px solid #CBD5E1; color: #0A2540; background: transparent; margin-left: 15px;
         }
-        .btn-outline:hover { 
-            background-color: #F1F5F9; 
-            border-color: #94A3B8;
-        }
+        .btn-outline:hover { background-color: #F1F5F9; border-color: #94A3B8; }
 
         /* --- NUCLEAR DARK MODE OVERRIDES --- */
         [data-theme="dark"] .error-section {
             background: linear-gradient(135deg, #0F172A 0%, #020617 100%) !important;
         }
-
         [data-theme="dark"] .error-card {
             background: rgba(30, 41, 59, 0.6) !important;
             border-color: rgba(255,255,255,0.05) !important;
         }
-        
         [data-theme="dark"] .error-code {
-            background: none !important;
-            -webkit-text-fill-color: #ffffff !important;
-            color: #ffffff !important;
-            text-shadow: 0 0 20px rgba(56, 189, 248, 0.5); 
+            background: none !important; -webkit-text-fill-color: #ffffff !important;
+            color: #ffffff !important; text-shadow: 0 0 20px rgba(56, 189, 248, 0.5); 
         }
-        
         [data-theme="dark"] .error-title { color: #ffffff !important; }
         [data-theme="dark"] .error-desc { color: #cbd5e1 !important; }
         
-        [data-theme="dark"] .btn-primary {
-            background: #38bdf8 !important;
-            color: #0f172a !important;
-        }
-        
-        [data-theme="dark"] .btn-outline {
-            border-color: #475569 !important;
-            color: #cbd5e1 !important;
-        }
-        [data-theme="dark"] .btn-outline:hover {
-            background: rgba(255,255,255,0.05) !important;
-        }
+        [data-theme="dark"] .btn-primary { background: #38bdf8 !important; color: #0f172a !important; }
+        [data-theme="dark"] .btn-outline { border-color: #475569 !important; color: #cbd5e1 !important; }
+        [data-theme="dark"] .btn-outline:hover { background: rgba(255,255,255,0.05) !important; }
 
-        /* Responsive */
         @media (max-width: 600px) {
             .error-code { font-size: 4.5rem; }
             .btn { display: block; width: 100%; margin: 10px 0 0 0; }
             .btn-outline { margin-left: 0; }
         }
     </style>
-    <script>
-    // CRITICAL: Set Theme BEFORE page loads to stop White Flash
-    if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        const metaTheme = document.querySelector('meta[name="theme-color"]');
-        if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        const metaTheme = document.querySelector('meta[name="theme-color"]');
-        if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
-    }
-</script>
     <link rel="icon" type="image/png" href="/assets/images/favicon.png">
 </head>
 <body>
@@ -246,7 +191,28 @@
             if(btn) btn.textContent = '☀️';
         }
 
-        // Note: The main toggle logic is now in app.js for better synchronization
+        function toggleTheme() {
+            if (window.toggleTheme) {
+                window.toggleTheme();
+                return;
+            }
+            const html = document.documentElement;
+            const btn = document.getElementById('footer-theme-btn');
+            const current = html.getAttribute('data-theme');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+
+            if (current === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                btn.textContent = '🌙';
+                if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                btn.textContent = '☀️';
+                if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
+            }
+        }
     </script>
 
 </body>

@@ -6,7 +6,9 @@
     <title>Insights & Awareness | MVN FinHub</title>
 
     <meta name="description" content="MVN FinHub: Premier non-advisory platform for physical share recovery, IEPF claims, financial structure awareness, and documentation services. Secure & Compliant.">
-    <meta name="theme-color" content="#F8FAFC">
+    
+    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -134,18 +136,19 @@
             .insights-grid { grid-template-columns: 1fr; }
         }
     </style>
+
     <script>
-    // CRITICAL: Set Theme BEFORE page loads to stop White Flash
-    if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        const metaTheme = document.querySelector('meta[name="theme-color"]');
-        if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        const metaTheme = document.querySelector('meta[name="theme-color"]');
-        if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
-    }
-</script>
+        // CRITICAL: Set Theme BEFORE page loads to stop White Flash
+        if(localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
+        }
+    </script>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 </head>
 <body>
@@ -272,18 +275,27 @@
         }
 
         function toggleTheme() {
+            // Calls the main function from app.js if available, or manual logic
+            if (window.toggleTheme) {
+                window.toggleTheme();
+                return;
+            }
+            // Fallback logic
             const html = document.documentElement;
             const btn = document.getElementById('footer-theme-btn');
             const current = html.getAttribute('data-theme');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
 
             if (current === 'dark') {
                 html.setAttribute('data-theme', 'light');
                 localStorage.setItem('theme', 'light');
                 btn.textContent = '🌙';
+                if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
             } else {
                 html.setAttribute('data-theme', 'dark');
                 localStorage.setItem('theme', 'dark');
                 btn.textContent = '☀️';
+                if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
             }
         }
 
