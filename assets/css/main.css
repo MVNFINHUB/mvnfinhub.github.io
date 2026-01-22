@@ -1,4 +1,5 @@
-/* MVN FINHUB - FINAL PRODUCTION SYSTEM (v2026.4 - ANTI-FLASH) */
+/* MVN FINHUB - FINAL PRODUCTION SYSTEM (v2026.5 - REFRESH RESTORED) */
+/* Includes: Mobile Scroll Fix + Dark Mode Visibility + Pull-to-Refresh Restored */
 
 /* =========================================
    1. GLOBAL VARIABLES & THEME CONFIG
@@ -13,8 +14,9 @@
     --text-main: #334155;
     --text-head: #0A2540;
     --text-muted: #64748B;
-    --primary: #0A2540;      
-    --accent: #0EA5E9;       
+    --primary: #0A2540;      /* Deep Navy */
+    --accent: #0EA5E9;       /* Sky Blue */
+    --success: #10B981;      /* Emerald */
     --surface-glass: rgba(255, 255, 255, 0.85);
     --border-color: #E2E8F0;
 }
@@ -22,30 +24,34 @@
 [data-theme="dark"] {
     /* DARK MODE PALETTE */
     --bg-color: #0F172A;     /* Deep Slate */
-    --text-main: #CBD5E1;    
-    --text-head: #F8FAFC;    
+    --text-main: #CBD5E1;    /* Soft White */
+    --text-head: #F8FAFC;    /* Pure White */
     --text-muted: #94A3B8;
-    --primary: #38BDF8;      
+    --primary: #38BDF8;      /* Neon Blue */
     --accent: #0EA5E9;
     --surface-glass: rgba(30, 41, 59, 0.7);
     --border-color: rgba(255, 255, 255, 0.1);
 }
 
 /* =========================================
-   2. RESET & BASE STYLES (ANTI-FLASH FIX)
+   2. RESET & BASE STYLES (REFRESH RESTORED)
    ========================================= */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
-    /* CRITICAL ANTI-FLASH FIXES */
-    background-color: var(--bg-color); /* Sets canvas color to Dark Blue immediately */
+    /* Sets the background of the "refresh area" to match the theme */
+    background-color: var(--bg-color); 
+    
+    /* Allow native scroll behavior so Pull-to-Refresh works */
     height: 100%;
     width: 100%;
+    overflow-y: auto;  /* MOVED SCROLL HERE to enable browser gestures */
     overflow-x: hidden;
+    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     
-    /* Stop White "Bounce" area at top/bottom */
-    overscroll-behavior: none;
+    /* RESTORED: This allows the "pull down" gesture */
+    overscroll-behavior-y: auto; 
 }
 
 body {
@@ -53,20 +59,16 @@ body {
     color: var(--text-main);
     font-family: var(--font-main);
     line-height: 1.6;
-    
-    /* SMOOTHING ENGINE */
     transition: background-color 0.3s ease, color 0.3s ease;
+    
     width: 100%;
-    min-height: 100dvh; /* Dynamic Height */
+    min-height: 100dvh; 
     position: relative;
     
-    /* SCROLL PERFORMANCE */
-    overflow-y: auto;
+    /* Let HTML handle the scroll for refresh support */
+    overflow-y: visible; 
     overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
     
-    /* GPU ACCELERATION (Prevents Painting Flashes) */
-    transform: translate3d(0, 0, 0); 
     background-attachment: scroll !important;
 }
 
