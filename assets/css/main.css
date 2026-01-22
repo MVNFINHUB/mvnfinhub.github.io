@@ -33,12 +33,25 @@
     --border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* =========================================
-   2. RESET & BASE STYLES
+//* =========================================
+   2. RESET & BASE STYLES (MOBILE SCROLL FIX)
    ========================================= */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html {
+    /* Force the window to handle the scroll, not the element */
+    height: auto;
+    min-height: 100%;
+    scroll-behavior: smooth;
+    
+    /* Prevent horizontal scroll drift */
+    overflow-x: hidden;
+    width: 100%;
+    
+    /* Mobile tap highlight fix */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+}
 
 body {
     background-color: var(--bg-color);
@@ -46,15 +59,30 @@ body {
     font-family: var(--font-main);
     line-height: 1.6;
     transition: background-color 0.3s ease, color 0.3s ease;
+    
+    /* CRITICAL MOBILE FIXES */
+    min-height: 100dvh;       /* Use dynamic viewport to handle address bar resize */
+    height: auto !important;  /* Ensure body grows with content */
+    width: 100%;
+    position: relative;
+    
+    /* Restore Native Momentum Scrolling */
+    overflow-y: visible !important; 
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    
+    /* Stop "Snap Back" / Rubber-banding at top/bottom */
+    overscroll-behavior-y: none;
 }
 
 /* Background Gradients */
 [data-theme="light"] body {
     background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+    background-attachment: scroll; /* Fixed attachment causes jitter on mobile */
 }
 [data-theme="dark"] body {
     background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    background-attachment: scroll; /* Fixed attachment causes jitter on mobile */
 }
 
 a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
