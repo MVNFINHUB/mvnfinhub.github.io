@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://mvnfinhub.goatcounter.com https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://mvnfinhub.goatcounter.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <link rel="preload" href="assets/images/logo-header.png" as="image">
+    <link rel="preload" href="assets/images/logo-3d-full.png" as="image">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>MVN FinHub | Financial Process & Documentation Intelligence</title>
@@ -42,7 +48,7 @@
     <style>
         /* --- HOME PAGE SPECIFIC PREMIUM STYLES --- */
 
-        /* 1. HERO SECTION (Matches Services/Insights Premium Look) */
+        /* 1. HERO SECTION */
         .hero-premium {
             background-image: 
                 radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.1) 0px, transparent 50%),
@@ -90,12 +96,11 @@
             100% { transform: translateY(0px); }
         }
 
-        /* 2. PREMIUM BUTTONS (CREATIVE UPGRADE) */
+        /* 2. PREMIUM BUTTONS */
         .btn-group {
             display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;
         }
 
-        /* Base Premium Button Style */
         .btn-premium {
             text-decoration: none;
             padding: 14px 32px;
@@ -108,14 +113,12 @@
             display: inline-flex; align-items: center; justify-content: center;
         }
 
-        /* Primary Button: "Explore Intelligence" (Solid + Shine) */
         .btn-premium.primary {
             background: #0A2540;
             color: white;
             box-shadow: 0 4px 15px rgba(10, 37, 64, 0.3);
             border: 1px solid transparent;
         }
-        /* Shine Effect */
         .btn-premium.primary::after {
             content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
@@ -127,18 +130,17 @@
         }
         .btn-premium.primary:hover::after { left: 150%; }
 
-        /* Secondary Button: "Submit Query" (Glass Highlighter) */
         .btn-premium.secondary {
             background: rgba(255, 255, 255, 0.5);
             color: #0A2540;
-            border: 2px solid #0EA5E9; /* Visible Highlighter Border */
+            border: 2px solid #0EA5E9; 
             backdrop-filter: blur(5px);
         }
         .btn-premium.secondary:hover {
             background: #0EA5E9;
             color: white;
             transform: translateY(-3px);
-            box-shadow: 0 0 20px rgba(14, 165, 233, 0.4); /* Glow Effect */
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
         }
 
         /* 3. FEATURED RIBBON */
@@ -187,7 +189,7 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.08);
         }
 
-        /* Color Coding the Grid */
+        /* Color Coding */
         .grid-4 .face-card:nth-child(1) { border-top: 4px solid #64748B; } 
         .grid-4 .face-card:nth-child(2) { border-top: 4px solid #F59E0B; } 
         .grid-4 .face-card:nth-child(3) { border-top: 4px solid #3B82F6; } 
@@ -208,6 +210,55 @@
             content: "•"; position: absolute; left: 0; color: #94A3B8; font-weight: bold;
         }
 
+        /* 6. NEW INTERACTIVE FAQ STYLES (NO DARK MODE FLASH) */
+        .faq-container-box {
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 30px; 
+            border-radius: 12px; 
+            border: 1px solid rgba(0,0,0,0.05); 
+            background: rgba(255,255,255,0.6);
+        }
+        
+        details.faq-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding-bottom: 15px;
+        }
+        details.faq-item:last-child { border-bottom: none; }
+        
+        summary.faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-head);
+            cursor: pointer;
+            list-style: none;
+            position: relative;
+            padding-right: 30px;
+            transition: color 0.3s;
+        }
+        summary.faq-question:hover { color: #0EA5E9; }
+        
+        /* Custom Accordion Marker */
+        summary.faq-question::-webkit-details-marker { display: none; }
+        summary.faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 1.2rem;
+            color: #64748B;
+        }
+        details[open] summary.faq-question::after { content: '−'; }
+        
+        .faq-answer {
+            margin-top: 10px;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-left: 5px;
+        }
+
         /* --- NUCLEAR DARK MODE OVERRIDES --- */
         [data-theme="dark"] .hero-premium { background-image: none !important; }
         
@@ -221,7 +272,6 @@
             color: #ffffff !important;
         }
         
-        /* Dark Mode Buttons */
         [data-theme="dark"] .btn-premium.primary {
             background: #38bdf8 !important; color: #0f172a !important;
             box-shadow: 0 0 15px rgba(56, 189, 248, 0.4) !important;
@@ -257,6 +307,16 @@
         
         [data-theme="dark"] .face-card h2, [data-theme="dark"] .face-card h3 { color: white !important; }
         [data-theme="dark"] .face-card p, [data-theme="dark"] .service-list li { color: #cbd5e1 !important; }
+
+        /* DARK MODE FAQ FIXES */
+        [data-theme="dark"] .faq-container-box {
+            background: rgba(30, 41, 59, 0.6) !important;
+            border-color: rgba(255,255,255,0.1) !important;
+        }
+        [data-theme="dark"] summary.faq-question { color: #f8fafc !important; }
+        [data-theme="dark"] summary.faq-question:hover { color: #38bdf8 !important; }
+        [data-theme="dark"] .faq-answer { color: #cbd5e1 !important; }
+        [data-theme="dark"] details.faq-item { border-bottom-color: rgba(255,255,255,0.1); }
 
         @media (max-width: 768px) {
             .hero-glass-card { padding: 30px 20px; }
@@ -309,7 +369,8 @@
 
                 <h1>Financial Process & Documentation Intelligence</h1>
                 <p>A global gateway for decoding financial systems, institutional workflows, and documentation compliance. Independent, educational, and strictly non-advisory.</p>
-                
+                <p style="margin-top: 10px; margin-bottom: 25px; font-size: 0.95rem; opacity: 0.9;">Designed for individuals, families, and NRIs navigating financial processes, documentation, and institutional workflows.</p>
+
                 <div class="trust-indicators">
                     <span class="trust-tag">🛡️ Independent Platform</span>
                     <span class="trust-tag">🔒 Privacy First</span>
@@ -336,19 +397,19 @@
             <div class="grid-4">
                 <div class="face-card">
                     <h2><span class="topic-icon">🧠</span> What We Do</h2>
-                    <p>We decode complex financial systems into clear, actionable process steps. We bridge the gap between regulatory policy and institutional execution.</p>
+                    <p>We explain how financial systems and institutional processes function. We decode documentation workflows, provide educational intelligence, and offer structured process support—building clarity without influencing decisions.</p>
                 </div>
                 <div class="face-card">
                     <h2><span class="topic-icon">🚫</span> What We Are Not</h2>
-                    <p>We are NOT financial advisors. We do not provide investment recommendations, sell products, or guarantee market outcomes.</p>
+                    <p>We are NOT financial advisors. We do not provide investment guidance, sell products, predict market outcomes, or offer performance guarantees.</p>
                 </div>
                 <div class="face-card">
                     <h2><span class="topic-icon">🌏</span> Core Intelligence</h2>
-                    <p>Focusing on Financial Foundations, Indian Ecosystems, Global Markets, and Compliance Frameworks. Strictly educational.</p>
+                    <p>Depth-focused intelligence on Financial System Foundations, Indian & Global Ecosystems, Process-First News Decoding, and Institutional Documentation Compliance workflows.</p>
                 </div>
                 <div class="face-card">
                     <h2><span class="topic-icon">⚠️</span> Why Processes Fail</h2>
-                    <p>Failures often stem from documentation inconsistency, sequencing errors, and legacy data gaps—not just market forces.</p>
+                    <p>Failures often stem from documentation inconsistencies, sequencing errors, institutional risk controls, and legacy data gaps—not just market forces.</p>
                 </div>
             </div>
         </div>
@@ -393,7 +454,9 @@
             </div>
             
             <div style="text-align: center; margin-top: 40px;">
-                <p style="margin-bottom: 20px; color: #64748B;">Need structured support for a specific case?</p>
+                <p style="margin-bottom: 20px; color: #64748B;">
+                    Need structured support for a specific case?
+                </p>
                 <a href="services.html" style="display: inline-block; font-weight: 600; color: #0077B6; text-decoration: none; border: 1px solid #0077B6; padding: 10px 24px; border-radius: 50px; transition: all 0.3s;">View Full Services</a>
             </div>
         </div>
@@ -403,11 +466,63 @@
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 30px; font-family: 'Merriweather', serif;">Ethics & Responsibility</h2>
             <ul class="why-list" style="max-width: 800px; margin: 0 auto; padding: 30px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); background: rgba(255,255,255,0.6);">
-                <li style="margin-bottom: 10px;"><strong>Neutrality:</strong> We operate without conflict of interest or commercial pressure.</li>
-                <li style="margin-bottom: 10px;"><strong>Responsibility:</strong> We provide the map; the user must drive the car. Decisions remain yours.</li>
-                <li style="margin-bottom: 10px;"><strong>Privacy:</strong> We collect minimal data solely for process support.</li>
-                <li><strong>Clarity:</strong> We prioritize clear, jargon-free explanations of complex systems.</li>
+                <li style="margin-bottom: 10px;"><strong>Neutrality:</strong> We operate without conflict of interest, commissions, or commercial pressure.</li>
+                <li style="margin-bottom: 10px;"><strong>Responsibility:</strong> We provide the system map; the user must drive. All decisions remain yours.</li>
+                <li style="margin-bottom: 10px;"><strong>Privacy:</strong> We collect minimal data solely for process support and documentation execution.</li>
+                <li><strong>Clarity:</strong> We prioritize clear, jargon-free explanations of complex institutional systems.</li>
             </ul>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 30px; font-family: 'Merriweather', serif;">Frequently Asked Questions — Using MVN FinHub</h2>
+            
+            <div class="faq-container-box">
+                
+                <details class="faq-item">
+                    <summary class="faq-question">Is MVN FinHub a financial advisory platform?</summary>
+                    <div class="faq-answer">
+                        No. MVN FinHub is not a financial advisory platform. The platform provides educational and informational content focused on financial systems, institutional processes, and documentation workflows. It does not provide advice, recommendations, or opinions, and it does not influence financial decisions.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Can I make financial decisions based on the information provided here?</summary>
+                    <div class="faq-answer">
+                        No. The information provided on MVN FinHub is intended to improve awareness and understanding only. It should not be used as a basis for making financial, investment, legal, or tax decisions. Responsibility for decisions always remains with the individual.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Do you recommend investments, products, or strategies?</summary>
+                    <div class="faq-answer">
+                        No. MVN FinHub does not recommend investments, financial products, strategies, or courses of action. The platform remains neutral and non-influential, focusing only on explaining how systems and processes operate.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">What kind of help can I receive through your services?</summary>
+                    <div class="faq-answer">
+                        Services offered by MVN FinHub are process-oriented and non-advisory. They focus on explaining documentation requirements, clarifying institutional processes, interpreting communications, and supporting structured understanding where financial processes feel unclear or complex.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Who is this platform most useful for?</summary>
+                    <div class="faq-answer">
+                        MVN FinHub is most useful for individuals, families, and NRIs who are navigating banking processes, compliance requirements, legacy assets, cross-border documentation, or institutional financial workflows.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">How is my information handled if I contact MVN FinHub?</summary>
+                    <div class="faq-answer">
+                        Only minimal information required to respond to an enquiry is collected. Information is used strictly for communication and clarification purposes and is not sold, shared, or used beyond its stated intent. Details are handled in line with the platform’s privacy and data responsibility principles.
+                    </div>
+                </details>
+
+            </div>
         </div>
     </section>
     
@@ -415,7 +530,7 @@
     <footer>
         <div class="container">
             <div class="footer-logo-container">
-                <img src="assets/images/logo-3d-full.png" alt="MVN FinHub Premium" class="footer-3d-logo" width="158" height="105">
+               <img src="assets/images/logo-3d-full.png" alt="MVN FinHub Premium" class="footer-3d-logo" width="158" height="105">
             </div>
 
             <p>&copy; 2026 MVN FinHub</p>
