@@ -21,8 +21,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     </noscript>
 
-    <link rel="preload" href="assets/css/main.css?v=final_v3" as="style">
-    <link rel="stylesheet" href="assets/css/main.css?v=final_v3">
+    <link rel="preload" href="assets/css/main.css?v=final_mobile_opt" as="style">
+    <link rel="stylesheet" href="assets/css/main.css?v=final_mobile_opt">
     <script src="assets/js/app.js" defer></script>
     <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
@@ -39,12 +39,13 @@
     </script>
 
     <style>
-        /* --- PREMIUM STYLES FOR SERVICES PAGE --- */
+        /* --- MOBILE-FIRST & BROKER STYLE OPTIMIZATIONS --- */
         
-        /* 1. HERO */
+        /* 1. HERO SECTION */
         .hero-glass-card {
             background: rgba(255, 255, 255, 0.65);
             backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px); /* Safari support */
             padding: 40px;
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.9);
@@ -63,55 +64,59 @@
         /* 2. CORE OFFERING GRID (Top 3) */
         .core-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            /* Optimized for mobile: minimum 280px prevents horizontal scroll on small phones */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             margin-bottom: 60px;
         }
 
+        /* PREMIUM CORE CARD (Broker/Fintech Look) */
         a.core-card {
             display: flex;
             flex-direction: column;
             text-decoration: none;
             background: linear-gradient(145deg, #ffffff 0%, #f0f9ff 100%);
-            padding: 40px;
+            padding: 35px;
             border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 10px 30px -10px rgba(2, 132, 199, 0.15);
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
             border-top: 6px solid #0284C7;
+            height: 100%; /* Equal height in grid */
         }
 
-        /* Hover Effect for Core Cards */
-        a.core-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 60px -15px rgba(2, 132, 199, 0.2);
+        /* Hover Interaction */
+        a.core-card:hover, a.core-card:active {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px -15px rgba(2, 132, 199, 0.25);
             border-color: #38BDF8;
         }
 
-        /* Badge */
+        /* Badge Styling */
         .core-badge {
             position: absolute;
             top: 20px;
             right: 20px;
             background: rgba(2, 132, 199, 0.1);
             color: #0284C7;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 6px 14px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 6px 12px;
             border-radius: 50px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        /* 3. FOUNDATION LAYER (Financial Structure - Restored Full Content) */
+        /* 3. FOUNDATION CARD (Full Width) */
         .foundation-card {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(14, 165, 233, 0.2);
             border-radius: 20px;
-            padding: 40px;
+            padding: 35px;
             margin-bottom: 60px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.03);
             text-decoration: none;
@@ -121,7 +126,7 @@
             transition: transform 0.3s ease;
         }
         .foundation-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.06);
             border-color: #0EA5E9;
         }
@@ -129,19 +134,21 @@
             background: #F1F5F9;
             color: #475569;
             display: inline-block;
-            padding: 6px 16px;
+            padding: 5px 14px;
             border-radius: 30px;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border: 1px solid #E2E8F0;
+            text-transform: uppercase;
         }
 
-        /* 4. STANDARD GRID */
+        /* 4. STANDARD SERVICES GRID */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            /* Mobile safe width */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         a.service-card {
@@ -150,40 +157,42 @@
             text-decoration: none;
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
-            padding: 35px;
+            -webkit-backdrop-filter: blur(10px);
+            padding: 30px;
             border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             transition: all 0.3s ease;
             position: relative;
             border-top: 5px solid transparent;
+            height: 100%;
         }
 
-        a.service-card:hover {
-            transform: translateY(-5px);
+        a.service-card:hover, a.service-card:active {
+            transform: translateY(-4px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.08);
             background: white;
         }
 
-        /* Color Coding */
+        /* Service Color Coding */
         a.service-card:nth-child(4n+1) { border-top-color: #0EA5E9; }
         a.service-card:nth-child(4n+2) { border-top-color: #10B981; }
         a.service-card:nth-child(4n+3) { border-top-color: #8B5CF6; }
         a.service-card:nth-child(4n+4) { border-top-color: #F59E0B; }
 
         /* Typography */
-        h2, h3 { font-family: 'Merriweather', serif; color: #0F172A; margin-bottom: 15px; }
-        .topic-icon { font-size: 2rem; display: block; margin-bottom: 10px; }
+        h2, h3 { font-family: 'Merriweather', serif; color: #0F172A; margin-bottom: 15px; line-height: 1.3; }
+        .topic-icon { font-size: 1.8rem; display: block; margin-bottom: 10px; }
         
-        /* List Styles (Restored Exact Formatting) */
+        /* List Styles */
         .card-list { margin: 0; padding: 0; margin-top: 15px; }
         .card-list li {
             list-style: none;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-size: 0.95rem;
             line-height: 1.6;
             color: #475569;
-            padding-left: 20px;
+            padding-left: 18px;
             position: relative;
         }
         .card-list li::before {
@@ -191,9 +200,9 @@
         }
         .card-label { font-weight: 700; color: #0F172A; }
 
-        /* Buttons */
+        /* Action Buttons (Broker Style) */
         .card-btn {
-            margin-top: auto;
+            margin-top: auto; /* Pushes to bottom */
             align-self: flex-start;
             padding: 10px 20px;
             background: transparent;
@@ -204,7 +213,9 @@
             color: #64748B;
             margin-top: 25px;
             transition: all 0.3s;
+            cursor: pointer;
         }
+        /* Mobile Touch State */
         a.core-card:hover .card-btn, 
         a.service-card:hover .card-btn,
         .foundation-card:hover .card-btn {
@@ -213,7 +224,7 @@
             border-color: #0EA5E9;
         }
 
-        /* Dark Mode */
+        /* Dark Mode Overrides */
         [data-theme="dark"] .hero-glass-card { background: rgba(30, 41, 59, 0.7); border-color: rgba(255,255,255,0.1); }
         [data-theme="dark"] a.core-card { background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%); border-color: rgba(255,255,255,0.1); border-top-color: #38BDF8; }
         [data-theme="dark"] a.core-card h3 { color: white; }
@@ -239,7 +250,14 @@
         [data-theme="dark"] .cross-list li { color: #fca5a5; }
         .cross-list li::before { content: "✕"; position: absolute; left: 0; color: #EF4444; }
 
-        @media (max-width: 768px) { .core-grid { grid-template-columns: 1fr; } .services-grid { grid-template-columns: 1fr; } }
+        /* MOBILE SPECIFIC MEDIA QUERY */
+        @media (max-width: 768px) { 
+            .core-grid { grid-template-columns: 1fr; } /* Stack core cards */
+            .services-grid { grid-template-columns: 1fr; } /* Stack standard cards */
+            .foundation-card > div { grid-template-columns: 1fr !important; } /* Stack foundation content */
+            .hero-glass-card { padding: 30px 20px; }
+            h1 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
@@ -288,7 +306,7 @@
     <section class="section-padding">
         <div class="container">
         
-        <h2 style="text-align: center; margin-bottom: 40px; font-size: 2rem; color: var(--text-head);">Core Offerings</h2>
+        <h2 style="text-align: center; margin-bottom: 30px; font-size: 1.8rem; color: var(--text-head); opacity: 0.9;">Core Offerings</h2>
         
         <div class="core-grid">
             
@@ -298,7 +316,7 @@
                 <h3>Shares & Legacy Assets</h3>
                 <ul class="card-list">
                     <li><span class="card-label">Focus:</span> Recovery of physical share certificates and IEPF claims.</li>
-                    <li><span class="card-label">Context:</span> Legacy assets often face rejection due to name mismatches or signature gaps.</li>
+                    <li><span class="card-label">Context:</span> Legacy assets often face rejection due to name mismatches.</li>
                     <li><span class="card-label">We Do:</span> Handle transmission, succession documentation, and IEPF filing.</li>
                     <li><span class="card-label">We Don't Do:</span> Provide legal representation in court.</li>
                 </ul>
@@ -324,7 +342,7 @@
                 <h3>Identity & Core Docs</h3>
                 <ul class="card-list">
                     <li><span class="card-label">Focus:</span> PAN, Aadhaar, and Passport consistency.</li>
-                    <li><span class="card-label">Context:</span> Identity data mismatches are the root cause of 90% of financial rejections.</li>
+                    <li><span class="card-label">Context:</span> Identity data mismatches are the root cause of financial rejections.</li>
                     <li><span class="card-label">We Do:</span> Assist in linking and correcting core identity data.</li>
                     <li><span class="card-label">We Don't Do:</span> Create fake or forged identity documents.</li>
                 </ul>
@@ -360,7 +378,7 @@
         <div class="services-grid">
         
             <a href="service-banking.html" class="service-card">
-                <h3><span class="topic-icon">🏦</span> Banking & Loan Docs</h3>
+                <h3><span class="topic-icon" style="font-size: 1.4rem;">🏦</span> Banking & Loan Docs</h3>
                 <ul class="card-list">
                     <li><span class="card-label">Focus:</span> Navigating internal bank verification logic.</li>
                     <li><span class="card-label">Context:</span> Banks stop processes immediately upon detecting data inconsistency.</li>
@@ -371,7 +389,7 @@
             </a>
 
             <a href="service-process.html" class="service-card">
-                <h3><span class="topic-icon">⚙️</span> Process & Compliance</h3>
+                <h3><span class="topic-icon" style="font-size: 1.4rem;">⚙️</span> Process & Compliance</h3>
                 <ul class="card-list">
                     <li><span class="card-label">Focus:</span> Sequencing institutional steps correctly.</li>
                     <li><span class="card-label">Context:</span> Doing steps out of order (e.g., KYC before PAN update) causes rework.</li>
@@ -382,7 +400,7 @@
             </a>
 
             <a href="service-research.html" class="service-card">
-                <h3><span class="topic-icon">🔍</span> Custom Info & Research</h3>
+                <h3><span class="topic-icon" style="font-size: 1.4rem;">🔍</span> Custom Info & Research</h3>
                 <ul class="card-list">
                     <li><span class="card-label">Focus:</span> Public-information-based system explanations.</li>
                     <li><span class="card-label">Context:</span> Users often need context on specific regulations without advice.</li>
@@ -393,7 +411,7 @@
             </a>
 
             <a href="service-interpretation.html" class="service-card">
-                <h3><span class="topic-icon">🧐</span> Document Interpretation</h3>
+                <h3><span class="topic-icon" style="font-size: 1.4rem;">🧐</span> Document Interpretation</h3>
                 <ul class="card-list">
                     <li><span class="card-label">Focus:</span> Decoding institutional language.</li>
                     <li><span class="card-label">Context:</span> Bank notices and rejection letters use complex compliance terminology.</li>
@@ -404,7 +422,7 @@
             </a>
 
             <a href="service-navigation.html" class="service-card">
-                <h3><span class="topic-icon">🧭</span> Process Navigation</h3>
+                <h3><span class="topic-icon" style="font-size: 1.4rem;">🧭</span> Process Navigation</h3>
                 <ul class="card-list">
                     <li><span class="card-label">Focus:</span> Guidance through multi-stage institutional workflows.</li>
                     <li><span class="card-label">Context:</span> Delays often occur because users don't know the "next step" trigger.</li>
