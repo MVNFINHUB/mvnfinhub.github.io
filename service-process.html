@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process & Compliance | MVN FinHub</title>
+    
+    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/main.css?v=final_perf">
+    <script src="assets/js/app.js" defer></script>
+
+    <style>
+        /* --- PAGE SPECIFIC STYLES (MATCHING PREMIUM STRUCTURE) --- */
+        
+        /* Back Button Style */
+        .back-link-wrapper {
+            margin: 20px 0 40px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #64748B;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .back-link:hover { color: #0EA5E9; }
+
+        /* Document Hero */
+        .doc-hero {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        .doc-hero h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            color: #0F172A;
+            margin-bottom: 15px;
+        }
+        .doc-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #0284C7, #0369A1);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(2, 132, 199, 0.2);
+        }
+
+        /* Glass Content Cards */
+        .doc-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px -5px rgba(0,0,0,0.03);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Left Border Accents */
+        .doc-card.blue-accent { border-left: 5px solid #0EA5E9; }
+        .doc-card.indigo-accent { border-left: 5px solid #6366F1; }
+        .doc-card.red-accent { border-left: 5px solid #EF4444; background: linear-gradient(to right, #FEF2F2, white); }
+
+        .doc-card h2 {
+            font-size: 1.8rem;
+            color: #0C4A6E;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .doc-icon { font-size: 2rem; }
+
+        .doc-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            color: #334155;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.9;
+        }
+
+        .doc-card p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-bottom: 15px;
+        }
+
+        /* Creative List Styling */
+        .styled-list { padding-left: 0; margin-top: 15px; }
+        .styled-list li {
+            list-style: none;
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            color: #334155;
+            font-weight: 500;
+        }
+        .styled-list li::before {
+            content: "➞";
+            position: absolute;
+            left: 0;
+            color: #0EA5E9;
+            font-weight: bold;
+        }
+
+        /* Warning List Styling */
+        .warning-list li::before {
+            content: "✕";
+            color: #EF4444;
+        }
+
+        /* Dark Mode Overrides */
+        [data-theme="dark"] .doc-hero h1 { color: #fff; }
+        [data-theme="dark"] .doc-hero { border-bottom-color: rgba(255,255,255,0.1); }
+        [data-theme="dark"] .doc-card {
+            background: rgba(30, 41, 59, 0.6);
+            border-color: rgba(255,255,255,0.05);
+        }
+        [data-theme="dark"] .doc-card h2 { color: #fff; }
+        [data-theme="dark"] .doc-card h3 { color: #94A3B8; }
+        [data-theme="dark"] .doc-card p { color: #cbd5e1; }
+        [data-theme="dark"] .styled-list li { color: #e2e8f0; }
+        [data-theme="dark"] .doc-card.red-accent { background: rgba(127, 29, 29, 0.2); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-flex">
+            <a href="index.html" class="brand-logo">
+                <div class="logo-icon-wrapper">
+                    <img src="assets/images/logo-header.png" alt="MVN FinHub Logo" width="131" height="88">
+                </div>
+                <div class="brand-text">
+                    <span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span>
+                </div>
+            </a>
+            
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">☰</button>
+
+            <nav class="nav-links" id="nav-links">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="services.html" class="nav-item active">Services</a>
+                <a href="insights.html" class="nav-item">Insights</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="contact.html" class="nav-item btn-nav">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        
+        <section style="padding-top: 120px; padding-bottom: 40px;">
+            <div class="container" style="max-width: 900px;">
+                
+                <div class="back-link-wrapper">
+                    <a href="services.html" class="back-link">← Return to Services Overview</a>
+                </div>
+
+                <div class="doc-hero">
+                    <span class="doc-badge">Process-Logic & Sequencing | Non-Advisory | Non-Overlapping</span>
+                    <h1>Process & Compliance</h1>
+                    <p style="color: #64748B; font-size: 1.1rem; max-width: 600px; margin: 10px auto;">
+                        Process-logic and sequencing service focusing on executing institutional steps in the correct order.
+                    </p>
+                </div>
+
+                <div class="doc-card blue-accent">
+                    <h2><span class="doc-icon">⚙️</span> Definition & Logic</h2>
+                    
+                    <h3>What This Service Is</h3>
+                    <p>A process-logic and sequencing service that focuses on executing institutional and regulatory steps in the correct order to prevent breakdowns, rework, or silent failures.</p>
+                    <p>This service addresses “when and in what sequence actions must occur”, not documentation preparation, verification, or compliance outcomes.</p>
+
+                    <h3>Why This Process Exists</h3>
+                    <p>Across banks, brokers, regulators, and compliance systems, actions are inter-dependent.</p>
+                    <p>Even when documents are accurate, executing steps in the wrong order—such as updating KYC before PAN, or applying resident workflows to NRI status—can force full-cycle rework.</p>
+                    <p>This service exists to prevent order-of-execution failures, not to bypass or alter regulatory requirements.</p>
+                </div>
+
+                <div class="doc-card indigo-accent">
+                    <h2><span class="doc-icon">🧠</span> Core Scope (Non-Overlapping)</h2>
+                    <p>This service operates strictly at the process orchestration layer, independent of documentation or advisory services.</p>
+                </div>
+
+                <div class="doc-card blue-accent">
+                    <h2><span class="doc-icon">✅</span> What This Service Does</h2>
+                    
+                    <h3>Process Logic & Sequencing Support</h3>
+                    <ul class="styled-list">
+                        <li>Identify inter-dependency logic between institutions (which action unlocks the next system)</li>
+                        <li>Design execution-order frameworks (what must precede what)</li>
+                        <li>Flag hard-stop vs soft-stop steps within workflows</li>
+                        <li>Define pre-conditions and post-conditions for each action</li>
+                        <li>Prevent expiry clashes (attestation validity, KYC freshness, time-bound dependencies)</li>
+                        <li>Create process timelines aligned with institutional cut-offs</li>
+                        <li>Detect silent blockers not visible to clients</li>
+                        <li>Provide error-prevention playbooks before submission</li>
+                        <li>Support multi-institution handoffs without duplication of work</li>
+                    </ul>
+                    <p>All support is logic-based and sequence-based only.</p>
+                </div>
+
+                <div class="doc-card red-accent">
+                    <h2><span class="doc-icon">🚫</span> What This Service Does Not Do</h2>
+                    <ul class="styled-list warning-list">
+                        <li>Does not skip or shortcut regulatory steps</li>
+                        <li>Does not override system-mandated validations</li>
+                        <li>Does not certify compliance or audit outcomes</li>
+                        <li>Does not act as an approving, verifying, or regulatory authority</li>
+                        <li>Does not prepare, verify, or submit documents</li>
+                        <li>Does not provide legal, financial, or compliance advice</li>
+                    </ul>
+                </div>
+
+                <div class="doc-card indigo-accent">
+                    <h2><span class="doc-icon">🎯</span> Target Audience</h2>
+                    
+                    <h3>Who This Is For</h3>
+                    <ul class="styled-list">
+                        <li>Individuals or entities dealing with multi-institution processes</li>
+                        <li>Clients facing repeated rework despite correct documentation</li>
+                        <li>Use cases involving banks, brokers, regulators, or mixed residency status</li>
+                    </ul>
+
+                    <h3>Who This Is Not For</h3>
+                    <ul class="styled-list warning-list">
+                        <li>Documentation preparation or correction</li>
+                        <li>Compliance certification or audit sign-off</li>
+                        <li>Regulatory interpretation or advisory</li>
+                        <li>Outcome-driven or approval-based services</li>
+                    </ul>
+                </div>
+
+                <div class="doc-card blue-accent">
+                    <h2><span class="doc-icon">⚖️</span> Compliance & Positioning</h2>
+                    <ul class="styled-list">
+                        <li>Process-logic and sequencing only</li>
+                        <li>No documentation creation or verification role</li>
+                        <li>No regulatory interpretation authority</li>
+                        <li>Fixed-scope, fixed-fee engagement</li>
+                        <li>Neutral, independent orchestration support</li>
+                    </ul>
+                </div>
+
+                <div class="doc-card red-accent">
+                    <h2><span class="doc-icon">🛑</span> Boundary Statement</h2>
+                    <p>This service is strictly educational and process-oriented.</p>
+                    <p>MVN FinHub does not bypass regulatory requirements, override institutional systems, certify compliance, or influence outcomes of any kind.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo-container">
+               <img src="assets/images/logo-3d-full.png" alt="MVN FinHub Premium" class="footer-3d-logo" width="158" height="105">
+            </div>
+
+            <p>&copy; 2026 MVN FinHub</p>
+            <p style="font-size: 0.9rem; margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                MVN FinHub provides strictly non-advisory financial process, documentation, and educational support.
+                <br><br>
+                <span style="opacity: 0.8; font-size: 0.85rem;"><strong>Safety & Responsibility Disclaimer:</strong> MVN FinHub is an independent, non-advisory, process-oriented platform. Information provided is strictly educational in nature. MVN FinHub is not responsible for decisions, actions, outcomes, losses, delays, or consequences arising from the use, interpretation, or reliance on this information. Users remain solely responsible for all decisions and submissions.</span>
+            </p>
+
+            <div class="footer-links">
+                <a href="legal.html">Privacy & Legal</a>
+                <a href="contact.html">Contact</a>
+                <a href="https://instagram.com/mvnfinhub" target="_blank">Instagram</a>
+                
+                <button id="footer-theme-btn" class="theme-btn-footer" onclick="toggleTheme()" aria-label="Toggle Dark Mode" style="cursor: pointer;">🌙</button>
+            </div>
+        </div>
+
+        <script>
+            // 1. Theme Logic
+            if(localStorage.getItem('theme') === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                const btn = document.getElementById('footer-theme-btn');
+                if(btn) btn.textContent = '☀️';
+            }
+
+            function toggleTheme() {
+                if (window.toggleTheme) {
+                    window.toggleTheme();
+                    return;
+                }
+                const html = document.documentElement;
+                const btn = document.getElementById('footer-theme-btn');
+                const current = html.getAttribute('data-theme');
+                const metaTheme = document.querySelector('meta[name="theme-color"]');
+
+                if (current === 'dark') {
+                    html.setAttribute('data-theme', 'light');
+                    localStorage.setItem('theme', 'light');
+                    btn.textContent = '🌙';
+                    if(metaTheme) metaTheme.setAttribute('content', '#F8FAFC');
+                } else {
+                    html.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                    btn.textContent = '☀️';
+                    if(metaTheme) metaTheme.setAttribute('content', '#0F172A');
+                }
+            }
+        </script>
+    </footer>
+
+</body>
+</html>

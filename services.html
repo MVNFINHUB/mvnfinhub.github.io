@@ -40,9 +40,7 @@
     </script>
 
     <style>
-        /* --- PAGE SPECIFIC STYLES (MATCHING INSIGHTS PREMIUM SYSTEM) --- */
-
-        /* 1. HERO CARD (Glass Premium) */
+        /* --- PAGE SPECIFIC STYLES --- */
         .hero-glass-card {
             background: rgba(255, 255, 255, 0.65);
             backdrop-filter: blur(16px);
@@ -68,7 +66,7 @@
             animation: floatIcon 3s ease-in-out infinite;
         }
 
-        /* 2. PRIMARY SERVICE BOX (Flagship) */
+        /* PRIMARY SERVICE BOX */
         .primary-service {
             background: linear-gradient(135deg, rgba(240, 249, 255, 0.8) 0%, rgba(224, 242, 254, 0.8) 100%);
             backdrop-filter: blur(12px);
@@ -83,8 +81,6 @@
             transition: transform 0.3s ease;
         }
         .primary-service:hover { transform: translateY(-3px); }
-        
-        /* Decorative Circle */
         .primary-service::after {
             content: ''; position: absolute; top: -60px; right: -60px;
             width: 250px; height: 250px;
@@ -118,57 +114,73 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
-        /* 3. SERVICES GRID & CARDS */
+        /* SERVICES GRID & CARDS */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 35px;
         }
-
-        .service-card {
+        
+        /* CARD INTERACTIVITY */
+        a.service-card {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-decoration: none; /* No underline */
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
             padding: 35px;
             border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.8);
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             position: relative; overflow: hidden;
-            display: flex; flex-direction: column; gap: 15px;
+            cursor: pointer; /* Ensures hand icon appears */
+        }
+
+        /* Hover Effects */
+        a.service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-color: #0EA5E9; /* Blue border on hover */
+        }
+
+        /* Arrow Indicator on Hover */
+        a.service-card h3::after {
+            content: ' →';
+            opacity: 0;
+            margin-left: 8px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            color: #0EA5E9;
+        }
+        a.service-card:hover h3::after {
+            opacity: 1;
+            transform: translateX(5px);
         }
 
         /* Color Accents */
-        .service-card:nth-child(3n+1) { border-top: 5px solid #0EA5E9; }
-        .service-card:nth-child(3n+2) { border-top: 5px solid #10B981; }
-        .service-card:nth-child(3n+3) { border-top: 5px solid #8B5CF6; }
+        a.service-card:nth-child(3n+1) { border-top: 5px solid #0EA5E9; }
+        a.service-card:nth-child(3n+2) { border-top: 5px solid #10B981; }
+        a.service-card:nth-child(3n+3) { border-top: 5px solid #8B5CF6; }
 
-        /* Hover Lift */
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-        }
-
-        .service-card h3 {
+        a.service-card h3 {
             font-size: 1.35rem; margin-bottom: 10px; padding-bottom: 15px;
             border-bottom: 2px solid #E2E8F0; color: #0A2540;
             font-family: 'Merriweather', serif;
             display: flex; align-items: center; gap: 12px;
         }
-
-        /* Icons */
         .topic-icon {
             font-size: 1.6rem; line-height: 1;
             filter: grayscale(100%); transition: all 0.3s ease;
             display: inline-block;
         }
-        .service-card:hover .topic-icon {
+        a.service-card:hover .topic-icon {
             filter: grayscale(0%); transform: scale(1.2) rotate(5deg);
         }
 
-        /* 4. LIST STYLING (Inside Cards) */
-        .card-list {
-            margin: 0; padding: 0;
-        }
+        /* LIST STYLING */
+        .card-list { margin: 0; padding: 0; }
         .card-list li {
             list-style: none; margin-bottom: 12px;
             font-size: 0.95rem; line-height: 1.5; color: #475569;
@@ -182,7 +194,7 @@
             font-weight: 700; color: #0F172A; display: block; margin-bottom: 2px;
         }
 
-        /* 5. EXCLUSION / GLOBAL SECTIONS */
+        /* EXCLUSION / GLOBAL SECTIONS */
         .global-section {
             background: rgba(255, 255, 255, 0.6);
             border-radius: 16px; padding: 40px; margin-top: 60px;
@@ -192,8 +204,6 @@
             font-size: 1.6rem; color: #1E293B; margin-bottom: 20px;
             display: flex; align-items: center; gap: 12px;
         }
-
-        /* Exclusion Box Specifically */
         .exclusion-box {
             background: linear-gradient(135deg, #FEF2F2 0%, #FFF1F2 100%);
             border: 1px solid #FECACA; border-left: 5px solid #EF4444;
@@ -207,7 +217,25 @@
             content: "✕"; position: absolute; left: 0; top: 1px; color: #EF4444; 
         }
 
-        /* Keyframes */
+        /* NEW BUTTON STYLE FOR DEEP DIVE */
+        .btn-deep-dive {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            background: #0284C7;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+        }
+        .btn-deep-dive:hover {
+            background: #0369A1;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(2, 132, 199, 0.4);
+        }
+
         @keyframes floatIcon {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-8px); }
@@ -232,16 +260,20 @@
             border-left-color: #38bdf8 !important; color: #cbd5e1 !important;
         }
 
-        [data-theme="dark"] .service-card {
+        /* Anchor Card Dark Mode */
+        [data-theme="dark"] a.service-card {
             background: rgba(30, 41, 59, 0.6) !important;
             border-color: rgba(255,255,255,0.05) !important;
             border-top-width: 5px !important;
         }
-        [data-theme="dark"] .service-card:nth-child(3n+1) { border-top-color: #0EA5E9 !important; }
-        [data-theme="dark"] .service-card:nth-child(3n+2) { border-top-color: #10B981 !important; }
-        [data-theme="dark"] .service-card:nth-child(3n+3) { border-top-color: #8B5CF6 !important; }
+        [data-theme="dark"] a.service-card:hover {
+            border-color: #38bdf8 !important;
+        }
+        [data-theme="dark"] a.service-card:nth-child(3n+1) { border-top-color: #0EA5E9 !important; }
+        [data-theme="dark"] a.service-card:nth-child(3n+2) { border-top-color: #10B981 !important; }
+        [data-theme="dark"] a.service-card:nth-child(3n+3) { border-top-color: #8B5CF6 !important; }
 
-        [data-theme="dark"] .service-card h3 {
+        [data-theme="dark"] a.service-card h3 {
             color: #ffffff !important; border-bottom-color: rgba(255,255,255,0.1) !important;
         }
         [data-theme="dark"] .card-list li { color: #cbd5e1 !important; }
@@ -283,7 +315,7 @@
 
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item">Home</a>
-                <a href="services.html" class="nav-item">Services</a>
+                <a href="services.html" class="nav-item active">Services</a>
                 <a href="insights.html" class="nav-item">Insights</a>
                 <a href="about.html" class="nav-item">About</a>
                 <a href="contact.html" class="nav-item btn-nav">Contact</a>
@@ -311,146 +343,150 @@
 
     <section class="section-padding">
         <div class="container">
+        
+        <div class="primary-service">
+            <div class="primary-badge">Core Offering</div>
+            <h2><span class="topic-icon" style="margin-right:15px; font-size:2rem;">🏗️</span> Financial Structure & Readiness</h2>
             
-            <div class="primary-service">
-                <div class="primary-badge">Core Offering</div>
-                <h2><span class="topic-icon" style="margin-right:15px; font-size:2rem;">🏗️</span> Financial Structure & Readiness</h2>
-                
-                <div style="margin-top: 24px;">
-                    <ul class="card-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                        <li><span class="card-label">What it is:</span> Systematic organization of financial records across all asset classes.</li>
-                        <li><span class="card-label">Why it exists:</span> To prevent future transmission delays caused by fragmented records.</li>
-                        <li><span class="card-label">How it helps:</span> Identifies gaps in nominees, KYC, and linking before a crisis occurs.</li>
-                        <li><span class="card-label">We Do:</span> Map assets, checking linking status, and organize physical records.</li>
-                        <li><span class="card-label">We Don't Do:</span> Plan investments or advise on asset allocation.</li>
-                    </ul>
-                </div>
-
-                <div class="boundary-box">
-                    <strong>Explicit Boundary Statement:</strong><br>
-                    This service is strictly educational and process-oriented. No investment advice, planning, or recommendations are provided.
-                </div>
-            </div>
-
-            <div class="services-grid">
-                
-                <div class="service-card">
-                    <h3><span class="topic-icon">📜</span> Shares & Legacy Assets</h3>
-                    <ul class="card-list">
-                        <li><span class="card-label">Focus:</span> Recovery of physical share certificates and IEPF claims.</li>
-                        <li><span class="card-label">Context:</span> Legacy assets often face rejection due to name mismatches or signature gaps.</li>
-                        <li><span class="card-label">We Do:</span> Handle transmission, succession documentation, and IEPF filing.</li>
-                        <li><span class="card-label">We Don't Do:</span> Provide legal representation in court.</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <h3><span class="topic-icon">✈️</span> NRI Documentation</h3>
-                    <ul class="card-list">
-                        <li><span class="card-label">Focus:</span> Cross-border compliance for Non-Resident Indians.</li>
-                        <li><span class="card-label">Context:</span> NRIs face stricter scrutiny and longer validation timelines (FATCA/CRS).</li>
-                        <li><span class="card-label">We Do:</span> Assist with NRO/NRE documentation and Apostille guidance.</li>
-                        <li><span class="card-label">We Don't Do:</span> File international taxes or advise on forex rates.</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <h3><span class="topic-icon">🏦</span> Banking & Loan Docs</h3>
-                    <ul class="card-list">
-                        <li><span class="card-label">Focus:</span> Navigating internal bank verification logic.</li>
-                        <li><span class="card-label">Context:</span> Banks stop processes immediately upon detecting data inconsistency.</li>
-                        <li><span class="card-label">We Do:</span> Ensure loan and account documents meet audit liability standards.</li>
-                        <li><span class="card-label">We Don't Do:</span> Influence loan approval decisions.</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <h3><span class="topic-icon">⚙️</span> Process & Compliance</h3>
-                    <ul class="card-list">
-                        <li><span class="card-label">Focus:</span> Sequencing institutional steps correctly.</li>
-                        <li><span class="card-label">Context:</span> Doing steps out of order (e.g., KYC before PAN update) causes rework.</li>
-                        <li><span class="card-label">We Do:</span> Create a step-by-step execution roadmap.</li>
-                        <li><span class="card-label">We Don't Do:</span> Bypass mandatory regulatory checks.</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <h3><span class="topic-icon">🔍</span> Custom Info & Research</h3>
-                    <ul class="card-list">
-                        <li><span class="card-label">Focus:</span> Public-information-based system explanations.</li>
-                        <li><span class="card-label">Context:</span> Users often need context on specific regulations without advice.</li>
-                        <li><span class="card-label">We Do:</span> Research and explain specific procedural requirements.</li>
-                        <li><span class="card-label">We Don't Do:</span> Offer opinions on the quality of a regulation.</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <h3><span class="topic-icon">🧐</span> Document Interpretation</h3>
-                    <ul class="card-list">
-                        <li><span class="card-label">Focus:</span> Decoding institutional language.</li>
-                        <li><span class="card-label">Context:</span> Bank notices and rejection letters use complex compliance terminology.</li>
-                        <li><span class="card-label">We Do:</span> Translate technical notices into clear action items.</li>
-                        <li><span class="card-label">We Don't Do:</span> Draft legal responses to court notices.</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <h3><span class="topic-icon">🧭</span> Process Navigation</h3>
-                    <ul class="card-list">
-                        <li><span class="card-label">Focus:</span> Guidance through multi-stage institutional workflows.</li>
-                        <li><span class="card-label">Context:</span> Delays often occur because users don't know the "next step" trigger.</li>
-                        <li><span class="card-label">We Do:</span> Set realistic timeline expectations based on current stage.</li>
-                        <li><span class="card-label">We Don't Do:</span> Make decisions on behalf of the client.</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <h3><span class="topic-icon">🆔</span> Identity & Core Docs</h3>
-                    <ul class="card-list">
-                        <li><span class="card-label">Focus:</span> PAN, Aadhaar, and Passport consistency.</li>
-                        <li><span class="card-label">Context:</span> Identity data mismatches are the root cause of 90% of financial rejections.</li>
-                        <li><span class="card-label">We Do:</span> Assist in linking and correcting core identity data.</li>
-                        <li><span class="card-label">We Don't Do:</span> Create fake or forged identity documents.</li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <div class="services-grid" style="margin-top: 60px; grid-template-columns: 1fr 1fr;">
-                
-                <div class="global-section">
-                    <h2><span style="font-size:1.5rem">🔄</span> How Our Services Work</h2>
-                    <ul class="card-list">
-                        <li><strong>1. Information Review:</strong> We audit your existing documents for completeness.</li>
-                        <li><strong>2. Structuring:</strong> We organize the data into an institutional-ready format.</li>
-                        <li><strong>3. Process Clarity:</strong> We explain the exact steps required by the institution.</li>
-                        <li><strong>4. User Responsibility:</strong> You retain final authority and sign all submissions.</li>
-                    </ul>
-                </div>
-
-                <div class="global-section">
-                    <h2><span style="font-size:1.5rem">📉</span> Why Processes Fail</h2>
-                    <ul class="card-list">
-                        <li><strong>Inconsistency:</strong> A name spelled differently on two documents.</li>
-                        <li><strong>Sequencing:</strong> Updating a bank account before updating the underlying PAN.</li>
-                        <li><strong>Legacy Gaps:</strong> Missing records from decades ago (physical era).</li>
-                        <li><strong>Risk Checks:</strong> Institutions rejecting valid claims due to liability fears.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="global-section exclusion-box">
-                <h2><span style="font-size:1.5rem">⚠️</span> What We Do NOT Provide</h2>
-                <ul class="cross-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px;">
-                    <li>Investment advice or planning</li>
-                    <li>Stock or mutual fund recommendations</li>
-                    <li>Tax filing or tax opinions</li>
-                    <li>Portfolio management services</li>
-                    <li>Guaranteed outcomes or timelines</li>
-                    <li>Legal representation in courts</li>
-                    <li>Influence over institutional decisions</li>
+            <div style="margin-top: 24px;">
+                <ul class="card-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <li><span class="card-label">What it is:</span> Systematic organization of financial records across all asset classes.</li>
+                    <li><span class="card-label">Why it exists:</span> To prevent future transmission delays caused by fragmented records.</li>
+                    <li><span class="card-label">How it helps:</span> Identifies gaps in nominees, KYC, and linking before a crisis occurs.</li>
+                    <li><span class="card-label">We Do:</span> Map assets, checking linking status, and organize physical records.</li>
+                    <li><span class="card-label">We Don't Do:</span> Plan investments or advise on asset allocation.</li>
                 </ul>
             </div>
+
+            <div style="text-align: center;">
+                <a href="service-structure.html" class="btn-deep-dive">View Full Process Scope & Details →</a>
+            </div>
+
+            <div class="boundary-box">
+                <strong>Explicit Boundary Statement:</strong><br>
+                This service is strictly educational and process-oriented. No investment advice, planning, or recommendations are provided.
+            </div>
+        </div>
+
+        <div class="services-grid">
+        
+            <a href="service-shares.html" class="service-card">
+                <h3><span class="topic-icon">📜</span> Shares & Legacy Assets</h3>
+                <ul class="card-list">
+                    <li><span class="card-label">Focus:</span> Recovery of physical share certificates and IEPF claims.</li>
+                    <li><span class="card-label">Context:</span> Legacy assets often face rejection due to name mismatches or signature gaps.</li>
+                    <li><span class="card-label">We Do:</span> Handle transmission, succession documentation, and IEPF filing.</li>
+                    <li><span class="card-label">We Don't Do:</span> Provide legal representation in court.</li>
+                </ul>
+            </a>
+
+            <a href="service-nri.html" class="service-card">
+                <h3><span class="topic-icon">✈️</span> NRI Documentation</h3>
+                <ul class="card-list">
+                    <li><span class="card-label">Focus:</span> Cross-border compliance for Non-Resident Indians.</li>
+                    <li><span class="card-label">Context:</span> NRIs face stricter scrutiny and longer validation timelines (FATCA/CRS).</li>
+                    <li><span class="card-label">We Do:</span> Assist with NRO/NRE documentation and Apostille guidance.</li>
+                    <li><span class="card-label">We Don't Do:</span> File international taxes or advise on forex rates.</li>
+                </ul>
+            </a>
+
+            <a href="service-identity.html" class="service-card">
+                <h3><span class="topic-icon">🆔</span> Identity & Core Docs</h3>
+                <ul class="card-list">
+                    <li><span class="card-label">Focus:</span> PAN, Aadhaar, and Passport consistency.</li>
+                    <li><span class="card-label">Context:</span> Identity data mismatches are the root cause of 90% of financial rejections.</li>
+                    <li><span class="card-label">We Do:</span> Assist in linking and correcting core identity data.</li>
+                    <li><span class="card-label">We Don't Do:</span> Create fake or forged identity documents.</li>
+                </ul>
+            </a>
+
+            <a href="service-banking.html" class="service-card">
+                <h3><span class="topic-icon">🏦</span> Banking & Loan Docs</h3>
+                <ul class="card-list">
+                    <li><span class="card-label">Focus:</span> Navigating internal bank verification logic.</li>
+                    <li><span class="card-label">Context:</span> Banks stop processes immediately upon detecting data inconsistency.</li>
+                    <li><span class="card-label">We Do:</span> Ensure loan and account documents meet audit liability standards.</li>
+                    <li><span class="card-label">We Don't Do:</span> Influence loan approval decisions.</li>
+                </ul>
+            </a>
+
+            <a href="service-process.html" class="service-card">
+                <h3><span class="topic-icon">⚙️</span> Process & Compliance</h3>
+                <ul class="card-list">
+                    <li><span class="card-label">Focus:</span> Sequencing institutional steps correctly.</li>
+                    <li><span class="card-label">Context:</span> Doing steps out of order (e.g., KYC before PAN update) causes rework.</li>
+                    <li><span class="card-label">We Do:</span> Create a step-by-step execution roadmap.</li>
+                    <li><span class="card-label">We Don't Do:</span> Bypass mandatory regulatory checks.</li>
+                </ul>
+            </a>
+
+            <a href="service-research.html" class="service-card">
+                <h3><span class="topic-icon">🔍</span> Custom Info & Research</h3>
+                <ul class="card-list">
+                    <li><span class="card-label">Focus:</span> Public-information-based system explanations.</li>
+                    <li><span class="card-label">Context:</span> Users often need context on specific regulations without advice.</li>
+                    <li><span class="card-label">We Do:</span> Research and explain specific procedural requirements.</li>
+                    <li><span class="card-label">We Don't Do:</span> Offer opinions on the quality of a regulation.</li>
+                </ul>
+            </a>
+
+            <a href="service-interpretation.html" class="service-card">
+                <h3><span class="topic-icon">🧐</span> Document Interpretation</h3>
+                <ul class="card-list">
+                    <li><span class="card-label">Focus:</span> Decoding institutional language.</li>
+                    <li><span class="card-label">Context:</span> Bank notices and rejection letters use complex compliance terminology.</li>
+                    <li><span class="card-label">We Do:</span> Translate technical notices into clear action items.</li>
+                    <li><span class="card-label">We Don't Do:</span> Draft legal responses to court notices.</li>
+                </ul>
+            </a>
+
+            <a href="service-navigation.html" class="service-card">
+                <h3><span class="topic-icon">🧭</span> Process Navigation</h3>
+                <ul class="card-list">
+                    <li><span class="card-label">Focus:</span> Guidance through multi-stage institutional workflows.</li>
+                    <li><span class="card-label">Context:</span> Delays often occur because users don't know the "next step" trigger.</li>
+                    <li><span class="card-label">We Do:</span> Set realistic timeline expectations based on current stage.</li>
+                    <li><span class="card-label">We Don't Do:</span> Make decisions on behalf of the client.</li>
+                </ul>
+            </a>
+
+        </div>
+
+        <div class="services-grid" style="margin-top: 60px; grid-template-columns: 1fr 1fr;">
+        
+            <div class="global-section">
+                <h2><span style="font-size:1.5rem">🔄</span> How Our Services Work</h2>
+                <ul class="card-list">
+                    <li><strong>1. Information Review:</strong> We audit your existing documents for completeness.</li>
+                    <li><strong>2. Structuring:</strong> We organize the data into an institutional-ready format.</li>
+                    <li><strong>3. Process Clarity:</strong> We explain the exact steps required by the institution.</li>
+                    <li><strong>4. User Responsibility:</strong> You retain final authority and sign all submissions.</li>
+                </ul>
+            </div>
+
+            <div class="global-section">
+                <h2><span style="font-size:1.5rem">📉</span> Why Processes Fail</h2>
+                <ul class="card-list">
+                    <li><strong>Inconsistency:</strong> A name spelled differently on two documents.</li>
+                    <li><strong>Sequencing:</strong> Updating a bank account before updating the underlying PAN.</li>
+                    <li><strong>Legacy Gaps:</strong> Missing records from decades ago (physical era).</li>
+                    <li><strong>Risk Checks:</strong> Institutions rejecting valid claims due to liability fears.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="global-section exclusion-box">
+            <h2><span style="font-size:1.5rem">⚠️</span> What We Do NOT Provide</h2>
+            <ul class="cross-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px;">
+                <li>Investment advice or planning</li>
+                <li>Stock or mutual fund recommendations</li>
+                <li>Tax filing or tax opinions</li>
+                <li>Portfolio management services</li>
+                <li>Guaranteed outcomes or timelines</li>
+                <li>Legal representation in courts</li>
+                <li>Influence over institutional decisions</li>
+            </ul>
+        </div>
 
         </div>
     </section>
