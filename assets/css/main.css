@@ -365,7 +365,7 @@ footer {
 
 
 /* =========================================
-   10. FINAL MOBILE FIX (Z-INDEX CORRECTED)
+   10. MOBILE MENU FIX (ID-BASED FORCE OVERRIDE)
    ========================================= */
 @media (max-width: 992px) {
     
@@ -386,10 +386,10 @@ footer {
         width: 100%;
     }
 
-    /* 2. THE MENU CONTAINER (Layer 9998) */
-    .nav-links { 
-        /* Hide by default to prevent overlap mess */
-        display: none; 
+    /* 2. THE MENU CONTAINER (Targeting ID for Maximum Power) */
+    #nav-links { 
+        /* FORCE HIDE to stop the messy overlap */
+        display: none !important; 
         
         /* Mobile Layout */
         position: fixed; 
@@ -398,24 +398,22 @@ footer {
         width: 100%; 
         height: 100vh; 
         background-color: var(--bg-body); 
-        flex-direction: column;
+        flex-direction: column !important; /* Force Stack */
         align-items: center;
         justify-content: center;
         gap: 30px;
         padding: 40px;
-        
-        /* CRITICAL FIX: Lower than the toggle button */
-        z-index: 9998; 
+        z-index: 9998; /* Below the button */
     }
 
-    /* 3. THE ACTIVE STATE (Show Forcefully) */
-    .nav-links.active { 
+    /* 3. THE ACTIVE STATE (Triggered by JS) */
+    #nav-links.active { 
+        /* FORCE SHOW when button is clicked */
         display: flex !important; 
-        opacity: 1;
     }
 
-    /* 4. HAMBURGER BUTTON (Layer 9999 - TOPMOST) */
-    .mobile-toggle { 
+    /* 4. HAMBURGER BUTTON (Targeting ID) */
+    #mobile-menu-toggle { 
         display: block !important; 
         font-size: 2rem;
         background: none;
@@ -423,9 +421,7 @@ footer {
         color: var(--text-head);
         cursor: pointer;
         margin-left: auto;
-        
-        /* CRITICAL FIX: Higher than the menu so it's clickable */
-        z-index: 9999; 
+        z-index: 9999; /* Above the menu */
         position: relative;
     }
 
