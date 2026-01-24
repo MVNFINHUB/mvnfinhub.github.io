@@ -402,7 +402,7 @@
                 </div>
             </a>
             
-            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">☰</button>
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu" onclick="toggleMobileMenu()">☰</button>
 
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item active">Home</a>
@@ -668,26 +668,28 @@
             }
         }
 
-        // --- FIXED MOBILE MENU SCRIPT ---
-        document.addEventListener('DOMContentLoaded', function() {
-            const btn = document.getElementById('mobile-menu-toggle');
+        // --- NUCLEAR MENU FIX (Direct Function) ---
+        function toggleMobileMenu() {
             const nav = document.getElementById('nav-links');
+            const btn = document.getElementById('mobile-menu-toggle');
+            
+            nav.classList.toggle('active');
+            
+            if (nav.classList.contains('active')) {
+                btn.textContent = '✕';
+                document.body.style.overflow = 'hidden'; 
+            } else {
+                btn.textContent = '☰';
+                document.body.style.overflow = 'auto'; 
+            }
+        }
 
-            if (btn && nav) {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    nav.classList.toggle('active');
-                    
-                    if (nav.classList.contains('active')) {
-                        btn.textContent = '✕';
-                        document.body.style.overflow = 'hidden'; 
-                    } else {
-                        btn.textContent = '☰';
-                        document.body.style.overflow = 'auto'; 
-                    }
-                });
-
-                // Close menu when clicking a link
+        // Close menu when clicking a link
+        document.addEventListener('DOMContentLoaded', function() {
+            const nav = document.getElementById('nav-links');
+            const btn = document.getElementById('mobile-menu-toggle');
+            
+            if(nav && btn) {
                 nav.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', () => {
                         nav.classList.remove('active');
