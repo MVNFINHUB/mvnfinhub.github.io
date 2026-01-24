@@ -42,6 +42,7 @@
             /* Light Mode */
             --bg-body: #F8FAFC;
             --bg-card: #FFFFFF;
+            --bg-glass: rgba(255, 255, 255, 0.95);
             --text-head: #0F172A;
             --text-body: #334155;
             --text-muted: #64748B;
@@ -56,6 +57,7 @@
             /* Dark Mode */
             --bg-body: #020617;
             --bg-card: #0F172A;
+            --bg-glass: rgba(15, 23, 42, 0.95);
             --text-head: #F8FAFC;
             --text-body: #94A3B8;
             --text-muted: #64748B;
@@ -95,10 +97,10 @@
 
         /* --- 3. PREMIUM HEADER --- */
         header {
-            position: absolute; top: 0; width: 100%; z-index: 100;
+            position: absolute; top: 0; width: 100%; z-index: 1000;
             padding: 20px 0; background: transparent;
         }
-        .container { max-width: 1240px; margin: 0 auto; padding: 0 25px; }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 25px; position: relative; }
         .nav-flex { display: flex; justify-content: space-between; align-items: center; }
 
         /* BRAND LOGO */
@@ -109,6 +111,7 @@
             border: 1px solid rgba(255,255,255,0.05);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
+            z-index: 1002; /* Ensure logo stays above menu */
         }
         .brand-logo:hover {
             border-color: var(--accent); background: var(--accent-glow);
@@ -125,7 +128,7 @@
         }
         .text-finhub { color: var(--accent); }
 
-        /* NAV LINKS */
+        /* NAV LINKS (Desktop Default) */
         .nav-links { display: flex; gap: 30px; align-items: center; background: rgba(255,255,255,0.02); padding: 5px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.05); }
         .nav-item { 
             font-family: var(--font-ui);
@@ -148,7 +151,16 @@
         }
         .btn-nav:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
 
-        .mobile-toggle { display: none; font-size: 1.5rem; background: none; border: none; color: var(--text-head); cursor: pointer; }
+        /* Mobile Menu Toggle (Hidden on Desktop) */
+        .mobile-toggle { 
+            display: none; 
+            font-size: 2rem; 
+            background: none; 
+            border: none; 
+            color: var(--text-head); 
+            cursor: pointer; 
+            z-index: 1002; 
+        }
 
         /* --- 4. HERO SECTION --- */
         .hero-section {
@@ -304,33 +316,108 @@
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
+        @keyframes slideDown { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
 
-        /* --- 7. MOBILE RESPONSIVE --- */
-        @media (max-width: 768px) {
-            header { padding: 15px 0; }
-            .hero-section { padding: 120px 0 80px; text-align: center; }
+        /* ========================================================= 
+           7. MOBILE RESPONSIVE (CORRECTED)
+           ========================================================= */
+        @media (max-width: 992px) {
+            
+            /* Header & Navigation Fixes */
+            header { 
+                position: fixed; /* Stick header to top */
+                background: var(--bg-glass); 
+                backdrop-filter: blur(12px);
+                border-bottom: 1px solid var(--border);
+                padding: 15px 0;
+            }
+            
+            .nav-flex {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+
+            .mobile-toggle { 
+                display: block; /* Show hamburger button */
+            }
+
+            /* The Menu Container */
+            .nav-links { 
+                display: none; /* Hide default */
+                position: fixed; 
+                top: 75px; /* Push below header */
+                left: 0; 
+                width: 100%; 
+                height: auto;
+                min-height: 60vh;
+                background: var(--bg-card); 
+                flex-direction: column; 
+                align-items: center;
+                padding: 40px 20px; 
+                box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+                border-bottom: 1px solid var(--border);
+                z-index: 999;
+                gap: 25px;
+            }
+
+            /* Active Class added by JS */
+            .nav-links.active { 
+                display: flex; 
+                animation: slideDown 0.3s ease forwards; 
+            }
+
+            .nav-item { 
+                font-size: 1.2rem; 
+                width: 100%; 
+                text-align: center;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+            }
+            
+            .btn-nav {
+                width: 100%;
+                max-width: 200px;
+                text-align: center;
+                margin-top: 15px;
+                padding: 12px;
+            }
+
+            /* Layout Fixes */
+            .hero-section { padding: 140px 0 80px; text-align: center; }
             .hero-split { grid-template-columns: 1fr; gap: 40px; }
-            .hero-title { font-size: 2.4rem; }
+            .hero-title { font-size: 2.2rem; }
             .hero-subtitle { margin: 0 auto 30px; }
             .hero-btns { justify-content: center; flex-direction: column; width: 100%; }
             .btn-xl { width: 100%; justify-content: center; }
+            .hero-visual { height: 300px; margin-top: 30px; }
             
-            .card-grid { margin-top: 40px; grid-template-columns: 1fr; }
-            .highlight-grid { grid-template-columns: 1fr; }
-            .ethics-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
-            .footer-desc { margin: 0 auto 20px; }
-            .social-row { justify-content: center; }
-            .footer-bottom { flex-direction: column; gap: 15px; }
-            
-            .mobile-toggle { display: block; }
-            .nav-links { 
-                display: none; position: absolute; top: 100%; left: 0; width: 100%; 
-                background: var(--bg-card); flex-direction: column; padding: 25px; 
-                box-shadow: 0 10px 30px rgba(0,0,0,0.2); border-bottom: 1px solid var(--border);
+            /* Grids */
+            .card-grid, .highlight-grid, .ethics-grid { 
+                grid-template-columns: 1fr; 
+                margin-top: 40px; 
             }
-            .nav-links.active { display: flex; animation: slideDown 0.3s ease; }
-            @keyframes slideDown { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
+            .ethics-grid { gap: 30px; }
+
+            /* Footer Fixes */
+            footer { padding-top: 50px; }
+            .footer-grid { 
+                grid-template-columns: 1fr; 
+                text-align: center; 
+                gap: 50px; 
+            }
+            .footer-desc { margin: 0 auto 20px; }
+            
+            .footer-col {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-row { justify-content: center; }
+            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+            .footer-watermark { display: none; }
         }
     </style>
 </head>
@@ -351,11 +438,8 @@
             </a>
             
             <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">☰</button>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-            </button>
 
             <nav class="nav-links" id="nav-links">
-    </nav>
                 <a href="index.html" class="nav-item active">Home</a>
                 <a href="services.html" class="nav-item">Services</a>
                 <a href="insights.html" class="nav-item">Insights</a>
@@ -390,7 +474,7 @@
                         </a>
                     </div>
 
-                    <div style="margin-top: 35px; font-size: 0.85rem; color: var(--text-muted); display:flex; gap:20px; font-weight:600; font-family: var(--font-ui);">
+                    <div style="margin-top: 35px; font-size: 0.85rem; color: var(--text-muted); display:flex; gap:20px; font-weight:600; font-family: var(--font-ui); flex-wrap: wrap;">
                         <span>✓ Independent Platform</span>
                         <span>✓ Privacy First</span>
                         <span>✓ Process Oriented</span>
@@ -555,7 +639,7 @@
                 
                 <div class="footer-col">
                     <img src="assets/images/logo-3d-full.png" alt="MVN FinHub" class="footer-logo">
-                    <p class="footer-desc" style="font-size: 0.9rem; opacity: 0.7; max-width: 320px; margin-bottom: 25px;">MVN FinHub empowers individuals with clarity through strictly non-advisory process and documentation support. We decode institutional complexity.</p>
+                    <p class="footer-desc">MVN FinHub empowers individuals with clarity through strictly non-advisory process and documentation support. We decode institutional complexity.</p>
                     <p style="margin-bottom: 24px; color: #64748B; font-size: 0.85rem; margin-top:10px;">Services are provided on an independent, fixed-fee basis. MVN FinHub does not provide financial, legal, or investment advice and is not responsible for decisions or outcomes. All decisions remain solely the responsibility of the user.</p>
                     
                     <div class="social-row">
@@ -598,7 +682,7 @@
                     <span class="status-ping"></span> System Operational
                 </div>
                 <span>&copy; 2026 MVN FinHub. All Rights Reserved.</span>
-                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle Theme">🌙</button>
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle Theme" style="background:none; border:none; font-size:1.2rem; cursor:pointer;">🌙</button>
             </div>
         </div>
     </footer>
@@ -619,17 +703,48 @@
             }
         }
 
-        // Mobile Menu
-        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
-            document.getElementById('nav-links').classList.toggle('active');
+        // --- FIXED MOBILE MENU SCRIPT ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('mobile-menu-toggle');
+            const nav = document.getElementById('nav-links');
+
+            if (btn && nav) {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    nav.classList.toggle('active');
+                    
+                    if (nav.classList.contains('active')) {
+                        btn.textContent = '✕';
+                        document.body.style.overflow = 'hidden'; 
+                    } else {
+                        btn.textContent = '☰';
+                        document.body.style.overflow = 'auto'; 
+                    }
+                });
+
+                // Close menu when clicking a link
+                nav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        nav.classList.remove('active');
+                        btn.textContent = '☰';
+                        document.body.style.overflow = 'auto';
+                    });
+                });
+            }
         });
 
         // Scroll Effects
         const backToTop = document.getElementById('back-to-top');
         const reveals = document.querySelectorAll(".reveal");
+        
         window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) { backToTop.style.opacity = '1'; backToTop.style.pointerEvents = 'all'; } 
-            else { backToTop.style.opacity = '0'; backToTop.style.pointerEvents = 'none'; }
+            if (window.scrollY > 300) { 
+                backToTop.style.opacity = '1'; 
+                backToTop.style.pointerEvents = 'all'; 
+            } else { 
+                backToTop.style.opacity = '0'; 
+                backToTop.style.pointerEvents = 'none'; 
+            }
             
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
@@ -642,51 +757,21 @@
         });
         window.dispatchEvent(new Event('scroll'));
 
-        // --- LIVE COUNTER SCRIPT (Hero Section) ---
+        // --- LIVE COUNTER SCRIPT ---
         const badgeText = document.getElementById('badge-text');
         const messages = ['Financial Process Intelligence', '3 Core Offerings', 'New Insights Available', 'Process Documentation'];
         let msgIndex = 0;
 
-        setInterval(() => {
-            msgIndex = (msgIndex + 1) % messages.length;
-            badgeText.style.opacity = 0; // Fade out
-            setTimeout(() => {
-                badgeText.innerText = messages[msgIndex];
-                badgeText.style.opacity = 1; // Fade in
-            }, 500);
-        }, 3000); // Change every 3 seconds
-        
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const btn = document.getElementById('mobile-menu-toggle');
-        const nav = document.getElementById('nav-links');
-
-        if (btn && nav) {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                // Toggle the class that CSS uses to show the menu
-                nav.classList.toggle('active');
-                
-                // Toggle the icon shape
-                if (nav.classList.contains('active')) {
-                    btn.textContent = '✕';
-                    document.body.style.overflow = 'hidden'; // Stop scrolling
-                } else {
-                    btn.textContent = '☰';
-                    document.body.style.overflow = 'auto'; // Allow scrolling
-                }
-            });
-
-            // Close menu when clicking a link
-            nav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    nav.classList.remove('active');
-                    btn.textContent = '☰';
-                    document.body.style.overflow = 'auto';
-                });
-            });
+        if (badgeText) {
+            setInterval(() => {
+                msgIndex = (msgIndex + 1) % messages.length;
+                badgeText.style.opacity = 0; // Fade out
+                setTimeout(() => {
+                    badgeText.innerText = messages[msgIndex];
+                    badgeText.style.opacity = 1; // Fade in
+                }, 500);
+            }, 3000); 
         }
-    });
-</script>
+    </script>
 </body>
 </html>
