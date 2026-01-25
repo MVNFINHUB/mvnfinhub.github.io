@@ -73,6 +73,13 @@
             transition: background 0.3s ease;
         }
 
+        /* WORD BREAK FIX: Applied globally to headers */
+        h1, h2, h3, h4, p, li, a { 
+            overflow-wrap: break-word; 
+            word-wrap: break-word; 
+            hyphens: auto; 
+        }
+
         h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; color: var(--text-head); }
         
         /* Premium Texture */
