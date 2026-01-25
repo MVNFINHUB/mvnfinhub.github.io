@@ -298,10 +298,18 @@
             
             .category-bar { justify-content: flex-start; }
             
-            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            /* Force Footer to Stack with Flex */
+            .footer-grid { 
+                display: flex !important;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 40px; 
+            }
             .footer-bottom { flex-direction: column; gap: 20px; }
-            .mobile-toggle { display: block; }
-            .nav-links { display: none; }
+            .footer-col { display: flex; flex-direction: column; align-items: center; }
+            .social-row { justify-content: center; }
+            .footer-watermark { display: none; }
         }
 
         /* SAFETY: Ensure Desktop never shows hamburger */
@@ -319,14 +327,18 @@
                 <div class="logo-icon-wrapper"><img src="assets/images/logo-header.png" alt="MVN Logo"></div>
                 <div class="brand-text"><span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span></div>
             </a>
-            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu">☰</button>
+            
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            </button>
+
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item">Home</a>
                 <a href="services.html" class="nav-item">Services</a>
                 <a href="insights.html" class="nav-item active btn-nav">Insights</a>
                 <a href="about.html" class="nav-item">About</a>
                 <a href="contact.html" class="nav-item">Contact</a>
-            </nav>
+            </nav> 
         </div>
     </header>
 
