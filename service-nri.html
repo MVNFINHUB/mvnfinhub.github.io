@@ -73,6 +73,13 @@
             transition: background 0.3s ease;
         }
 
+        /* WORD BREAK FIX: Ensures long technical words don't overflow on mobile */
+        h1, h2, h3, h4, p, li, a { 
+            overflow-wrap: break-word; 
+            word-wrap: break-word; 
+            hyphens: auto; 
+        }
+
         h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; color: var(--text-head); }
         
         /* Premium Texture */
@@ -183,6 +190,9 @@
             display: inline-block; padding: 4px 12px; border-radius: 50px;
             font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
             margin-left: 10px; vertical-align: middle; background: var(--accent); color: white;
+            /* Mobile Fix for Tags */
+            white-space: normal; 
+            margin-top: 5px;
         }
 
         /* FOOTER */
@@ -340,6 +350,7 @@
                 
                 <div class="hero-visual reveal delay-1">
                     <img src="assets/images/service-nri.png" alt="NRI Documentation Support" fetchpriority="high" decoding="async">
+                    
                 </div>
 
                 <div class="content-grid">
