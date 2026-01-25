@@ -204,13 +204,19 @@
         .delay-1 { transition-delay: 0.1s; }
 
         @media (max-width: 992px) {
+            /* MOBILE LAYOUT FIXES */
             .hero-title { font-size: 2.2rem; }
+            .hero-section { clip-path: polygon(0 0, 100% 0, 100% 98%, 0 100%); } /* Reduced slope for mobile */
+            .hero-visual { height: 250px; } /* MOBILE FIX: Reduced height */
+            .card-content { padding: 25px; } /* MOBILE FIX: Reduced padding */
             
             /* FOOTER FIX: Switch to Flex Column for robust vertical stacking */
             .footer-grid { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 40px; }
             .footer-col { display: flex; flex-direction: column; align-items: center; }
             
             .footer-bottom { flex-direction: column; gap: 20px; }
+            
+            /* --- MENU RETAINED AS PER INSTRUCTION --- */
             .mobile-toggle { display: block; }
             .nav-links { display: none; }
 
@@ -237,7 +243,7 @@
     <header>
         <div class="container nav-flex">
             <a href="index.html" class="brand-logo">
-                <div class="logo-icon-wrapper"><img src="assets/images/logo-header.png" alt="MVN Logo"></div>
+                <div class="logo-icon-wrapper"><img src="assets/images/logo-header.png" alt="MVN Logo" decoding="async"></div>
                 <div class="brand-text"><span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span></div>
             </a>
             
@@ -269,7 +275,7 @@
             <div class="container">
                 
                 <div class="hero-visual reveal delay-1">
-                    <img src="assets/images/service-nri.png" alt="NRI Documentation Support">
+                    <img src="assets/images/service-nri.png" alt="NRI Documentation Support" fetchpriority="high" decoding="async">
                 </div>
 
                 <div class="content-grid">
@@ -494,7 +500,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <img src="assets/images/logo-3d-full.png" alt="MVN FinHub" class="footer-logo">
+                    <img src="assets/images/logo-3d-full.png" alt="MVN FinHub" class="footer-logo" loading="lazy" decoding="async">
                     <p class="footer-desc">MVN FinHub empowers individuals with clarity through strictly non-advisory process and documentation support. We decode institutional complexity.</p>
                     <p style="font-size:0.85rem; color:#64748B; margin-top:20px;">Services are provided on an independent, fixed-fee basis. MVN FinHub does not provide financial, legal, or investment advice and is not responsible for decisions or outcomes. All decisions remain solely the responsibility of the user.</p>
                     
@@ -556,7 +562,7 @@
         });
         window.dispatchEvent(new Event('scroll'));
 
-        // FIX 1: Modified function to stop event bubbling
+        // MENU FUNCTION RETAINED AS PER INSTRUCTION
         function toggleMobileMenu(event) {
             if (event) event.stopPropagation();
             document.getElementById('nav-links').classList.toggle('active');

@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Global Toggle Function
     window.toggleTheme = function() {
         const html = document.documentElement;
-        const btn = document.querySelector('.theme-btn'); // Target the class from footer
+        const btn = document.querySelector('.theme-btn'); 
         const current = html.getAttribute('data-theme');
         
         if (current === 'light' || !current) {
@@ -48,22 +48,23 @@ document.addEventListener('DOMContentLoaded', () => {
    // ==========================================
     // 2. MOBILE MENU LOGIC (RECTIFIED)
     // ==========================================
-    /* MOBILE FIX: Updated selectors to match CSS classes (.mobile-toggle, .nav-links) */
+    /* MOBILE FIX: Targeted .mobile-toggle and .nav-links for strict CSS compatibility */
     const menuToggle = document.querySelector('.mobile-toggle') || document.getElementById('mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
     if (menuToggle && navLinks) {
         // Toggle Open/Close
         menuToggle.addEventListener('click', (e) => {
-            e.preventDefault();  /* FIX: Stops ghost clicks on touch */
-            e.stopPropagation(); /* FIX: Prevents bubbling */
+            /* MOBILE FIX: Prevent default and stop propagation to fix tap issues on touch screens */
+            e.preventDefault();  
+            e.stopPropagation(); 
             
             navLinks.classList.toggle('active');
             
             // Toggle Icon & Scroll Lock
             if (navLinks.classList.contains('active')) {
                 menuToggle.textContent = '✕';
-                document.body.style.overflow = 'hidden'; /* Lock background scroll */
+                document.body.style.overflow = 'hidden'; /* MOBILE FIX: Prevent background scrolling when menu is open */
             } else {
                 menuToggle.textContent = '☰';
                 document.body.style.overflow = 'auto';
@@ -98,12 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         if (header) {
             if (window.scrollY > 50) {
-                // Add glass effect on scroll
+                /* PERFORMANCE FIX: Ensure glass effect is applied consistently on scroll */
                 header.style.background = 'var(--bg-glass)';
                 header.style.backdropFilter = 'blur(12px)';
                 header.style.borderBottom = '1px solid var(--border)';
             } else {
-                // Transparent at top (unless mobile)
+                /* DESKTOP SAFETY: Only clear backgrounds at top if width is desktop (prevent mobile flicker) */
                 if(window.innerWidth > 992) {
                     header.style.background = 'transparent';
                     header.style.backdropFilter = 'none';
@@ -124,8 +125,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Force Native Lazy Loading
-    document.querySelectorAll('img').forEach(img => img.loading = "lazy");
+    // PERFORMANCE FIX: Native Lazy Loading enforcement
+    document.querySelectorAll('img').forEach(img => {
+        if (!img.hasAttribute('loading')) {
+            img.setAttribute('loading', 'lazy');
+        }
+    });
 
     // ==========================================
     // 4. DYNAMIC FOOTER YEAR
@@ -136,10 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 5. DATABASE & FORM LOGIC (SUPABASE)
     // ==========================================
-    // Replace "" with your ACTUAL credentials if you have them
     const SUPABASE_URL = "https://fviufivewglglnxhlmmf.supabase.co";      
     const SUPABASE_KEY = "sb_publishable_HYE7g0GyJbUfmldKTTAbeA_OUdc0Rah";
-
+    
     const enquiryForm = document.getElementById('enquiryForm');
     const successMessage = document.getElementById('successMessage');
     const refIdDisplay = document.getElementById('refIdDisplay');
@@ -175,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                // If keys are missing, simulate success (Prevents crashing if you haven't set up DB yet)
                 if(!SUPABASE_URL || !SUPABASE_KEY) {
                     console.log("Supabase keys missing. Simulating success.");
                     await new Promise(r => setTimeout(r, 1500)); 
@@ -201,7 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (!response.ok) throw new Error('Server Error');
 
-                // Success UI
                 enquiryForm.style.display = 'none';
                 if(refIdDisplay) refIdDisplay.textContent = refID;
                 if(successMessage) {

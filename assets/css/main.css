@@ -148,8 +148,6 @@ header {
 }
 .btn-nav:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
 
-/* --- REPLACE IN SECTION 4 --- */
-
 /* Mobile Menu Button */
 #mobile-menu-toggle, .mobile-toggle {
     display: none; /* MOBILE FIX: Hidden by default on Desktop */
@@ -219,6 +217,8 @@ header {
 
 /* 3D Visual */
 .hero-visual {
+    /* PERFORMANCE FIX: Render hint for mobile browsers */
+    content-visibility: auto;
     position: relative; height: 500px; width: 100%;
     background: var(--bg-card); border-radius: 24px;
     border: 1px solid var(--border); box-shadow: var(--shadow-float);
@@ -335,6 +335,8 @@ details[open] summary.ques::after { content: '−'; }
 
 /* --- 9. FOOTER (MOBILE OPTIMIZED) --- */
 footer {
+    /* PERFORMANCE FIX: Render hint for footer optimization */
+    content-visibility: auto;
     background: #020617; color: #94A3B8; padding: 100px 0 60px;
     position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.05);
     margin-top: auto;
@@ -369,8 +371,6 @@ footer {
 }
 .status-badge { display: flex; align-items: center; gap: 8px; color: #10B981; font-weight: 600; }
 .status-ping { display: inline-block; width: 8px; height: 8px; background: #10B981; border-radius: 50%; box-shadow: 0 0 10px #10B981; }
-
-/* --- REPLACE ENTIRE SECTION 10 --- */
 
 /* =========================================
    10. MOBILE MENU FIX (RECTIFIED)
@@ -416,9 +416,10 @@ footer {
     }
 
     /* 4. ACTIVE STATE - TRIGGERED BY JS */
+    /* MOBILE FIX: Highest z-index to clear Film Grain */
     .nav-links.active { 
         display: flex !important; 
-        z-index: 10005 !important; /* Fix: Above Film Grain */
+        z-index: 10005 !important; 
         animation: slideDown 0.3s ease-out forwards;
     }
 
