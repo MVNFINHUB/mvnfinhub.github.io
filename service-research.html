@@ -17,7 +17,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;600;700&display=swap" rel="stylesheet">
     
-    <script src="assets/js/app.js" defer></script>
     <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
     <script>
@@ -207,6 +206,22 @@
             .footer-bottom { flex-direction: column; gap: 20px; }
             .mobile-toggle { display: block; }
             .nav-links { display: none; }
+
+            /* FIX 3: Changed to position: fixed and added necessary styling for visibility */
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--bg-card);
+                padding: 20px;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                z-index: 1000;
+                gap: 20px;
+            }
         }
     </style>
 </head>
@@ -218,7 +233,9 @@
                 <div class="logo-icon-wrapper"><img src="assets/images/logo-header.png" alt="MVN Logo"></div>
                 <div class="brand-text"><span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span></div>
             </a>
-            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu">☰</button>
+            
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu" onclick="toggleMobileMenu(event)">☰</button>
+            
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item">Home</a>
                 <a href="services.html" class="nav-item active">Services</a>
@@ -432,10 +449,11 @@
         });
         window.dispatchEvent(new Event('scroll'));
 
-        // Mobile Menu
-        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+        // FIX 1: Modified function to stop event bubbling
+        function toggleMobileMenu(event) {
+            if (event) event.stopPropagation();
             document.getElementById('nav-links').classList.toggle('active');
-        });
+        }
     </script>
 </body>
 </html>

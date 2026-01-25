@@ -17,7 +17,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;600;700&display=swap" rel="stylesheet">
     
-    <script src="assets/js/app.js" defer></script>
     <script data-goatcounter="https://mvnfinhub.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
     <script>
@@ -199,10 +198,32 @@
 
         @media (max-width: 992px) {
             .hero-title { font-size: 2.2rem; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            
+            /* FIX 4: Footer Stacking */
+            .footer-grid { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 40px; }
+            .footer-col { display: flex; flex-direction: column; align-items: center; }
             .footer-bottom { flex-direction: column; gap: 20px; }
+            
             .mobile-toggle { display: block; }
             .nav-links { display: none; }
+
+            /* FIX 3: Fixed Positioning for Menu */
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--bg-card);
+                padding: 20px;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                z-index: 10005; /* High Z-index */
+                gap: 20px;
+                max-height: 80vh;
+                overflow-y: auto;
+            }
         }
     </style>
 </head>
@@ -214,7 +235,9 @@
                 <div class="logo-icon-wrapper"><img src="assets/images/logo-header.png" alt="MVN Logo"></div>
                 <div class="brand-text"><span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span></div>
             </a>
-            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu">☰</button>
+            
+            <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu" onclick="toggleMobileMenu(event)">☰</button>
+            
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item">Home</a>
                 <a href="services.html" class="nav-item active">Services</a>
@@ -256,12 +279,7 @@
 
                             <div class="sub-heading">Why This Process Exists</div>
                             <p class="text-block">Banks and regulated institutions frequently communicate using dense compliance terminology, system-generated reason codes, and formal language.</p>
-                            <p class="text-block">Notices, rejection letters, and automated communications often obscure:</p>
-                            <ul class="premium-list">
-                                <li>What triggered the notice</li>
-                                <li>What is explicitly required</li>
-                                <li>What timelines or expectations are stated</li>
-                            </ul>
+                            <p class="text-block">Notices, rejection letters, and automated communications often obscure what triggered the notice, what is explicitly required, and what timelines are stated.</p>
                             <p class="text-block">This service exists to remove language-based confusion, not to guide decisions or actions.</p>
                         </div>
                     </div>
@@ -422,10 +440,11 @@
         });
         window.dispatchEvent(new Event('scroll'));
 
-        // Mobile Menu
-        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+        // FIX 1: Modified function to stop event bubbling
+        function toggleMobileMenu(event) {
+            if (event) event.stopPropagation();
             document.getElementById('nav-links').classList.toggle('active');
-        });
+        }
     </script>
 </body>
 </html>
