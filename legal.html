@@ -34,15 +34,15 @@
             --font-display: 'Poppins', sans-serif;
             --font-ui: 'IBM Plex Sans', sans-serif;
             --font-body: 'Inter', sans-serif;
-            --font-legal: 'Source Serif 4', serif; /* The "Trust" Font */
+            --font-legal: 'Source Serif 4', serif;
             
-            /* Light Mode - "The Firm" */
+            /* Light Mode */
             --bg-body: #F1F5F9;
             --bg-paper: #FFFFFF;
             --text-head: #0F172A;
             --text-body: #334155;
             --text-muted: #64748B;
-            --accent-gold: #D97706; /* Premium Trust Color */
+            --accent-gold: #D97706; 
             --accent-blue: #0EA5E9;
             --border-light: #E2E8F0;
             --hero-gradient: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
@@ -50,7 +50,7 @@
         }
 
         [data-theme="dark"] {
-            /* Dark Mode - "The Vault" */
+            /* Dark Mode */
             --bg-body: #020617;
             --bg-paper: #0F172A;
             --text-head: #F8FAFC;
@@ -103,6 +103,7 @@
         .nav-item::after { content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--accent-blue); transition: 0.3s; }
         .nav-item:hover::after, .nav-item.active::after { width: 100%; }
         .btn-nav { background: #FFFFFF; color: #0F172A !important; padding: 10px 24px; border-radius: 100px; font-weight: 600; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        
         .mobile-toggle { display: none; font-size: 1.5rem; background: none; border: none; color: #FFFFFF; cursor: pointer; }
 
         /* --- 4. HERO --- */
@@ -125,11 +126,6 @@
             border: 1px solid var(--border-light); overflow: hidden;
         }
 
-        .doc-header {
-            background: linear-gradient(to right, rgba(14, 165, 233, 0.05), transparent);
-            padding: 40px; border-bottom: 1px solid var(--border-light);
-        }
-        
         /* CLAUSE SECTIONS */
         .clause-block {
             padding: 40px; border-bottom: 1px solid var(--border-light);
@@ -150,7 +146,7 @@
 
         /* LIST STYLING */
         .legal-list { margin: 15px 0 20px 20px; border-left: 2px solid var(--border-light); padding-left: 20px; }
-        .legal-list li { margin-bottom: 10px; position: relative; font-size: 0.95rem; }
+        .legal-list li { margin-bottom: 10px; position: relative; font-size: 0.95rem; color: var(--text-body); }
         .legal-list li::before { content: "•"; color: var(--accent-blue); font-weight: bold; position: absolute; left: -18px; }
 
         /* DISCLAIMER HIGHLIGHT */
@@ -197,6 +193,7 @@
             .mobile-toggle { 
                 display: block; 
                 z-index: 10001; 
+                padding: 5px;
             }
 
             /* HIDE NAV BY DEFAULT */
@@ -221,13 +218,16 @@
                 gap: 25px;
             }
 
+            /* CRITICAL FIX: Menu Link Colors on Mobile */
+            /* In Light Mode, BG is White, so text must be Dark */
+            /* In Dark Mode, BG is Dark, text is White */
             .nav-item { 
                 font-size: 1.2rem; 
                 width: 100%; 
                 text-align: center;
                 padding: 10px 0;
                 border-bottom: 1px solid rgba(0,0,0,0.05);
-                color: var(--text-head) !important; /* Ensure visibility */
+                color: var(--text-head) !important; /* Forces visibility based on theme */
             }
             
             .btn-nav {
@@ -236,11 +236,14 @@
                 text-align: center;
                 margin-top: 15px;
                 padding: 12px;
+                /* Reset button specific styles for mobile link */
+                background: var(--text-head);
+                color: var(--bg-paper) !important;
             }
 
             /* Page Specific Mobile Fixes */
             .hero-title { font-size: 2.2rem; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .footer-grid { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 40px; }
             .footer-bottom { flex-direction: column; gap: 20px; }
             .footer-col { display: flex; flex-direction: column; align-items: center; }
             .clause-block { padding: 30px 20px; }
@@ -251,6 +254,13 @@
             .mobile-toggle { display: none !important; }
             .nav-links { display: flex !important; }
         }
+
+        /* --- MOBILE-ONLY OVERRIDES (STRICT) --- */
+        body.menu-open {
+            overflow: hidden !important;
+            position: fixed;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -259,16 +269,20 @@
         <div class="container nav-flex">
             <a href="index.html" class="brand-logo">
                 <div class="logo-icon-wrapper"><img src="assets/images/logo-header.png" alt="MVN Logo"></div>
-                <div class="brand-text"><span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span></div>
+                <div class="brand-text">
+                    <span class="text-mvn">MVN</span><span class="text-finhub">FinHub</span>
+                </div>
             </a>
+            
             <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Menu">☰</button>
+            
             <nav class="nav-links" id="nav-links">
                 <a href="index.html" class="nav-item">Home</a>
                 <a href="services.html" class="nav-item">Services</a>
                 <a href="insights.html" class="nav-item">Insights</a>
                 <a href="about.html" class="nav-item">About</a>
                 <a href="contact.html" class="nav-item btn-nav">Contact</a>
-            </nav>
+            </nav> 
         </div>
     </header>
 
@@ -432,12 +446,17 @@
                     <span class="status-ping"></span> System Operational
                 </div>
                 <span>&copy; 2026 MVN FinHub. All Rights Reserved.</span>
-                <button class="theme-btn" onclick="toggleTheme()" style="background:none; border:none; cursor:pointer; font-size:1.2rem; color:#FFF;">🌙</button>
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle Theme" style="background:none; border:none; cursor:pointer; font-size:1.2rem; color:#FFF;">🌙</button>
             </div>
         </div>
     </footer>
 
     <script>
+        // Theme Toggle
+        if(localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.querySelector('.theme-btn').textContent = '☀️';
+        }
         function toggleTheme() {
             const html = document.documentElement;
             const btn = document.querySelector('.theme-btn');
@@ -457,50 +476,69 @@
         });
         window.dispatchEvent(new Event('scroll'));
 
-        // --- NUCLEAR MENU FIX (Direct Function) ---
-        function toggleMobileMenu() {
-            const nav = document.getElementById('nav-links');
-            const btn = document.getElementById('mobile-menu-toggle');
-            
-            nav.classList.toggle('active');
-            
-            if (nav.classList.contains('active')) {
-                btn.textContent = '✕';
-                document.body.style.overflow = 'hidden'; 
-            } else {
-                btn.textContent = '☰';
-                document.body.style.overflow = 'auto'; 
-            }
-        }
+        // --- UNIFIED MOBILE NAV LOGIC (PRODUCTION FIX) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            const body = document.body;
 
-        // Close menu when clicking a link
-        document.addEventListener('DOMContentLoaded', function() {
-            const nav = document.getElementById('nav-links');
-            const btn = document.getElementById('mobile-menu-toggle');
-            
-            if(nav && btn) {
-                // Event Listener for the button
-                btn.addEventListener('click', toggleMobileMenu);
+            if (menuToggle && navLinks) {
+                
+                // Toggle Function
+                const toggleMenu = (event) => {
+                    if(event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    
+                    const isOpen = navLinks.classList.contains('active');
+                    
+                    if (isOpen) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+                };
 
-                // Handle Link Clicks
-                nav.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        nav.classList.remove('active');
-                        btn.textContent = '☰';
-                        document.body.style.overflow = 'auto';
-                    });
+                const openMenu = () => {
+                    navLinks.classList.add('active');
+                    body.classList.add('menu-open'); // CSS handles scroll lock
+                    menuToggle.innerHTML = '✕';
+                    menuToggle.setAttribute('aria-expanded', 'true');
+                };
+
+                const closeMenu = () => {
+                    navLinks.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    menuToggle.innerHTML = '☰';
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                };
+
+                // Listeners
+                menuToggle.addEventListener('click', toggleMenu);
+
+                // Close on Link Click
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', closeMenu);
                 });
 
-                // Handle Outside Clicks
-                document.addEventListener('click', (e) => {
-                    if (nav.classList.contains('active') && !nav.contains(e.target) && !btn.contains(e.target)) {
-                        nav.classList.remove('active');
-                        btn.textContent = '☰';
-                        document.body.style.overflow = 'auto';
+                // Close on Outside Click
+                document.addEventListener('click', (event) => {
+                    const isClickInside = navLinks.contains(event.target) || menuToggle.contains(event.target);
+                    if (!isClickInside && navLinks.classList.contains('active')) {
+                        closeMenu();
+                    }
+                });
+
+                // Safety Resize
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 992 && navLinks.classList.contains('active')) {
+                        closeMenu();
                     }
                 });
             }
         });
     </script>
+
 </body>
 </html>
